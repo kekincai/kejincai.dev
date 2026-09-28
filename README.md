@@ -14,7 +14,7 @@ Build. Learn. Keep a record.
 [![TypeScript](https://img.shields.io/badge/TypeScript-strict-111722?style=flat-square&logo=typescript&logoColor=00E5FF)](https://www.typescriptlang.org)
 [![MIT](https://img.shields.io/badge/License-MIT-111722?style=flat-square&labelColor=111722&color=00E5FF)](LICENSE)
 
-[Design spec](SPEC.md) · [Content guide](docs/CONTENT.md) · [Deployment](docs/DEPLOYMENT.md) · [Contributing](CONTRIBUTING.md)
+[Website](https://kejincai.dev) · [Design spec](SPEC.md) · [Content guide](docs/CONTENT.md) · [Deployment](docs/DEPLOYMENT.md) · [Contributing](CONTRIBUTING.md)
 
 </div>
 
@@ -97,7 +97,7 @@ Open **http://localhost:4321**.
 
 Static HTML first. A small amount of vanilla TypeScript handles navigation, filters and pointer response. Astro's client router provides quiet 200ms transitions. No React runtime, analytics or external font service is required.
 
-Fonts are hosted with the site: Inter, IBM Plex Mono and Noto Sans JP.
+Fonts are hosted with the site: Inter, IBM Plex Mono and Noto Sans JP. Japanese fonts are subset from the current source content before development and production builds.
 
 ```text
 src/
@@ -114,7 +114,9 @@ docs/                 Design references, previews and publishing guides
 
 ## Publish
 
-Ready for **Cloudflare Pages** or **Workers static assets**. Build with `npm run build` and publish `dist/`. The canonical domain is configured as `https://kejincai.dev`.
+**Production: [kejincai.dev](https://kejincai.dev)** · Cloudflare Workers static assets.
+
+Run `npm run deploy` to build and publish with the versioned custom-domain route. The canonical domain is `https://kejincai.dev`.
 
 See [Deployment](docs/DEPLOYMENT.md) for both paths. GitHub CI checks formatting, types and the production build; it does not deploy the domain automatically.
 
@@ -126,7 +128,8 @@ See [Deployment](docs/DEPLOYMENT.md) for both paths. GitHub CI checks formatting
 - [x] Reduced motion and self-hosted fonts
 - [ ] Photography with original images and responsive AVIF/WebP
 - [ ] Build-time aggregation of verified RSS / JSON feeds
-- [ ] Production deployment and field performance verification
+- [x] Cloudflare deployment and custom domain
+- [ ] Field performance verification
 
 ## License
 

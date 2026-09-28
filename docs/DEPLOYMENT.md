@@ -1,37 +1,41 @@
-# Deploy to Cloudflare
+# Cloudflare deployment
 
-The site is statically generated. No server adapter, database, or API key is required to build it.
+The production target is **https://kejincai.dev**, served by the `kejincai-dev` Cloudflare Worker with static assets. The canonical domain and custom-domain route are versioned in this repository.
 
-## Cloudflare Pages
-
-Connect this GitHub repository to a Pages project using these settings:
-
-| Setting           | Value           |
-| ----------------- | --------------- |
-| Production branch | `main`          |
-| Build command     | `npm run build` |
-| Output directory  | `dist`          |
-| Node.js           | `24`            |
-
-After the first successful deployment, add `kejincai.dev` as a custom domain in Cloudflare. Keep `site` in `astro.config.mjs` aligned with the canonical production URL.
-
-Pages reads `public/_headers` from the generated output, and uses `404.html` for unknown routes.
-
-## Cloudflare Workers static assets
-
-Alternatively, the included `wrangler.jsonc` defines a static-assets Worker:
+## Deploy from this checkout
 
 ```sh
-npm run build
-npx wrangler deploy
+npm ci
+npx wrangler whoami
+npm run deploy
 ```
 
-Authenticate with your own Cloudflare account when prompted. Configure the custom domain in Cloudflare after deployment. The `_headers` file is a Pages feature; a Workers deployment needs equivalent header configuration if desired.
+If not already authenticated, use `npx wrangler login` with your own Cloudflare account. `npm run deploy` generates compact Japanese fonts, builds the site, and uploads `dist/` with Wrangler.
+
+The root custom domain is configured in `wrangler.jsonc`. Changing that route changes where the site is published. No account IDs, tokens or credentials are committed to this repository.
+
+## Configuration
+
+| Setting        | Value                       |
+| -------------- | --------------------------- |
+| Worker         | `kejincai-dev`              |
+| Domain         | `kejincai.dev`              |
+| Assets         | `dist/`                     |
+| Unknown routes | Custom `404.html`, HTTP 404 |
+| Node.js        | 24 recommended              |
+
+`public/_headers` configures response headers for static assets. Hashed Astro assets use a one-year immutable cache; generated fonts use the default revalidation behavior so content changes can safely add new glyphs.
+
+References: [Cloudflare static assets](https://developers.cloudflare.com/workers/static-assets/), [custom headers](https://developers.cloudflare.com/workers/static-assets/headers/), [custom domains](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/).
+
+## GitHub checks
+
+CI checks formatting, types and the production build. Deployment is explicit with `npm run deploy`; CI does not store credentials or automatically deploy.
+
+## Cloudflare Pages alternative
+
+For a separate Pages deployment, use production branch `main`, Node.js 24, build command `npm run build`, and output directory `dist`. Add its custom domain in the Pages dashboard after the first successful deployment. Avoid assigning the same domain to two deployments.
 
 ## Verify after deployment
 
-Check the home page, mobile menu, lab filter and detail route, `/rss.xml`, `/sitemap-index.xml`, `/og.png`, and an unknown route. Verify canonical links use your production domain.
-
-This repository's CI builds and validates the site. It does not deploy or store Cloudflare credentials.
-
-Reference: [Astro deployment documentation](https://docs.astro.build/en/guides/deploy/).
+Check Home, mobile navigation, the Lab filter and detail route, `/rss.xml`, `/sitemap-index.xml`, `/og.png`, and an unknown route. Confirm canonical links use `https://kejincai.dev` and the site has a valid TLS certificate.

@@ -14,7 +14,10 @@
     "preview": "astro preview --host 127.0.0.1",
     "check": "astro check",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "predev": "node scripts/subset-fonts.mjs",
+    "prebuild": "node scripts/subset-fonts.mjs",
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
@@ -32,6 +35,8 @@
     "prettier": "^3.9.9",
     "prettier-plugin-astro": "^1.1.0",
     "sharp": "^0.35.5",
-    "typescript": "^6.0.3"
+    "subset-font": "^2.9.0",
+    "typescript": "^6.0.3",
+    "wrangler": "^4.142.0"
   }
 }

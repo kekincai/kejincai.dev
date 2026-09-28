@@ -50,3 +50,7 @@ The above-the-fold copy was checked against the supplied content and final refer
 Functional review covered mobile menu expansion and close on navigation, Lab ALL / IDEA / ACTIVE / empty PROTOTYPE states, CoBRA detail, the next experiment route, and external link destinations. Publishing dates describe directory entries rather than original project releases.
 
 The implementation preserves the requested design direction with these documented adaptations. The retained screenshots are repository preview assets, not temporary test captures. No remaining clipping or horizontal overflow was observed in the checked views.
+
+## Performance repair
+
+The first mobile Lighthouse run revealed full Japanese font files of about 1 MB each. Build-time subsetting now produces files of about 9 KB each from the current source corpus, preserving self-hosted typography. The accessible name override on node links was also removed so their visible content provides the accessible name.
