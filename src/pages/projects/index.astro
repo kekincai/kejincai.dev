@@ -4,62 +4,33 @@ import PortfolioCard from '../../components/PortfolioCard.astro';
 import NodeCard from '../../components/NodeCard.astro';
 import { projects } from '../../data/site';
 import SectionHeading from '../../components/SectionHeading.astro';
-import { portfolioGroups, portfolioCount } from '../../data/portfolio';
+import { portfolioGroups } from '../../data/portfolio';
 ---
 
 <BaseLayout
   title="Projects — KEJINCAI.DEV"
-  description="精选软件、有趣的实验与小工具。探索 Infinity New Tab、Disk Ferry、Safe Clip 等 12 个开源项目。"
+  description="精选作品：Infinity New Tab、Disk Ferry 与 Safe Clip。三个日常使用的软件项目，以及三个独立网站入口。"
 >
   <div class="container page-content">
     <div class="page-heading">
-      <p class="eyebrow yellow">
-        OPEN SOURCE / {String(portfolioCount).padStart(2, '0')} PROJECTS
-      </p>
+      <p class="eyebrow yellow">SELECTED WORK / 03</p>
       <h1>Made to be used.</h1>
-      <p lang="zh-CN">
-        日常使用的软件、好奇心驱动的实验，以及解决具体问题的小工具。
-      </p>
+      <p lang="zh-CN">三个认真打磨、日常用得上的软件。</p>
     </div>
-    <nav class="portfolio-nav" aria-label="Project categories">
-      {portfolioGroups.map((group) => (
-        <a href={`#${group.id}`}>
-          <span>{group.label}</span>
-          <span class="mono">
-            {String(group.projects.length).padStart(2, '0')}
-          </span>
-        </a>
-      ))}
-    </nav>
-    {portfolioGroups.map((group, groupIndex) => (
-      <section class="portfolio-section" id={group.id}>
-        <SectionHeading
-          label={`${String(groupIndex + 1).padStart(2, '0')} / ${group.label}`}
-          title={group.title}
-          description={group.description}
-        />
-        <div
-          class:list={['work-grid', { 'work-grid-featured': groupIndex === 0 }]}
-        >
-          {group.projects.map((project, index) => (
-            <PortfolioCard
-              project={project}
-              number={String(
-                portfolioGroups
-                  .slice(0, groupIndex)
-                  .reduce((sum, g) => sum + g.projects.length, 0) +
-                  index +
-                  1,
-              ).padStart(2, '0')}
-              featured={groupIndex === 0}
-            />
-          ))}
-        </div>
-      </section>
-    ))}
+    <section class="portfolio-section" id="selected" aria-label="精选项目">
+      <div class="work-grid work-grid-featured">
+        {portfolioGroups[0].projects.map((project, index) => (
+          <PortfolioCard
+            project={project}
+            number={String(index + 1).padStart(2, '0')}
+            featured
+          />
+        ))}
+      </div>
+    </section>
     <section class="portfolio-section" id="connected">
       <SectionHeading
-        label="04 / CONNECTED NODES"
+        label="CONNECTED NODES"
         title="Connected worlds."
         description="独立网站，持续记录。"
       />
@@ -69,11 +40,14 @@ import { portfolioGroups, portfolioCount } from '../../data/portfolio';
         ))}
       </div>
     </section>
-    <div class="cross-link">
-      <span>More ideas in progress.</span>
+    <aside class="lab-invitation">
+      <div>
+        <p class="micro">SIDE PROJECTS / SMALL TOOLS</p>
+        <p lang="zh-CN">一些好玩的小实验和实用脚本，收在 Lab 里。</p>
+      </div>
       <a class="text-link micro" href="/lab/">
-        EXPLORE LAB →
+        OPEN LAB →
       </a>
-    </div>
+    </aside>
   </div>
 </BaseLayout>

@@ -1,0 +1,39 @@
+---
+interface Props {
+  node: string;
+}
+const { node } = Astro.props;
+---
+
+<svg class="node-icon" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+  <path class="icon-frame" d="M6 28V14l8-8h42M90 68v14l-8 8H38" />
+  <path class="icon-signal" d="M70 6h12l8 8v14M6 69v13l8 8h12" />
+  {node === '01' ? (
+    <>
+      <path
+        class="icon-primary"
+        d="M15 23h22l11 8 11-8h22v48H58l-10 7-10-7H15V23ZM48 31v47M23 35h13M23 44h13M23 53h13M60 44h13M60 53h13"
+      />
+      <path class="icon-signal" d="M62 23v13l5-4 5 4V23" />
+      <path class="icon-alert" d="M23 62h9M66 62h7" />
+    </>
+  ) : node === '02' ? (
+    <>
+      <path
+        class="icon-primary"
+        d="M17 20h54l9 9v46H17V20ZM17 33h63M25 27h6M36 27h6"
+      />
+      <path class="icon-signal" d="m29 45 8 8-8 8M46 62h19M47 45h21" />
+      <path class="icon-alert" d="M25 83h16M69 27h5" />
+    </>
+  ) : (
+    <>
+      <path
+        class="icon-primary"
+        d="M48 17 70 26l10 22-10 22-22 10-22-10-9-22 9-22 22-9ZM48 33l11 4 4 11-4 11-11 4-11-4-4-11 4-11 11-4ZM48 10v13M48 73v13M10 48h13M73 48h13"
+      />
+      <path class="icon-signal" d="m48 48 22-22M48 48h17" />
+      <path class="icon-alert" d="M65 21h9v9M22 72l6 6" />
+    </>
+  )}
+</svg>

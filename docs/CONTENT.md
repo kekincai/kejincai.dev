@@ -8,9 +8,9 @@ Edit `src/data/portfolio.ts`. The owner selected twelve public repositories in t
 - **有趣的实验 (6):** Bookmark Cover Flow, PatternMart, TaskPaper MCP, dedup, Racket TODO, NetSpeedMonitor.
 - **小工具 (3):** 印象导出器, Base R Snake, Podcasts Unfollow.
 
-Each record contains the exact repository slug, display name, original typographic symbol, platform / technology tags and a short description. Check the current public README before changing a description. Group membership is editorial; do not infer release readiness or maintenance status from it.
+Each record contains the exact repository slug, display name, platform / technology tags and a short description. Check the current public README before changing a description. Group membership is editorial; do not infer release readiness or maintenance status from it.
 
-Home and Projects show all twelve projects. Lab shows the latter two groups and filters by category. Counts derive from the data. Cards link directly to the owner's public repositories. RSS uses these records without inventing original release dates.
+Home and Projects feature only Infinity New Tab, Disk Ferry and Safe Clip as major software cards. Lab lists the remaining nine projects in two compact groups; they do not use large cards or status filters. Counts derive from the data. Cards and list rows link directly to the owner's public repositories. RSS uses these records without inventing original release dates.
 
 ## Independent websites
 
@@ -21,3 +21,5 @@ The previous assistant-selected lab entries and their detail routes have been re
 ## Identity and media
 
 Use KE JINCAI / KEJINCAI.DEV for public personal identity. Do not publish the Chinese personal name. Use original photographs if photography is added; do not invent media or activity feeds.
+
+Featured project icons are authored in `src/components/ProjectIcon.astro`; independent site icons are in `src/components/NodeIcon.astro`. All six use original angular SVG paths in yellow, cyan and red instead of font glyphs or default icon-library assets.

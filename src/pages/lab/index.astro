@@ -1,91 +1,61 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PortfolioCard from '../../components/PortfolioCard.astro';
+import Arrow from '../../components/Arrow.astro';
 import { portfolioGroups } from '../../data/portfolio';
 const groups = portfolioGroups.slice(1);
 ---
 
 <BaseLayout
   title="Lab — KEJINCAI.DEV"
-  description="6 个有趣的实验与 3 个小工具：浏览器、MCP、Racket、Rust、Swift 与 R 的探索。"
+  description="一些有趣的实验和小工具：书签、设计模式、TaskPaper、文件查重、Racket、网速、笔记导出、贪吃蛇与播客自动化。"
 >
-  <div class="container page-content">
+  <div class="container page-content lab-ledger">
     <div class="page-heading">
-      <p class="eyebrow yellow">LAB / 09 PROJECTS</p>
-      <h1>Curiosity in code.</h1>
-      <p lang="zh-CN">有趣的实验与小工具。每一个项目，都是另一种做法。</p>
+      <p class="eyebrow yellow">SIDE PROJECTS / SMALL TOOLS</p>
+      <h1>Experiments & tools.</h1>
+      <p lang="zh-CN">一些好玩的尝试，和解决具体问题的小工具。</p>
     </div>
-    <div
-      class="lab-filters"
-      role="group"
-      aria-label="Filter projects by category"
-      hidden
-    >
-      <button data-filter="all" aria-pressed="true">
-        全部 9
-      </button>
-      {groups.map((group) => (
-        <button data-filter={group.id} aria-pressed="false">
-          {group.label} {group.projects.length}
-        </button>
-      ))}
-    </div>
-    <div class="work-grid">
-      {groups.flatMap((group, groupIndex) =>
-        group.projects.map((project, index) => (
-          <div class="lab-project" data-category={group.id}>
-            <PortfolioCard
-              project={project}
-              number={String((groupIndex === 0 ? 3 : 9) + index + 1).padStart(
-                2,
-                '0',
-              )}
-            />
-          </div>
-        )),
-      )}
-    </div>
-    <p class="lab-count micro" aria-live="polite">
-      9 PROJECTS / ALL
-    </p>
+    {groups.map((group) => (
+      <section class="side-group" aria-labelledby={`heading-${group.id}`}>
+        <div class="side-group-heading">
+          <h2 id={`heading-${group.id}`} lang="zh-CN">
+            {group.label}
+          </h2>
+          <span class="micro">
+            {String(group.projects.length).padStart(2, '0')} ENTRIES
+          </span>
+        </div>
+        <ul class="side-list">
+          {group.projects.map((project, index) => (
+            <li>
+              <a
+                href={`https://github.com/kekincai/${project.repo}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="side-row"
+              >
+                <span class="side-index micro" aria-hidden="true">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <div>
+                  <h3>{project.name}</h3>
+                  <p lang="zh-CN">{project.description}</p>
+                </div>
+                <span class="side-tags micro">
+                  {project.tags.slice(0, 2).join(' / ')}
+                </span>
+                <Arrow diagonal />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
     <div class="cross-link">
-      <span>Explore the selected projects.</span>
-      <a class="text-link micro" href="/projects/#selected">
-        SELECTED WORK →
+      <span>Selected work.</span>
+      <a class="text-link micro" href="/projects/">
+        VIEW PROJECTS →
       </a>
     </div>
   </div>
 </BaseLayout>
-<script>
-  const initialized = new WeakSet<Element>();
-  function setupFilters() {
-    const filters = document.querySelector<HTMLElement>('.lab-filters');
-    if (!filters || initialized.has(filters)) return;
-    initialized.add(filters);
-    filters.hidden = false;
-    const rows = Array.from(
-      document.querySelectorAll<HTMLElement>('.lab-project'),
-    );
-    const buttons = Array.from(
-      filters.querySelectorAll<HTMLButtonElement>('button'),
-    );
-    const count = document.querySelector<HTMLElement>('.lab-count');
-    buttons.forEach((button) =>
-      button.addEventListener('click', () => {
-        const category = button.dataset.filter;
-        buttons.forEach((b) =>
-          b.setAttribute('aria-pressed', String(b === button)),
-        );
-        rows.forEach(
-          (row) =>
-            (row.hidden =
-              category !== 'all' && row.dataset.category !== category),
-        );
-        if (count)
-          count.textContent = `${rows.filter((row) => !row.hidden).length} PROJECTS / ${category?.toUpperCase()}`;
-      }),
-    );
-  }
-  document.addEventListener('astro:page-load', setupFilters);
-  setupFilters();
-</script>

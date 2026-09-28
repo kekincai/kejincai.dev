@@ -1,5 +1,6 @@
 ---
 import Arrow from './Arrow.astro';
+import NodeIcon from './NodeIcon.astro';
 import type { projects } from '../data/site';
 interface Props {
   project: (typeof projects)[number];
@@ -18,9 +19,7 @@ const { project } = Astro.props;
     <Arrow diagonal />
   </div>
   <div class="node-card-body">
-    <span class="node-symbol" aria-hidden="true" lang="ja">
-      {project.symbol}
-    </span>
+    <NodeIcon node={project.id} />
     <div class="node-card-copy">
       <p class="micro node-category">{project.category}</p>
       <div class="node-card-title">

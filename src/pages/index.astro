@@ -30,8 +30,8 @@ import { portfolioGroups, portfolioCount } from '../data/portfolio';
         </dd>
       </div>
       <div>
-        <dt>SOFTWARE PROJECTS</dt>
-        <dd>{String(portfolioCount).padStart(2, '0')}</dd>
+        <dt>SELECTED WORK</dt>
+        <dd>{String(portfolioGroups[0].projects.length).padStart(2, '0')}</dd>
       </div>
       <div>
         <dt>EXPERIMENTS / TOOLS</dt>
@@ -55,7 +55,7 @@ import { portfolioGroups, portfolioCount } from '../data/portfolio';
       description="把想法做成日常用得上的软件。"
     >
       <a class="text-link micro" href="/projects/">
-        ALL {portfolioCount} PROJECTS <Arrow />
+        VIEW PROJECTS <Arrow />
       </a>
     </SectionHeading>
     <div class="work-grid work-grid-featured">
@@ -68,33 +68,9 @@ import { portfolioGroups, portfolioCount } from '../data/portfolio';
       ))}
     </div>
   </section>
-  {portfolioGroups.slice(1).map((group, groupIndex) => (
-    <section class="section container" id={group.id}>
-      <SectionHeading
-        label={`${String(groupIndex + 2).padStart(2, '0')} / ${group.label}`}
-        title={group.title}
-        description={group.description}
-      >
-        <a class="text-link micro" href={`/projects/#${group.id}`}>
-          EXPLORE PROJECTS <Arrow />
-        </a>
-      </SectionHeading>
-      <div class="work-grid">
-        {group.projects.map((project, index) => (
-          <PortfolioCard
-            project={project}
-            number={String((groupIndex === 0 ? 3 : 9) + index + 1).padStart(
-              2,
-              '0',
-            )}
-          />
-        ))}
-      </div>
-    </section>
-  ))}
   <section class="section container" id="nodes">
     <SectionHeading
-      label="04 / CONNECTED NODES"
+      label="02 / CONNECTED NODES"
       title="Connected worlds."
       description="独立网站，持续记录。"
     />
@@ -104,6 +80,15 @@ import { portfolioGroups, portfolioCount } from '../data/portfolio';
       ))}
     </div>
   </section>
+  <aside class="lab-invitation container">
+    <div>
+      <p class="micro">SIDE PROJECTS / SMALL TOOLS</p>
+      <p lang="zh-CN">还有一些好玩的小实验，以及解决日常问题的小工具。</p>
+    </div>
+    <a class="text-link micro" href="/lab/">
+      OPEN LAB <Arrow />
+    </a>
+  </aside>
   <section class="about-strip container">
     <p class="eyebrow yellow">ABOUT NODE</p>
     <div>

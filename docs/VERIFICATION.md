@@ -11,7 +11,7 @@ Checked on **2026-09-28** against **https://kejincai.dev**.
 - An unknown route returns the custom page with HTTP 404.
 - Response headers include `nosniff`, frame protection, referrer policy and disabled camera/microphone/geolocation permissions.
 
-HTTP results were checked with curl. The in-app browser confirmed the actual Home → Lab → experiment / utility category filters workflow.
+HTTP results were checked with curl. The in-app browser checks navigation between the featured projects and the compact Lab list.
 
 ## Mobile Lighthouse
 
@@ -37,7 +37,7 @@ The initial audit found large Japanese font files. Automatic build-time subsetti
 - Tablet: 768px and 1024px widths.
 - Home, Projects, Lab and About showed no horizontal document overflow at the three smaller widths.
 - Mobile menu expands, closes on navigation, and supports Escape.
-- Lab category filters show 9 total, 6 experiments or 3 utilities.
+- Lab shows 6 experiments and 3 small tools as compact list rows.
 - Reduced motion disables CSS drift, hides the packet, switches scrolling to `auto`, and pauses SVG animations.
 - Public identity uses Latin text only.
 
@@ -56,6 +56,6 @@ Photography and external activity aggregation remain the next phase, as specifie
 - Previous example lab detail routes are removed from the build and sitemap.
 - RSS has twelve project items with GitHub destinations and no invented publication dates.
 - Home, Projects and Lab DOM widths match 320px, 390px, 768px and 1024px viewports.
-- Project category anchors work; Lab switches between six experiments and three tools.
+- Home and Projects have three major software cards; Lab has nine compact rows split into two groups.
 
 Project-directory Lighthouse accessibility audit: **100**, with no failing accessibility audits.

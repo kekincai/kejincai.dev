@@ -1,0 +1,49 @@
+---
+interface Props {
+  repo: string;
+}
+const { repo } = Astro.props;
+---
+
+<svg class="project-icon" viewBox="0 0 96 96" fill="none" aria-hidden="true">
+  <path class="icon-frame" d="M6 26V13l7-7h46M90 69v14l-7 7H36" />
+  <path class="icon-signal" d="M70 6h13l7 7v16M6 68v15l7 7h13" />
+  {repo === 'infinity-newtab-extension' ? (
+    <>
+      <path
+        class="icon-primary"
+        d="M17 25h21l12 13-12 13H17V25Zm41 20 12-13h13v26H63L50 45l-12 13H17"
+      />
+      <path class="icon-signal" d="m39 25 25 26h19M17 67h22l11-11 12 12h21" />
+      <path class="icon-primary" d="M17 16h10M73 76h10" />
+      <path class="icon-alert" d="M17 76h15M74 20h9" />
+    </>
+  ) : repo === 'DiskFerry' ? (
+    <>
+      <path
+        class="icon-primary"
+        d="M19 19h20l6 7h31v22H19V19Zm0 39h57v16l-6 6H25l-6-6V58Z"
+      />
+      <path
+        class="icon-signal"
+        d="M28 37h37m-7-7 7 7-7 7M66 66H30m7-7-7 7 7 7"
+      />
+      <path class="icon-alert" d="M60 74h9" />
+      <path class="icon-primary" d="M25 12h13M81 56v14" />
+    </>
+  ) : (
+    <>
+      <path
+        class="icon-primary"
+        d="m48 16 27 10v27L63 68 48 80 33 68 21 53V26L48 16Z"
+      />
+      <path
+        class="icon-signal"
+        d="M41 33h-8v24h8m14-24h8v24h-8M45 37l7 7-7 8"
+      />
+      <path class="icon-primary" d="M21 16h9M69 16h6M48 65v7" />
+      <path class="icon-alert" d="M42 27h12M13 43v10" />
+    </>
+  )}
+  <path class="icon-alert" d="M77 90h6l7-7" />
+</svg>

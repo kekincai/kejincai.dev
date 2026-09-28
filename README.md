@@ -68,9 +68,9 @@ The root site introduces these projects without duplicating their content.
 
 ## What's included
 
-- **Home** — selected work, six experiments, three utilities and independent site connections.
-- **Projects** — twelve owner-selected GitHub projects in three groups, plus three independent websites.
-- **Lab** — six experiments and three utilities, with category filters.
+- **Home** — three selected software projects and three independent site connections.
+- **Projects** — Infinity New Tab, Disk Ferry and Safe Clip, plus the three independent websites.
+- **Lab** — a compact list of six experiments and three small tools.
 - **About** — interests and a concise personal introduction.
 - **404** — a disconnected node, with a route back home.
 - **RSS + sitemap** — generated at build time.
@@ -108,7 +108,7 @@ Mobile Lighthouse for the redesigned local build: **97 performance / 100 accessi
 
 **Astro 7 · TypeScript · Tailwind CSS 4**
 
-Static HTML first. A small amount of vanilla TypeScript handles navigation, filters and pointer response. Astro's client router provides quiet 200ms transitions. No React runtime, analytics or external font service is required.
+Static HTML first. A small amount of vanilla TypeScript handles navigation and pointer response. Astro's client router provides quiet 200ms transitions. No React runtime, analytics or external font service is required.
 
 Fonts are hosted with the site: Inter, IBM Plex Mono and Noto Sans JP. Japanese fonts are subset from the current source content before development and production builds.
 
@@ -135,7 +135,7 @@ See [Deployment](docs/DEPLOYMENT.md) for both paths. GitHub CI checks formatting
 
 - [x] Home, Projects, Lab, About and 404
 - [x] Responsive navigation and content layouts
-- [x] Curated projects, category filters, RSS and SEO
+- [x] Curated projects, compact project lists, RSS and SEO
 - [x] Reduced motion and self-hosted fonts
 - [ ] Photography with original images and responsive AVIF/WebP
 - [ ] Build-time aggregation of verified RSS / JSON feeds

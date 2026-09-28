@@ -1,5 +1,6 @@
 ---
 import Arrow from './Arrow.astro';
+import ProjectIcon from './ProjectIcon.astro';
 import type { PortfolioProject } from '../data/portfolio';
 interface Props {
   project: PortfolioProject;
@@ -20,9 +21,7 @@ const { project, number, featured = false } = Astro.props;
     <Arrow diagonal />
   </div>
   <div class="work-card-main">
-    <span class="work-symbol" aria-hidden="true">
-      {project.symbol}
-    </span>
+    <ProjectIcon repo={project.repo} />
     <div>
       <h3 lang={project.repo === 'yinxiang-exporter' ? 'zh-CN' : 'en'}>
         {project.name}

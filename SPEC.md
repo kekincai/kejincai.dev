@@ -8,7 +8,7 @@ The owner selected the software repositories below. This replaces the earlier ex
 | 有趣的实验 | bookmark-cover-flow, patternmart, taskpaper-mcp-server, dedup, racket-todo-app, NetSpeedMonitor |
 | 小工具 | yinxiang-exporter, base-r-snake, podcasts-unfollow-all |
 
-Home and Projects display the twelve projects in this order. Lab displays the latter two groups with category filters. Source data lives in `src/data/portfolio.ts`. Counts derive from data. Summaries follow current public READMEs; no invented statuses, metrics or release dates. RSS links to these public repositories.
+Home and Projects feature only the first three repositories as major projects. Lab lists the remaining nine in two compact groups. All six main project / website icons are custom angular SVG drawings; do not use default font symbols. Source data lives in `src/data/portfolio.ts`. Counts derive from data. Summaries follow current public READMEs; no invented statuses, metrics or release dates. RSS links to these public repositories.
 
 ## Current visual direction
 
@@ -434,7 +434,7 @@ background → slightly brighter
 
 13. LAB
 
-Lab 展示用户选择的六个有趣的实验与三个小工具。使用黄框切角项目卡片，每张卡片包含名称、简短说明、平台与技术标签、GitHub 仓库链接。分类筛选为全部、有趣的实验、小工具；未启用 JavaScript 时九个项目全部可见。
+Lab 用简洁列表列举六个有趣的实验与三个小工具。每行只需名称、简短说明和 GitHub 链接；不要将它们做成与前三个作品同级的大卡片。分两组展示，无需分类筛选。
 
 ⸻
 

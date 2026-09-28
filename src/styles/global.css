@@ -1878,32 +1878,6 @@ p {
 }
 
 /* Curated software portfolio: the same angular yellow/black interface. */
-.portfolio-nav {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin: -12px 0 64px;
-}
-.portfolio-nav a {
-  display: flex;
-  align-items: center;
-  gap: 32px;
-  min-height: 48px;
-  padding: 12px 20px;
-  border: 1px solid var(--yellow);
-  font-size: 14px;
-}
-.portfolio-nav a:hover {
-  background: var(--yellow);
-  color: var(--bg-main);
-}
-.portfolio-nav .mono {
-  color: var(--cyan);
-  font-size: 12px;
-}
-.portfolio-nav a:hover .mono {
-  color: var(--bg-main);
-}
 .portfolio-section {
   margin-bottom: 88px;
   scroll-margin-top: 100px;
@@ -1963,13 +1937,6 @@ p {
 .work-card-main > div {
   min-width: 0;
 }
-.work-symbol {
-  flex: 0 0 48px;
-  font-family: var(--font-display);
-  font-size: 54px;
-  line-height: 1;
-  color: var(--yellow);
-}
 .work-card h3 {
   font-family: var(--font-display);
   font-size: 32px;
@@ -2023,11 +1990,6 @@ p {
 .work-card-featured .work-card-main {
   display: block;
 }
-.work-card-featured .work-symbol {
-  display: block;
-  font-size: 88px;
-  margin-bottom: 24px;
-}
 .work-card-featured {
   min-height: 390px;
 }
@@ -2041,9 +2003,10 @@ p {
   .work-card-featured .work-card-main {
     display: flex;
   }
-  .work-card-featured .work-symbol {
+  .work-card-featured .project-icon {
     flex-basis: 70px;
-    font-size: 70px;
+    width: 70px;
+    height: 70px;
     margin: 0;
   }
 }
@@ -2060,31 +2023,162 @@ p {
     gap: 16px;
     margin: 24px 0;
   }
-  .work-card-featured .work-symbol,
-  .work-symbol {
-    flex-basis: 36px;
-    font-size: 44px;
+  .work-card-featured .project-icon {
+    flex-basis: 54px;
+    width: 54px;
+    height: 54px;
+    margin: 0;
   }
   .work-card h3 {
     font-size: 28px;
-  }
-  .portfolio-nav {
-    gap: 8px;
-    margin-bottom: 48px;
-  }
-  .portfolio-nav a {
-    gap: 12px;
-    padding: 12px;
-    font-size: 12px;
   }
   .portfolio-section {
     margin-bottom: 64px;
   }
 }
-.lab-project {
-  display: flex;
-  min-width: 0;
+.project-icon {
+  display: block;
+  flex: 0 0 88px;
+  width: 88px;
+  height: 88px;
+  margin-bottom: 26px;
+  stroke-width: 2.5;
+  stroke-linejoin: miter;
 }
-.lab-project .work-card {
-  width: 100%;
+.icon-primary {
+  stroke: var(--yellow);
+}
+.icon-frame {
+  stroke: var(--yellow);
+  opacity: 0.45;
+  stroke-width: 1;
+}
+.icon-signal {
+  stroke: var(--cyan);
+}
+.icon-alert {
+  stroke: var(--red);
+  stroke-width: 3;
+}
+.lab-invitation {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 26px;
+  padding-bottom: 26px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 48px;
+}
+.lab-invitation .micro {
+  color: var(--yellow);
+}
+.lab-invitation p + p {
+  margin-top: 12px;
+  color: var(--text-muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.lab-ledger .page-heading h1 {
+  font-size: clamp(44px, 6vw, 80px);
+}
+.side-group {
+  margin-bottom: 56px;
+}
+.side-group-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid var(--yellow);
+}
+.side-group-heading h2 {
+  font-size: 22px;
+  font-weight: 500;
+}
+.side-group-heading .micro {
+  color: var(--text-muted);
+}
+.side-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.side-row {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr) 190px 20px;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--border);
+}
+.side-index {
+  color: var(--red);
+}
+.side-row h3 {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.5;
+  font-weight: 500;
+  overflow-wrap: anywhere;
+}
+.side-row p {
+  margin-top: 7px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.side-tags {
+  color: var(--text-muted);
+  text-align: right;
+}
+.side-row .arrow {
+  color: var(--cyan);
+}
+.side-row:hover h3 {
+  color: var(--yellow);
+}
+@media (max-width: 640px) {
+  .project-icon {
+    width: 54px;
+    height: 54px;
+    margin: 0;
+    flex-basis: 54px;
+  }
+  .lab-invitation {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .side-row {
+    grid-template-columns: 22px minmax(0, 1fr) 16px;
+    gap: 12px;
+    padding: 20px 0;
+  }
+  .side-tags {
+    display: none;
+  }
+  .side-row h3 {
+    font-size: 16px;
+  }
+  .side-group-heading h2 {
+    font-size: 19px;
+  }
+}
+
+.node-icon {
+  width: 76px;
+  height: 76px;
+  flex: 0 0 76px;
+  stroke-width: 2;
+  stroke-linejoin: miter;
+}
+@media (max-width: 640px) {
+  .node-icon {
+    width: 56px;
+    height: 56px;
+    flex-basis: 56px;
+  }
 }
