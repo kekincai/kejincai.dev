@@ -99,6 +99,7 @@ const path = Astro.url.pathname;
       return rect.top < 40 && rect.bottom > 40;
     });
     header?.classList.toggle('over-hero', onLight);
+    header?.classList.toggle('is-scrolled', scrollY > 8);
   }
   addEventListener('scroll', syncHeader, { passive: true });
   document.addEventListener('astro:page-load', syncHeader);

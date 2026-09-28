@@ -64,6 +64,8 @@ html {
 }
 body {
   margin: 0;
+  /* Safety net: never let a stray element widen the mobile layout viewport. */
+  overflow-x: clip;
   background: var(--bg-main);
   color: var(--text-main);
   font-family: var(--font-sans);
@@ -178,6 +180,16 @@ p {
 }
 .site-header.over-hero {
   background: linear-gradient(rgba(60, 56, 0, 0.35), transparent);
+}
+/* Once content scrolls under the logo, back it with a translucent plate
+   in the colour of the band behind it. */
+.site-header.is-scrolled {
+  background: rgba(9, 9, 11, 0.86);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.site-header.is-scrolled.over-hero {
+  background: rgba(252, 238, 10, 0.9);
 }
 .site-header a,
 .site-header button {
@@ -2340,6 +2352,8 @@ a.cp-button:focus-visible::before {
 .node-art {
   position: relative;
   display: grid;
+  width: 100%;
+  min-width: 0;
   place-items: center;
   aspect-ratio: 16 / 9;
   overflow: hidden;
@@ -2815,7 +2829,8 @@ main:has(> .uplink:last-child) + .site-footer {
     gap: 10px;
   }
   .node-tile-highlight .node-art {
-    min-height: 360px;
+    aspect-ratio: auto;
+    height: 340px;
     padding: 22px;
   }
   .node-tile-highlight .node-art .node-icon {
