@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { site } from '../../data/site';
+---
+
+<BaseLayout
+  title="About Node — KEJINCAI.DEV"
+  description="Ke Jincai, a software engineer based in Tokyo. Interested in AI, software engineering, data, language and photography."
+>
+  <div class="container page-content about-page">
+    <div class="page-heading">
+      <p class="eyebrow cyan">ABOUT NODE</p>
+      <h1>
+        KE JINCAI<span class="name-dot">.</span>
+      </h1>
+      <p>Software Engineer based in Tokyo.</p>
+    </div>
+    <div class="about-grid">
+      <div class="about-story">
+        <h2 lang="ja">作る。学ぶ。記録する。</h2>
+        <div lang="zh-CN">
+          <p>这里是我的个人数字节点。</p>
+          <p>
+            用来收录软件项目、AI
+            实验、学习记录与数字作品。在东京，持续构建、学习和记录。
+          </p>
+          <p>每一个项目都是一次探索。每一条记录，都是理解世界的一小步。</p>
+        </div>
+        <a
+          class="text-link micro"
+          href={site.github}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          FIND ME ON GITHUB ↗
+        </a>
+      </div>
+      <div class="interests">
+        <h2 class="micro">INTERESTED IN</h2>
+        <ol>
+          {[
+            'AI',
+            'Software Engineering',
+            'Data',
+            'Language',
+            'Photography',
+          ].map((interest, i) => (
+            <li>
+              <span class="micro">{String(i + 1).padStart(2, '0')}</span>
+              {interest}
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+    <div class="about-end mono">
+      <span>TOKYO / PERSONAL NODE</span>
+      <span class="online">
+        <i></i> KEEP BUILDING
+      </span>
+    </div>
+  </div>
+</BaseLayout>

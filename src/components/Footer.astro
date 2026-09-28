@@ -1,0 +1,40 @@
+---
+import { site } from '../data/site';
+---
+
+<footer class="site-footer container">
+  <div class="footer-top">
+    <div>
+      <a class="wordmark" href="/">
+        KEJINCAI<span>.DEV</span>
+      </a>
+      <p class="mono">TOKYO NODE</p>
+    </div>
+    <div class="footer-status">
+      <span class="micro">STATUS</span>
+      <span class="online">
+        <i></i> ONLINE
+      </span>
+    </div>
+    <div class="footer-links">
+      <a href={site.github} target="_blank" rel="noopener noreferrer">
+        GitHub ↗
+      </a>
+      <a href="/rss.xml">RSS ↗</a>
+      <a href={site.repository} target="_blank" rel="noopener noreferrer">
+        Source ↗
+      </a>
+    </div>
+    <div class="footer-build">
+      <span class="micro">BUILD</span>
+      <span class="mono">ASTRO / CLOUDFLARE</span>
+    </div>
+  </div>
+  <div class="footer-bottom mono">
+    <span>© {new Date().getFullYear()} KE JINCAI</span>
+    <span>作る。学ぶ。記録する。</span>
+    <span class="eof">
+      EOF<span class="cursor">_</span>
+    </span>
+  </div>
+</footer>

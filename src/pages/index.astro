@@ -1,0 +1,104 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import NodeCard from '../components/NodeCard.astro';
+import LabRow from '../components/LabRow.astro';
+import Arrow from '../components/Arrow.astro';
+import { projects, formatDate } from '../data/site';
+const labs = (await getCollection('lab')).sort((a, b) =>
+  a.data.number.localeCompare(b.data.number),
+);
+const latest = labs.reduce(
+  (date, entry) => (entry.data.updated > date ? entry.data.updated : date),
+  new Date('2026-09-28'),
+);
+---
+
+<BaseLayout>
+  <Hero />
+  <section class="system-band" id="system" aria-label="System status">
+    <dl class="container system-grid">
+      <div>
+        <dt>SYSTEM / LOCATION</dt>
+        <dd>
+          TOKYO <span class="micro">JP</span>
+        </dd>
+      </div>
+      <div>
+        <dt>ROOT NODE</dt>
+        <dd>KEJINCAI.DEV</dd>
+      </div>
+      <div>
+        <dt>STATUS</dt>
+        <dd class="online">
+          <i></i> ONLINE
+        </dd>
+      </div>
+      <div>
+        <dt>PROJECT NODES</dt>
+        <dd>{String(projects.length).padStart(2, '0')}</dd>
+      </div>
+      <div>
+        <dt>LAB ENTRIES</dt>
+        <dd>{String(labs.length).padStart(2, '0')}</dd>
+      </div>
+      <div>
+        <dt>LAST UPDATE</dt>
+        <dd>{formatDate(latest)}</dd>
+      </div>
+    </dl>
+  </section>
+  <section class="section container" id="nodes">
+    <SectionHeading label="01 / ACTIVE NODES" title="Connected worlds.">
+      <p class="section-aside mono">
+        Independent projects.
+        <br />
+        One personal node.
+      </p>
+    </SectionHeading>
+    <div class="node-grid">
+      {projects.map((project) => (
+        <NodeCard project={project} />
+      ))}
+    </div>
+  </section>
+  <section class="section lab-section container">
+    <SectionHeading
+      label="02 / EXPERIMENTAL LAB"
+      title="Always in progress."
+      description="Small tools. Unfinished ideas. Working experiments."
+    >
+      <a class="text-link micro" href="/lab/">
+        EXPLORE LAB <Arrow />
+      </a>
+    </SectionHeading>
+    <div class="lab-table">
+      <div class="lab-table-head micro" aria-hidden="true">
+        <span>ID</span>
+        <span>EXPERIMENT</span>
+        <span>FOCUS</span>
+        <span>STATUS</span>
+        <span></span>
+      </div>
+      {labs.map((entry) => (
+        <LabRow entry={entry} />
+      ))}
+    </div>
+  </section>
+  <section class="about-strip container">
+    <p class="eyebrow cyan">ABOUT NODE</p>
+    <div>
+      <h2 lang="ja">作る。学ぶ。記録する。</h2>
+      <p>
+        Software Engineer based in Tokyo.
+        <br />
+        Building things. Learning along the way.
+      </p>
+    </div>
+    <a class="text-link micro" href="/about/">
+      MEET THE NODE <Arrow />
+    </a>
+  </section>
+</BaseLayout>

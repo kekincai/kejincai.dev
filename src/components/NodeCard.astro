@@ -1,0 +1,37 @@
+---
+import Arrow from './Arrow.astro';
+import type { projects } from '../data/site';
+interface Props {
+  project: (typeof projects)[number];
+}
+const { project } = Astro.props;
+---
+
+<a
+  class="node-card"
+  href={project.url}
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label={`${project.romanized} — open external node`}
+>
+  <div class="node-card-top">
+    <span class="micro">NODE {project.id}</span>
+    <Arrow diagonal />
+  </div>
+  <div class="node-card-title">
+    <h3 lang={project.id === '01' ? 'ja' : 'en'}>{project.name}</h3>
+    {project.name !== project.romanized && (
+      <span class="micro romanized">{project.romanized}</span>
+    )}
+  </div>
+  <p class="micro node-category">{project.category}</p>
+  <p class="node-description" lang={project.id === '03' ? 'en' : 'zh-CN'}>
+    {project.description}
+  </p>
+  <div class="node-card-bottom">
+    <span class="online">
+      <i></i> ONLINE
+    </span>
+    <span class="micro domain">{project.domain}</span>
+  </div>
+</a>

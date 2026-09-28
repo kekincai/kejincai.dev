@@ -1,0 +1,94 @@
+---
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Arrow from '../../components/Arrow.astro';
+import { formatDate } from '../../data/site';
+export async function getStaticPaths() {
+  const labs = await getCollection('lab');
+  return labs.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }));
+}
+interface Props {
+  entry: CollectionEntry<'lab'>;
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const labs = (await getCollection('lab')).sort((a, b) =>
+  a.data.number.localeCompare(b.data.number),
+);
+const index = labs.findIndex((l) => l.id === entry.id);
+const next = labs[(index + 1) % labs.length];
+---
+
+<BaseLayout
+  title={`${entry.data.title} — KEJINCAI.DEV Lab`}
+  description={entry.data.description}
+>
+  <article class="container page-content lab-detail">
+    <a class="back-link micro" href="/lab/">
+      ← ALL EXPERIMENTS
+    </a>
+    <div class="page-heading">
+      <p class="eyebrow cyan">EXPERIMENT / {entry.data.number}</p>
+      <h1>{entry.data.title}</h1>
+      <p>{entry.data.description}</p>
+    </div>
+    <div class="detail-grid">
+      <div class="prose">
+        <Content />
+      </div>
+      <aside class="detail-meta" aria-label="Experiment metadata">
+        <dl>
+          <div>
+            <dt>STATUS</dt>
+            <dd class:list={['lab-status', entry.data.status]}>
+              {entry.data.status.toUpperCase()}
+            </dd>
+          </div>
+          <div>
+            <dt>FOCUS</dt>
+            <dd>{entry.data.tags.join(' / ')}</dd>
+          </div>
+          <div>
+            <dt>ENTRY CREATED</dt>
+            <dd>{formatDate(entry.data.created)}</dd>
+          </div>
+          <div>
+            <dt>ENTRY UPDATED</dt>
+            <dd>{formatDate(entry.data.updated)}</dd>
+          </div>
+        </dl>
+        {entry.data.github && (
+          <a
+            class="button"
+            href={entry.data.github}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            SOURCE ON GITHUB <Arrow diagonal />
+          </a>
+        )}
+        {entry.data.url && (
+          <a
+            class="button button-primary"
+            href={entry.data.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            OPEN EXPERIMENT <Arrow diagonal />
+          </a>
+        )}
+      </aside>
+    </div>
+    {next && (
+      <a class="next-experiment" href={`/lab/${next.id}/`}>
+        <span class="micro">NEXT EXPERIMENT / {next.data.number}</span>
+        <span>
+          {next.data.title} <Arrow />
+        </span>
+      </a>
+    )}
+  </article>
+</BaseLayout>

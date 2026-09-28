@@ -1,0 +1,18 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Arrow from './Arrow.astro';
+interface Props {
+  entry: CollectionEntry<'lab'>;
+}
+const { entry } = Astro.props;
+---
+
+<a class="lab-row" href={`/lab/${entry.id}/`} data-status={entry.data.status}>
+  <span class="lab-number micro">{entry.data.number}</span>
+  <span class="lab-name">{entry.data.title}</span>
+  <span class="lab-tags micro">{entry.data.tags.join(' / ')}</span>
+  <span class:list={['lab-status micro', entry.data.status]}>
+    {entry.data.status.toUpperCase()}
+  </span>
+  <Arrow />
+</a>

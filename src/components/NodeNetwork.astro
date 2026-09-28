@@ -1,0 +1,153 @@
+---
+const nodes = [
+  [302, 300],
+  [155, 233],
+  [202, 166],
+  [315, 123],
+  [424, 187],
+  [472, 285],
+  [403, 411],
+  [287, 463],
+  [165, 386],
+  [118, 314],
+  [333, 375],
+  [351, 222],
+];
+const edges = [
+  [0, 1],
+  [0, 2],
+  [0, 3],
+  [0, 4],
+  [0, 5],
+  [0, 6],
+  [0, 7],
+  [0, 8],
+  [0, 9],
+  [0, 10],
+  [0, 11],
+  [1, 2],
+  [2, 3],
+  [3, 4],
+  [4, 5],
+  [5, 6],
+  [6, 7],
+  [7, 8],
+  [8, 9],
+  [9, 1],
+  [1, 11],
+  [11, 4],
+  [2, 8],
+  [3, 6],
+  [5, 10],
+  [10, 7],
+];
+---
+
+<div class="node-network" aria-hidden="true">
+  <div class="network-top micro">
+    PERSONAL AI NODE <span>NETWORK / 01</span>
+  </div>
+  <svg class="network-svg" viewBox="0 0 600 600" fill="none">
+    <defs>
+      <radialGradient id="node-aura">
+        <stop stop-color="#00E5FF" stop-opacity=".065" />
+        <stop offset="1" stop-color="#00E5FF" stop-opacity="0" />
+      </radialGradient>
+    </defs>
+    <circle cx="300" cy="300" r="235" fill="url(#node-aura)" />
+    <g class="orbit-frame" stroke="#263541" stroke-width=".7">
+      <circle cx="300" cy="300" r="237" />
+      <circle cx="300" cy="300" r="186" stroke-dasharray="2 6" />
+      <path d="M300 44v512M44 300h512" stroke-dasharray="3 7" />
+      <path d="M56 56h14m-7-7v14m474-7h14m-7-7v14M56 544h14m-7-7v14m474-7h14m-7-7v14" />
+      <path d="M300 55v16m0 458v16M55 300h16m458 0h16" stroke="#7D8996" />
+    </g>
+    <g class="network-drift">
+      <g stroke="#526374" stroke-opacity=".5" stroke-width=".8">
+        {edges.map(([a, b]) => (
+          <line
+            x1={nodes[a][0]}
+            y1={nodes[a][1]}
+            x2={nodes[b][0]}
+            y2={nodes[b][1]}
+          />
+        ))}
+      </g>
+      {nodes.map(([x, y], i) => (
+        <circle
+          cx={x}
+          cy={y}
+          r={i === 0 ? 6 : i % 3 === 0 ? 3.6 : 2.7}
+          fill={i % 2 === 0 ? '#00E5FF' : '#E8EDF2'}
+        />
+      ))}
+      <circle
+        class="node-pulse"
+        cx="302"
+        cy="300"
+        r="14"
+        stroke="#00E5FF"
+        stroke-width=".6"
+      />
+      <circle class="data-packet" r="2" fill="#63F2FF">
+        <animateMotion
+          dur="14s"
+          repeatCount="indefinite"
+          path="M155 233 L302 300 L424 187 L472 285 L302 300 L165 386 L155 233"
+        />
+      </circle>
+    </g>
+    <text
+      x="321"
+      y="320"
+      fill="#7D8996"
+      font-size="9"
+      font-family="IBM Plex Mono, monospace"
+      letter-spacing="1.5"
+    >
+      ROOT NODE
+    </text>
+  </svg>
+  <div class="network-bottom micro">
+    <span>TOKYO / JAPAN</span>
+    <span class="online">
+      <i></i> CONNECTED
+    </span>
+  </div>
+</div>
+<script>
+  function setupNetwork() {
+    const graph = document.querySelector<HTMLElement>('.node-network');
+    if (!graph) return;
+    const svg = graph.querySelector<SVGSVGElement>('svg');
+    const motion = matchMedia('(prefers-reduced-motion: reduce)');
+    const syncMotion = () => {
+      if (motion.matches) svg?.pauseAnimations();
+      else svg?.unpauseAnimations();
+    };
+    syncMotion();
+    motion.addEventListener('change', syncMotion);
+    document.addEventListener(
+      'astro:before-swap',
+      () => motion.removeEventListener('change', syncMotion),
+      { once: true },
+    );
+    graph.addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'mouse' || motion.matches) return;
+      const rect = graph.getBoundingClientRect();
+      graph.style.setProperty(
+        '--pointer-x',
+        `${((e.clientX - rect.left) / rect.width - 0.5) * 8}px`,
+      );
+      graph.style.setProperty(
+        '--pointer-y',
+        `${((e.clientY - rect.top) / rect.height - 0.5) * 8}px`,
+      );
+    });
+    graph.addEventListener('pointerleave', () => {
+      graph.style.setProperty('--pointer-x', '0px');
+      graph.style.setProperty('--pointer-y', '0px');
+    });
+  }
+  document.addEventListener('astro:page-load', setupNetwork);
+</script>

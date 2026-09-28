@@ -1,0 +1,91 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LabRow from '../../components/LabRow.astro';
+const labs = (await getCollection('lab')).sort((a, b) =>
+  a.data.number.localeCompare(b.data.number),
+);
+const statuses = ['all', 'active', 'prototype', 'idea', 'archived'];
+---
+
+<BaseLayout
+  title="Experimental Lab — KEJINCAI.DEV"
+  description="Small tools, unfinished ideas and working experiments. Explore the KEJINCAI.DEV experimental lab."
+>
+  <div class="container page-content">
+    <div class="page-heading">
+      <p class="eyebrow cyan">02 / EXPERIMENTAL LAB</p>
+      <h1>Always in progress.</h1>
+      <p>Small tools. Unfinished ideas. Working experiments.</p>
+    </div>
+    <div
+      class="lab-filters"
+      role="group"
+      aria-label="Filter experiments by status"
+      hidden
+    >
+      {statuses.map((status) => (
+        <button
+          class="micro"
+          data-filter={status}
+          aria-pressed={status === 'all'}
+        >
+          {status.toUpperCase()}{' '}
+          <span>
+            {status === 'all'
+              ? labs.length
+              : labs.filter((l) => l.data.status === status).length}
+          </span>
+        </button>
+      ))}
+    </div>
+    <div class="lab-table">
+      <div class="lab-table-head micro" aria-hidden="true">
+        <span>ID</span>
+        <span>EXPERIMENT</span>
+        <span>FOCUS</span>
+        <span>STATUS</span>
+        <span></span>
+      </div>
+      {labs.map((entry) => (
+        <LabRow entry={entry} />
+      ))}
+    </div>
+    <p class="filter-empty mono" hidden>
+      No experiments in this state. Check another status.
+    </p>
+    <p class="lab-count micro" aria-live="polite">
+      {labs.length} EXPERIMENTS / ALL
+    </p>
+  </div>
+</BaseLayout>
+<script>
+  function setupFilters() {
+    const filters = document.querySelector<HTMLElement>('.lab-filters');
+    if (!filters) return;
+    filters.hidden = false;
+    const rows = Array.from(document.querySelectorAll<HTMLElement>('.lab-row'));
+    const buttons = Array.from(
+      filters.querySelectorAll<HTMLButtonElement>('button'),
+    );
+    const count = document.querySelector<HTMLElement>('.lab-count');
+    const empty = document.querySelector<HTMLElement>('.filter-empty');
+    buttons.forEach((button) =>
+      button.addEventListener('click', () => {
+        const status = button.dataset.filter;
+        buttons.forEach((b) =>
+          b.setAttribute('aria-pressed', String(b === button)),
+        );
+        let visible = 0;
+        rows.forEach((row) => {
+          row.hidden = status !== 'all' && row.dataset.status !== status;
+          if (!row.hidden) visible++;
+        });
+        if (empty) empty.hidden = visible > 0;
+        if (count)
+          count.textContent = `${visible} EXPERIMENT${visible === 1 ? '' : 'S'} / ${status?.toUpperCase()}`;
+      }),
+    );
+  }
+  document.addEventListener('astro:page-load', setupFilters);
+</script>

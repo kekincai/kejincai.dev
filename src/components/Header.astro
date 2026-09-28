@@ -1,0 +1,82 @@
+---
+const links = [
+  { href: '/projects/', label: 'PROJECTS' },
+  { href: '/lab/', label: 'LAB' },
+  { href: '/about/', label: 'ABOUT' },
+];
+const path = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="header-inner container">
+    <a class="wordmark" href="/" aria-label="KEJINCAI.DEV home">
+      KEJINCAI<span>.DEV</span>
+    </a>
+    <button
+      class="menu-toggle"
+      aria-label="Open navigation"
+      aria-expanded="false"
+      aria-controls="main-nav"
+    >
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="main-nav" aria-label="Main navigation">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          aria-current={path.startsWith(link.href) ? 'page' : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+      <span class="online">
+        <i></i> ONLINE
+      </span>
+    </nav>
+  </div>
+</header>
+<script>
+  function setupMenu() {
+    const button = document.querySelector<HTMLButtonElement>('.menu-toggle');
+    const nav = document.querySelector<HTMLElement>('#main-nav');
+    if (!button || !nav) return;
+    function closeMenu() {
+      button!.setAttribute('aria-expanded', 'false');
+      button!.setAttribute('aria-label', 'Open navigation');
+      nav!.classList.remove('is-open');
+    }
+    button.addEventListener('click', () => {
+      const open = button.getAttribute('aria-expanded') !== 'true';
+      button.setAttribute('aria-expanded', String(open));
+      button.setAttribute(
+        'aria-label',
+        open ? 'Close navigation' : 'Open navigation',
+      );
+      nav.classList.toggle('is-open', open);
+    });
+    nav
+      .querySelectorAll('a')
+      .forEach((a) => a.addEventListener('click', closeMenu));
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        closeMenu();
+        button.focus();
+      }
+    };
+    document.addEventListener('keydown', onKey);
+    const onClick = (e: MouseEvent) => {
+      if (!(e.target as Element).closest('.site-header')) closeMenu();
+    };
+    document.addEventListener('click', onClick);
+    document.addEventListener(
+      'astro:before-swap',
+      () => {
+        document.removeEventListener('keydown', onKey);
+        document.removeEventListener('click', onClick);
+      },
+      { once: true },
+    );
+  }
+  document.addEventListener('astro:page-load', setupMenu);
+</script>

@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Arrow from '../components/Arrow.astro';
+---
+
+<BaseLayout
+  title="Node Not Found — KEJINCAI.DEV"
+  description="The requested node does not exist or has been disconnected."
+>
+  <div class="container error-page">
+    <p class="eyebrow">ERROR / 404</p>
+    <div class="error-number" aria-hidden="true">
+      404<span>_</span>
+    </div>
+    <h1>NODE NOT FOUND</h1>
+    <p>
+      The requested node does not exist
+      <br />
+      or has been disconnected.
+    </p>
+    <a class="button button-primary" href="/">
+      RETURN TO ROOT NODE <Arrow />
+    </a>
+  </div>
+</BaseLayout>
