@@ -12,6 +12,27 @@ export const portfolioGroups = [
         tags: ['Chrome', 'TypeScript', 'WebGPU'],
         description:
           'BOOT YOUR NEXT TAB. ブックマークと動く壁紙を、Liquid Glass と WebGPU HDR の光でつなぐ。',
+        system: 'BROWSER RUNTIME',
+        metric: { value: '128', unit: 'RADIAL SAMPLES / LENS' },
+        log: [
+          {
+            key: 'SNELL REFRACTION',
+            text: '屈折率 1.5、128 点の径向サンプルで変位マップを実行時に生成。実際の DOM をそのまま屈折させる。',
+          },
+          {
+            key: 'WEBGPU HDR',
+            text: 'rgba16float と extended トーンマッピングで SDR の白を超える鏡面光。非対応環境は SDR へ自動で戻る。',
+          },
+          {
+            key: 'ZERO FRAMEWORK',
+            text: 'ネイティブ Web Components。ブックマークは 8 KB 以下に分割して chrome.storage.sync へ同期。',
+          },
+        ],
+        specs: [
+          ['PLATFORM', 'Chrome 120+'],
+          ['STACK', 'TypeScript / Web Components / WebGPU'],
+          ['BUILD', 'v2.5.0'],
+        ],
       },
       {
         repo: 'DiskFerry',
@@ -19,6 +40,28 @@ export const portfolioGroups = [
         tags: ['macOS', 'Swift', 'rclone'],
         description:
           'MOVE THE PAYLOAD. 外付けドライブ、NAS、Windows 共有へ。コピー経路と進行状況を macOS から制御。',
+        system: 'TRANSFER CONTROL',
+        metric: { value: '1 Hz', unit: 'LIVE TELEMETRY' },
+        log: [
+          {
+            key: 'LIVE TELEMETRY',
+            text: 'rclone が 127.0.0.1 に開く認証付き統計 API を毎秒読み取り。推測ではなく実測値で進捗を描く。',
+          },
+          {
+            key: 'RESUMABLE ROUTES',
+            text: 'コピーを「ルート」として保存。既存ファイルはスキップし、中断した地点から再開。',
+          },
+          {
+            key: 'ZERO RESIDUE',
+            text: 'サムネイル、ログ、キャッシュを残さない。smb:// と \\\\host\\share の貼り付けにも対応。',
+          },
+        ],
+        specs: [
+          ['PLATFORM', 'macOS 13+'],
+          ['STACK', 'Swift / SwiftUI / rclone'],
+          ['BUILD', 'v0.2.0'],
+        ],
+        release: true,
       },
       {
         repo: 'safe-clip-popclip',
@@ -26,6 +69,28 @@ export const portfolioGroups = [
         tags: ['macOS', 'PopClip', 'Local-first'],
         description:
           'SCRUB BEFORE UPLINK. PopClip で機密情報をローカル処理。安全なテキストをコピー、または選択範囲へ戻す。',
+        system: 'PRIVACY FILTER',
+        metric: { value: '0', unit: 'NETWORK ENTITLEMENTS' },
+        log: [
+          {
+            key: 'LOCAL ONLY',
+            text: 'ネットワーク権限を要求しない。選択したテキストは保存もログもしない。',
+          },
+          {
+            key: 'SECRET PATTERNS',
+            text: 'API トークン、JWT、秘密鍵、接続 URL 内の認証情報を決定的なパターンで検出。',
+          },
+          {
+            key: 'LUHN CHECK',
+            text: 'Luhn 検証を通るカード番号と、英・中・日の口座／残高フィールドを伏せ字にする。',
+          },
+        ],
+        specs: [
+          ['PLATFORM', 'macOS / PopClip'],
+          ['STACK', 'JavaScript / Node test'],
+          ['BUILD', 'v0.3.0'],
+        ],
+        release: true,
       },
     ],
   },
@@ -115,3 +180,4 @@ export const portfolioCount = portfolioGroups.reduce(
 );
 export type PortfolioProject =
   (typeof portfolioGroups)[number]['projects'][number];
+export type FeaturedProject = (typeof portfolioGroups)[0]['projects'][number];

@@ -82,32 +82,48 @@ const edges = [
       </circle>
     </g>
     <circle
-      cx="300"
-      cy="300"
-      r="32"
-      fill="#09090B"
-      stroke="#FCEE0A"
-      stroke-width="3"
-    />
-    <circle
       class="node-pulse"
       cx="300"
       cy="300"
-      r="44"
+      r="124"
       stroke="#FCEE0A"
       stroke-width=".8"
     />
-    <circle cx="300" cy="300" r="15" stroke="#00F0FF" stroke-width="3" />
-    <circle cx="300" cy="300" r="4" fill="#00F0FF" />
+    <clipPath id="portrait-clip">
+      <path d="M234 210H390V366L366 390H210V234Z" />
+    </clipPath>
+    <rect x="203" y="203" width="194" height="194" fill="#09090B" />
+    <image
+      class="network-portrait"
+      href="/images/portrait.webp"
+      x="210"
+      y="210"
+      width="180"
+      height="180"
+      preserveAspectRatio="xMidYMid slice"
+      clip-path="url(#portrait-clip)"
+    />
+    <path
+      d="M234 210H390V366L366 390H210V234Z"
+      stroke="#FCEE0A"
+      stroke-width="3"
+    />
+    <path
+      d="M202 250v-24l24-24h40M398 350v48h-48"
+      stroke="#00F0FF"
+      stroke-width="2"
+    />
+    <path d="M210 398h34" stroke="#FF003C" stroke-width="3" />
+    <rect x="248" y="391" width="176" height="15" fill="#09090B" />
     <text
-      x="347"
-      y="317"
+      x="252"
+      y="402"
       fill="#FCEE0A"
       font-size="10"
       font-family="IBM Plex Mono, monospace"
       letter-spacing="1.5"
     >
-      ROOT NODE
+      ROOT NODE // KE JINCAI
     </text>
     <path
       d="M400 52h105l30 30M75 515H45v-75"

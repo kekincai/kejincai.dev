@@ -3,7 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import Arrow from '../components/Arrow.astro';
-import PortfolioCard from '../components/PortfolioCard.astro';
+import ProjectPosters from '../components/ProjectPosters.astro';
 import NodeCard from '../components/NodeCard.astro';
 import { projects } from '../data/site';
 import { portfolioGroups, portfolioCount } from '../data/portfolio';
@@ -48,26 +48,18 @@ import { portfolioGroups, portfolioCount } from '../data/portfolio';
       </div>
     </dl>
   </section>
-  <section class="section container" id="selected-work">
-    <SectionHeading
-      label="01 / SELECTED / 実装記録"
-      title="Selected work."
-      description="Ideas compiled. 日常に接続するコード。"
-    >
-      <a class="text-link micro" href="/projects/">
+  <ProjectPosters
+    label="/// 01 .SELECTED.MODULE_実装記録"
+    title="Welcome to the build."
+    description="IDEAS COMPILED. ブラウザ、ファイル転送、クリップボード。日常の三つの接点に、自作のシステムを差し込む。"
+    linkBase="/projects/"
+  >
+    <div class="poster-module-actions">
+      <a class="text-link text-link-dark micro" href="/projects/">
         VIEW PROJECTS <Arrow />
       </a>
-    </SectionHeading>
-    <div class="work-grid work-grid-featured">
-      {portfolioGroups[0].projects.map((project, index) => (
-        <PortfolioCard
-          project={project}
-          number={String(index + 1).padStart(2, '0')}
-          featured
-        />
-      ))}
     </div>
-  </section>
+  </ProjectPosters>
   <section class="section container" id="nodes">
     <SectionHeading
       label="02 / CONNECTED NODES"

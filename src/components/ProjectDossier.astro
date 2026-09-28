@@ -1,0 +1,85 @@
+---
+import Arrow from './Arrow.astro';
+import ProjectIcon from './ProjectIcon.astro';
+import type { FeaturedProject } from '../data/portfolio';
+interface Props {
+  project: FeaturedProject;
+  number: string;
+  flip?: boolean;
+}
+const { project, number, flip = false } = Astro.props;
+const repoUrl = `https://github.com/kekincai/${project.repo}`;
+---
+
+<article
+  id={project.repo}
+  class:list={['dossier', { 'dossier-flip': flip }]}
+  aria-labelledby={`dossier-${project.repo}`}
+>
+  <div class="dossier-visual" aria-hidden="true">
+    <div class="dossier-visual-top micro">
+      <span>SYS-{number}</span>
+      <span>SCHEMATIC</span>
+    </div>
+    <ProjectIcon repo={project.repo} />
+    <div class="dossier-metric">
+      <strong>{project.metric.value}</strong>
+      <span class="micro">{project.metric.unit}</span>
+    </div>
+  </div>
+  <div class="dossier-body">
+    <p class="dossier-kicker micro">
+      <span>/// .SYS.MODULE_{number}</span>
+      {project.system}
+    </p>
+    <h3 id={`dossier-${project.repo}`} lang="en">
+      <a href={repoUrl} target="_blank" rel="noopener noreferrer">
+        {project.name}
+      </a>
+    </h3>
+    <p class="dossier-mission" lang="ja">
+      {project.description}
+    </p>
+    <ol class="dossier-log" aria-label="Engineering log">
+      {project.log.map((entry, index) => (
+        <li>
+          <span class="dossier-log-index micro" aria-hidden="true">
+            {String(index + 1).padStart(2, '0')}
+          </span>
+          <div>
+            <strong>{entry.key}</strong>
+            <p lang="ja">{entry.text}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
+    <dl class="dossier-specs">
+      {project.specs.map(([label, value]) => (
+        <div>
+          <dt class="micro">{label}</dt>
+          <dd>{value}</dd>
+        </div>
+      ))}
+    </dl>
+    <div class="dossier-actions">
+      <a
+        class="text-link micro"
+        href={repoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        SOURCE <Arrow diagonal />
+      </a>
+      {'release' in project && project.release && (
+        <a
+          class="cp-button"
+          href={`${repoUrl}/releases/latest`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LATEST RELEASE <Arrow diagonal />
+        </a>
+      )}
+    </div>
+  </div>
+</article>

@@ -1,0 +1,71 @@
+---
+import ProjectIcon from './ProjectIcon.astro';
+import SkylineEdge from './SkylineEdge.astro';
+import { portfolioGroups } from '../data/portfolio';
+interface Props {
+  label: string;
+  title: string;
+  description: string;
+  // Prefix for poster links to the dossier anchors on /projects/.
+  linkBase?: string;
+}
+const { label, title, description, linkBase = '' } = Astro.props;
+const tones = ['yellow', 'cyan', 'red'] as const;
+---
+
+<section class="poster-module" aria-labelledby="poster-module-title">
+  <SkylineEdge position="top" />
+  <div class="container poster-module-inner">
+    <div class="poster-module-heading">
+      <p class="micro">{label}</p>
+      <h2 id="poster-module-title">{title}</h2>
+      <p lang="ja">{description}</p>
+    </div>
+    <div class="poster-brackets" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul class="poster-row">
+      {portfolioGroups[0].projects.map((project, index) => (
+        <li>
+          <a
+            class:list={['poster', `poster-${tones[index % tones.length]}`]}
+            href={`${linkBase}#${project.repo}`}
+          >
+            <span class="poster-top">
+              <span class="poster-chip micro">
+                SYS-{String(index + 1).padStart(2, '0')}
+              </span>
+              <span class="micro">{project.system}</span>
+            </span>
+            <span class="poster-art" aria-hidden="true">
+              <span class="poster-number">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <ProjectIcon repo={project.repo} />
+            </span>
+            <span class="poster-footer">
+              <span class="poster-logo" lang="en">
+                {project.name}
+              </span>
+              <span class="poster-platforms">
+                {project.tags.map((tag) => (
+                  <span>{tag}</span>
+                ))}
+              </span>
+              <span class="cp-button">LEARN MORE</span>
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <div class="poster-brackets poster-brackets-bottom" aria-hidden="true">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <slot />
+  </div>
+  <SkylineEdge position="bottom" />
+</section>

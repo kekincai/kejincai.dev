@@ -1,7 +1,8 @@
 ---
 import Arrow from '../../components/Arrow.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PortfolioCard from '../../components/PortfolioCard.astro';
+import ProjectDossier from '../../components/ProjectDossier.astro';
+import ProjectPosters from '../../components/ProjectPosters.astro';
 import NodeCard from '../../components/NodeCard.astro';
 import { projects } from '../../data/site';
 import SectionHeading from '../../components/SectionHeading.astro';
@@ -12,23 +13,30 @@ import { portfolioGroups } from '../../data/portfolio';
   title="Projects — KEJINCAI.DEV"
   description="Three systems for everyday use: Infinity New Tab, Disk Ferry and Safe Clip. 東京発のソフトウェアと独立ノード。"
 >
-  <div class="container page-content">
+  <div class="container page-content page-content-lead">
     <div class="page-heading">
       <p class="eyebrow yellow">SELECTED WORK / 03</p>
       <h1>Systems online.</h1>
       <p lang="ja">THREE SYSTEMS. 日常で使うために、組み上げた。</p>
     </div>
+  </div>
+  <ProjectPosters
+    label="/// .SELECTED.MODULE_実装記録"
+    title="Select a system."
+    description="LEARN MORE で各システムの設計、数値、ソースへ。"
+  />
+  <div class="container page-content page-content-follow">
     <section
       class="portfolio-section"
       id="selected"
       aria-label="SELECTED / 実装記録"
     >
-      <div class="work-grid work-grid-featured">
+      <div class="dossier-list">
         {portfolioGroups[0].projects.map((project, index) => (
-          <PortfolioCard
+          <ProjectDossier
             project={project}
             number={String(index + 1).padStart(2, '0')}
-            featured
+            flip={index % 2 === 1}
           />
         ))}
       </div>
