@@ -39,3 +39,11 @@ For a separate Pages deployment, use production branch `main`, Node.js 24, build
 ## Verify after deployment
 
 Check Home, mobile navigation, the Lab filter and detail route, `/rss.xml`, `/sitemap-index.xml`, `/og.png`, and an unknown route. Confirm canonical links use `https://kejincai.dev` and the site has a valid TLS certificate.
+
+## Google Search Console
+
+The `kejincai.dev` Domain property was verified through existing provider DNS on 2026-09-28. Keep the Google verification DNS record in place.
+
+Submit `https://kejincai.dev/sitemap-index.xml` in the property's Sitemaps report. This index points to `sitemap-0.xml`, which contains the seven public content routes. Google reported successful processing of the sitemap index during setup. The homepage indexing request was accepted and added to Google’s priority crawl queue. Submission and verification do not mean that every page is already indexed.
+
+The existing `robots.txt` advertises this sitemap. Content and route changes regenerate it on every Astro build; no verification token is embedded in the public source.
