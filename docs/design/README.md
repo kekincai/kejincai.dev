@@ -2,6 +2,22 @@
 
 The latest user direction is Cyberpunk 2077 inspired. It supersedes the restrained palette in the original [SPEC](../../SPEC.md). Latin-only personal identity and mobile adaptation remain required.
 
+## Official-site alignment (2026-09-29)
+
+The owner then asked for the layout to follow cyberpunk.net more closely. This pass supersedes the card, navigation and network notes further down.
+
+| Area        | cyberpunk.net pattern                               | Implementation                                                                                                                                |
+| ----------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| Header      | Logo on the page, translucent nav plate, yellow CTA | `Header.astro`: no bar at the top, cut-corner plate with CONTACT; translucent backing once scrolled; logo ink follows `data-header-ink` bands |
+| Logo        | Brush-slash wordmark                                | Original tapered-stroke lettering in `Wordmark.astro`; no copied letterforms or fan fonts                                                     |
+| Product row | Yellow band, skyline edges, tall lit posters        | `ProjectPosters.astro` + `SkylineEdge.astro`; posters link to dossiers on Projects                                                            |
+| News module | Dotted grid, cyan highlight tile, `NEWS_` tiles     | `NodeBoard.astro` for the three independent sites                                                                                             |
+| Newsletter  | Yellow band, underlined field, outlined button      | `AboutUplink.astro`, a mailto uplink                                                                                                          |
+| Footer      | Centered link rows and legal line                   | `Footer.astro`; icon tiles and the phone menu were later removed at the owner's request                                                       |
+| Hero visual | Key art                                             | The owner's cyber portrait fills the radar in `NodeNetwork.astro`                                                                             |
+
+The portrait is the one exception to "no game artwork or logos": it contains the Cyberpunk 2077 wordmark and is kept whole because the owner asked for the complete image. Phones show only the logo in the header; navigation there goes through in-page actions and the footer. Mobile Safari needs `text-size-adjust: 100%` and no `aspect-ratio` combined with `min-height`, otherwise pinch zoom widens the layout.
+
 ## References
 
 Generated original UI concepts, implemented as Astro, CSS and SVG:

@@ -7,6 +7,7 @@ import NodeBoard from '../components/NodeBoard.astro';
 import LabChannel from '../components/LabChannel.astro';
 import AboutUplink from '../components/AboutUplink.astro';
 import { portfolioGroups, portfolioCount } from '../data/portfolio';
+import { formatDate } from '../data/site';
 ---
 
 <BaseLayout>
@@ -44,7 +45,7 @@ import { portfolioGroups, portfolioCount } from '../data/portfolio';
       </div>
       <div>
         <dt>LAST UPDATE</dt>
-        <dd>2026.09.28</dd>
+        <dd>{formatDate(new Date())}</dd>
       </div>
     </dl>
   </section>

@@ -24,7 +24,7 @@ Build. Learn. Keep a record.
 
 A home for software projects, AI experiments, language study and digital memories. Each independent project is a node; the root site connects them. Smaller tools and unfinished ideas live in the lab.
 
-**CYBERPUNK 2077 inspired**: signal-yellow hero, black angular panels, condensed industrial typography, cyan network signals and red interface markers. All visuals are original CSS and SVG; no game artwork or logos are used.
+**CYBERPUNK 2077 inspired**, laid out after the official cyberpunk.net page: a transparent header with a translucent nav plate, signal-yellow bands with skyline edges, colour-lit project posters, a news-style node board, condensed industrial typography, cyan signals and red markers. Interface graphics and the KEJINCAI.DEV brush lettering are original CSS and SVG. The only third-party mark is the Cyberpunk 2077 wordmark inside the owner's own cyber portrait, kept at the owner's request.
 
 这是一个个人开发、AI 实验与学习记录的统一入口。采用鲜明的黄色与黑色、切角面板和日英混排，连接独立项目与尚在探索中的想法。
 
@@ -32,20 +32,20 @@ A home for software projects, AI experiments, language study and digital memorie
 
 Actual browser captures of the implementation, not design mockups.
 
-[Project directory](docs/images/projects.png) · [Mobile project cards](docs/images/projects-mobile.png)
+[Project dossier](docs/images/projects.png) · [Mobile project posters](docs/images/projects-mobile.png) · [Lab](docs/images/lab.png)
 
 ![Desktop home page](docs/images/desktop.png)
 
 <details>
 <summary>Mobile preview · 390px</summary>
 <br />
-<img src="docs/images/mobile.png" width="390" alt="Mobile home page with compact navigation, Japanese typography and node visualization" />
+<img src="docs/images/mobile.png" width="390" alt="Mobile home page with the lettered logo, Japanese typography and the portrait radar" />
 </details>
 
 <details>
-<summary>Selected software projects</summary>
+<summary>Selected software posters</summary>
 <br />
-<img src="docs/images/sections.png" width="100%" alt="Infinity New Tab, Disk Ferry and Safe Clip selected project cards" />
+<img src="docs/images/sections.png" width="100%" alt="Infinity New Tab, Disk Ferry and Safe Clip as yellow, cyan and red posters" />
 </details>
 
 ## Selected work
