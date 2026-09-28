@@ -909,6 +909,18 @@ p {
 .footer-links a:hover {
   color: var(--cyan);
 }
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.footer-links .arrow {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: var(--cyan);
+}
 .footer-bottom {
   display: flex;
   align-items: center;

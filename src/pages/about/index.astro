@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Arrow from '../../components/Arrow.astro';
 import { site } from '../../data/site';
 ---
 
@@ -32,11 +33,11 @@ import { site } from '../../data/site';
           target="_blank"
           rel="noopener noreferrer"
         >
-          FIND ME ON GITHUB ↗
+          FIND ME ON GITHUB <Arrow diagonal />
         </a>
         <p>
           <a class="text-link micro" href={`mailto:${site.email}`}>
-            {site.email} ↗
+            {site.email} <Arrow diagonal />
           </a>
         </p>
       </div>
