@@ -16,6 +16,8 @@ Home and Projects feature only Infinity New Tab, Disk Ferry and Safe Clip. Both 
 
 Edit `src/data/site.ts`. 青空しおり, PAUL.LOG and FDE RADAR are retained as independent site connections. `ONLINE` is an editorial label, not monitored uptime.
 
+Home and Projects render these three sites as a cyberpunk.net-style news module (`src/components/NodeBoard.astro`): node 01 is the cyan highlight tile, the others are `NODE_` tiles. Below it, `LabChannel.astro` shows the Lab count and a ticker of the nine Lab entries; Home closes with the yellow `AboutUplink.astro` module (skyline edges, mailto uplink) before the centered footer.
+
 The previous assistant-selected lab entries and their detail routes have been removed. Add new repositories only when the owner selects them.
 
 ## Identity and media

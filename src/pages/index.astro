@@ -1,11 +1,11 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
-import SectionHeading from '../components/SectionHeading.astro';
 import Arrow from '../components/Arrow.astro';
 import ProjectPosters from '../components/ProjectPosters.astro';
-import NodeCard from '../components/NodeCard.astro';
-import { projects } from '../data/site';
+import NodeBoard from '../components/NodeBoard.astro';
+import LabChannel from '../components/LabChannel.astro';
+import AboutUplink from '../components/AboutUplink.astro';
 import { portfolioGroups, portfolioCount } from '../data/portfolio';
 ---
 
@@ -60,41 +60,7 @@ import { portfolioGroups, portfolioCount } from '../data/portfolio';
       </a>
     </div>
   </ProjectPosters>
-  <section class="section container" id="nodes">
-    <SectionHeading
-      label="02 / CONNECTED NODES"
-      title="Connected worlds."
-      description="Independent nodes. 記録は続く。"
-    />
-    <div class="node-grid">
-      {projects.map((project) => (
-        <NodeCard project={project} />
-      ))}
-    </div>
-  </section>
-  <aside class="lab-invitation container">
-    <div>
-      <p class="micro">SIDE PROJECTS / SMALL TOOLS</p>
-      <p lang="ja">
-        SIDE CHANNEL OPEN. 小さな実験と日常用のツールを Lab に格納。
-      </p>
-    </div>
-    <a class="text-link micro" href="/lab/">
-      OPEN LAB <Arrow />
-    </a>
-  </aside>
-  <section class="about-strip container">
-    <p class="eyebrow yellow">ABOUT NODE</p>
-    <div>
-      <h2 lang="ja">構築。解析。記録。</h2>
-      <p>
-        SOFTWARE ENGINEER / TOKYO NODE.
-        <br />
-        BUILD. LEARN. LOG. / 次の信号へ。
-      </p>
-    </div>
-    <a class="text-link micro" href="/about/">
-      MEET THE NODE <Arrow />
-    </a>
-  </section>
+  <NodeBoard label="/// 02 .NODES.MODULE_HIGHLIGHT" title="Connected worlds." />
+  <LabChannel label="/// 03 .LAB.MODULE_SIDE_CHANNEL" />
+  <AboutUplink label="/// 04 .ABOUT.MODULE_UPLINK" />
 </BaseLayout>

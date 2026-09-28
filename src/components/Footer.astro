@@ -1,46 +1,61 @@
 ---
-import Arrow from './Arrow.astro';
 import { site } from '../data/site';
+const channels = [
+  { label: 'GitHub', glyph: 'GH', href: site.github, external: true },
+  { label: 'Email', glyph: '@', href: `mailto:${site.email}` },
+  { label: 'RSS', glyph: 'RSS', href: '/rss.xml' },
+  { label: 'Source', glyph: '</>', href: site.repository, external: true },
+];
+const links = [
+  { label: 'Projects', href: '/projects/' },
+  { label: 'Lab', href: '/lab/' },
+  { label: 'About', href: '/about/' },
+  { label: site.email, href: `mailto:${site.email}` },
+];
 ---
 
-<footer class="site-footer container">
-  <div class="footer-top">
-    <div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-find">
+      <span class="micro">FIND THE NODE ON</span>
+      <ul>
+        {channels.map((channel) => (
+          <li>
+            <a
+              href={channel.href}
+              aria-label={channel.label}
+              title={channel.label}
+              {...(channel.external
+                ? { target: '_blank', rel: 'noopener noreferrer' }
+                : {})}
+            >
+              {channel.glyph}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    <nav class="footer-nav" aria-label="Footer">
+      {links.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </nav>
+    <div class="footer-legal">
       <a class="wordmark" href="/">
         KEJINCAI<span>.DEV</span>
       </a>
-      <p class="mono">TOKYO NODE</p>
-    </div>
-    <div class="footer-status">
-      <span class="micro">STATUS</span>
-      <span class="online">
-        <i></i> ONLINE
+      <p class="mono">
+        © {new Date().getFullYear()} KE JINCAI. TOKYO NODE / BUILD: ASTRO +
+        CLOUDFLARE. <span lang="ja">構築。解析。記録。</span>
+      </p>
+      <span class="footer-status">
+        <span class="online">
+          <i></i> ONLINE
+        </span>
+        <span class="eof mono">
+          EOF<span class="cursor">_</span>
+        </span>
       </span>
     </div>
-    <div class="footer-links">
-      <a href={`mailto:${site.email}`}>
-        {site.email} <Arrow diagonal />
-      </a>
-      <a href={site.github} target="_blank" rel="noopener noreferrer">
-        GitHub <Arrow diagonal />
-      </a>
-      <a href="/rss.xml">
-        RSS <Arrow diagonal />
-      </a>
-      <a href={site.repository} target="_blank" rel="noopener noreferrer">
-        Source <Arrow diagonal />
-      </a>
-    </div>
-    <div class="footer-build">
-      <span class="micro">BUILD</span>
-      <span class="mono">ASTRO / CLOUDFLARE</span>
-    </div>
-  </div>
-  <div class="footer-bottom mono">
-    <span>© {new Date().getFullYear()} KE JINCAI</span>
-    <span>構築。解析。記録。</span>
-    <span class="eof">
-      EOF<span class="cursor">_</span>
-    </span>
   </div>
 </footer>

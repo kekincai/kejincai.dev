@@ -1,0 +1,89 @@
+---
+import Arrow from './Arrow.astro';
+import NodeIcon from './NodeIcon.astro';
+import { projects } from '../data/site';
+interface Props {
+  label: string;
+  title: string;
+}
+const { label, title } = Astro.props;
+const [highlight, ...rest] = projects;
+const tones = ['cyan', 'red', 'yellow'] as const;
+---
+
+<section class="node-board" aria-labelledby="node-board-title">
+  <div class="container">
+    <div class="node-board-heading">
+      <div>
+        <p class="micro">{label}</p>
+        <h2 id="node-board-title">{title}</h2>
+      </div>
+      <p class="micro node-board-count">
+        {String(projects.length).padStart(2, '0')} NODES LINKED
+      </p>
+    </div>
+    <div class="node-board-grid">
+      <a
+        class="node-tile node-tile-highlight"
+        href={highlight.url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <span class="node-tile-label micro">NODE_{highlight.id}</span>
+        <span class={`node-art node-art-${tones[0]}`} aria-hidden="true">
+          <span class="node-art-glyph" lang="ja">
+            頁
+          </span>
+          <NodeIcon node={highlight.id} />
+          <span class="node-art-headline">{highlight.romanized}</span>
+        </span>
+        <span class="node-tile-copy">
+          <strong lang="ja">{highlight.name}</strong>
+          <span class="micro">{highlight.category}</span>
+          <span class="node-tile-description" lang="ja">
+            {highlight.description}
+          </span>
+          <span class="node-tile-meta">
+            <span class="online">
+              <i></i> ONLINE
+            </span>
+            <span class="micro">
+              {highlight.domain} <Arrow diagonal />
+            </span>
+          </span>
+        </span>
+      </a>
+      {rest.map((node, index) => (
+        <a
+          class="node-tile"
+          href={node.url}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span class="node-tile-label micro">NODE_{node.id}</span>
+          <span
+            class={`node-art node-art-${tones[index + 1]}`}
+            aria-hidden="true"
+          >
+            <NodeIcon node={node.id} />
+          </span>
+          <span class="node-tile-copy">
+            <strong lang="en">{node.name}</strong>
+            <span class="micro">{node.category}</span>
+            <span class="node-tile-description" lang="ja">
+              {node.description}
+            </span>
+            <span class="node-tile-meta">
+              <span class="online">
+                <i></i> ONLINE
+              </span>
+              <span class="micro">
+                {node.domain} <Arrow diagonal />
+              </span>
+            </span>
+          </span>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

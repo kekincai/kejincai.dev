@@ -1,0 +1,42 @@
+---
+import Arrow from './Arrow.astro';
+import { portfolioGroups, type PortfolioProject } from '../data/portfolio';
+interface Props {
+  label: string;
+}
+const { label } = Astro.props;
+const entries: PortfolioProject[] = portfolioGroups
+  .slice(1)
+  .flatMap((group): readonly PortfolioProject[] => group.projects);
+---
+
+<section class="lab-channel" aria-labelledby="lab-channel-title">
+  <div class="container lab-channel-inner">
+    <div class="lab-channel-count">
+      <p class="micro">{label}</p>
+      <strong>{String(entries.length).padStart(2, '0')}</strong>
+    </div>
+    <div class="lab-channel-copy">
+      <h2 id="lab-channel-title">Side channel open.</h2>
+      <p lang="ja">
+        EXPERIMENTS &amp; TOOLS.
+        別の言語、別のインターフェース、日常の小さな自動化を Lab に格納。
+      </p>
+    </div>
+    <a class="cp-button" href="/lab/">
+      OPEN LAB <Arrow />
+    </a>
+  </div>
+  <div class="lab-ticker" aria-hidden="true">
+    <div class="lab-ticker-track">
+      {[0, 1].map(() =>
+        entries.map((entry) => (
+          <span>
+            {entry.name}
+            <i>{entry.tags[0]}</i>
+          </span>
+        )),
+      )}
+    </div>
+  </div>
+</section>

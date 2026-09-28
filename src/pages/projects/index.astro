@@ -1,11 +1,9 @@
 ---
-import Arrow from '../../components/Arrow.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectDossier from '../../components/ProjectDossier.astro';
 import ProjectPosters from '../../components/ProjectPosters.astro';
-import NodeCard from '../../components/NodeCard.astro';
-import { projects } from '../../data/site';
-import SectionHeading from '../../components/SectionHeading.astro';
+import NodeBoard from '../../components/NodeBoard.astro';
+import LabChannel from '../../components/LabChannel.astro';
 import { portfolioGroups } from '../../data/portfolio';
 ---
 
@@ -41,26 +39,7 @@ import { portfolioGroups } from '../../data/portfolio';
         ))}
       </div>
     </section>
-    <section class="portfolio-section" id="connected">
-      <SectionHeading
-        label="CONNECTED NODES"
-        title="Connected worlds."
-        description="Independent nodes. 記録は続く。"
-      />
-      <div class="node-grid">
-        {projects.map((project) => (
-          <NodeCard project={project} />
-        ))}
-      </div>
-    </section>
-    <aside class="lab-invitation">
-      <div>
-        <p class="micro">SIDE PROJECTS / SMALL TOOLS</p>
-        <p lang="ja">SIDE CHANNEL OPEN. 小さな実験とスクリプトは Lab へ。</p>
-      </div>
-      <a class="text-link micro" href="/lab/">
-        OPEN LAB <Arrow />
-      </a>
-    </aside>
   </div>
+  <NodeBoard label="/// .NODES.MODULE_HIGHLIGHT" title="Connected worlds." />
+  <LabChannel label="/// .LAB.MODULE_SIDE_CHANNEL" />
 </BaseLayout>
