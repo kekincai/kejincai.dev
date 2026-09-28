@@ -1,10 +1,22 @@
+## Current project catalogue
+
+The owner selected the software repositories below. This replaces the earlier example lab entries and detail routes. Keep the three independent websites: 青空しおり / AOZORA SHIORI, PAUL.LOG and FDE RADAR.
+
+| Group | Repository under github.com/kekincai |
+| --- | --- |
+| 精选项目 | infinity-newtab-extension, DiskFerry, safe-clip-popclip |
+| 有趣的实验 | bookmark-cover-flow, patternmart, taskpaper-mcp-server, dedup, racket-todo-app, NetSpeedMonitor |
+| 小工具 | yinxiang-exporter, base-r-snake, podcasts-unfollow-all |
+
+Home and Projects display the twelve projects in this order. Lab displays the latter two groups with category filters. Source data lives in `src/data/portfolio.ts`. Counts derive from data. Summaries follow current public READMEs; no invented statuses, metrics or release dates. RSS links to these public repositories.
+
 ## Current visual direction
 
 The latest user instruction supersedes the original restrained palette: use a Cyberpunk 2077 inspired yellow / black interface, cyan signals, red markers, condensed display typography and angular panels. Responsive phone layouts and Latin-only personal identity remain required. Original game assets are not used.
 
 ## Current implementation scope
 
-Phase 1: Home, Projects, Lab, Lab Detail, About, and 404. Photography and feed aggregation are Phase 2. Public identity uses KE JINCAI / KEJINCAI.DEV only; do not publish the Chinese personal name. Mobile support is required. Display counts from content, never from example metrics.
+Phase 1: Home, Projects, Lab, About, and 404. The current project catalogue above supersedes legacy lab detail requirements below. Photography and feed aggregation are Phase 2. Public identity uses KE JINCAI / KEJINCAI.DEV only; do not publish the Chinese personal name. Mobile support is required. Display counts from content, never from example metrics.
 
 ---
 
@@ -422,75 +434,13 @@ background → slightly brighter
 
 13. LAB
 
-标题：
-
-02 / EXPERIMENTAL LAB
-
-副标题：
-
-Small tools.
-Unfinished ideas.
-Working experiments.
-
-Lab 使用编号体系：
-
-EXP-001
-EXP-002
-EXP-003
-
-示例：
-
-EXP-001
-CoBRA Estimator
-Software estimation experiment.
-Python
-AI
-Estimation
-STATUS
-ACTIVE
-
-状态：
-
-IDEA
-PROTOTYPE
-ACTIVE
-ARCHIVED
-
-颜色：
-
-ACTIVE      Cyan
-PROTOTYPE   White
-ARCHIVED    Gray
+Lab 展示用户选择的六个有趣的实验与三个小工具。使用黄框切角项目卡片，每张卡片包含名称、简短说明、平台与技术标签、GitHub 仓库链接。分类筛选为全部、有趣的实验、小工具；未启用 JavaScript 时九个项目全部可见。
 
 ⸻
 
-14. Lab 数据结构
+14. 项目数据结构
 
-使用 Astro Content Collections。
-
-src/content/lab/
-
-每个项目：
-
-cobra.md
-photo-gps.md
-subtitle-ai.md
-
-Frontmatter：
-
-title: CoBRA Estimator
-id: EXP-001
-description:
-  AI-assisted software estimation experiment.
-status: active
-tags:
-  - Python
-  - AI
-  - Estimation
-created: 2026-08-01
-updated: 2026-09-20
-url:
-github:
+使用 src/data/portfolio.ts 中的类型化分组数据。每条记录包括 repo、name、symbol、tags、description。分组由用户指定；摘要依据公开 README。不能凭分类推断项目状态或发布版本。独立网站节点仍使用 src/data/site.ts。
 
 ⸻
 

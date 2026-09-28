@@ -1876,3 +1876,215 @@ p {
     animation: none !important;
   }
 }
+
+/* Curated software portfolio: the same angular yellow/black interface. */
+.portfolio-nav {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: -12px 0 64px;
+}
+.portfolio-nav a {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  min-height: 48px;
+  padding: 12px 20px;
+  border: 1px solid var(--yellow);
+  font-size: 14px;
+}
+.portfolio-nav a:hover {
+  background: var(--yellow);
+  color: var(--bg-main);
+}
+.portfolio-nav .mono {
+  color: var(--cyan);
+  font-size: 12px;
+}
+.portfolio-nav a:hover .mono {
+  color: var(--bg-main);
+}
+.portfolio-section {
+  margin-bottom: 88px;
+  scroll-margin-top: 100px;
+}
+.work-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+.work-grid-featured {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.work-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 26px;
+  background: var(--yellow);
+  clip-path: var(--cut);
+  isolation: isolate;
+  transition: background 180ms ease;
+}
+.work-card::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: var(--bg-main);
+  clip-path: var(--cut);
+  z-index: -1;
+}
+.work-card:hover,
+.work-card:focus-visible {
+  background: var(--cyan);
+}
+.work-card:focus-visible {
+  outline: none;
+  background: var(--cyan);
+}
+.work-card:focus-visible::before {
+  inset: 3px;
+}
+.work-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--red);
+}
+.work-card-header .arrow {
+  color: var(--cyan);
+}
+.work-card-main {
+  display: flex;
+  gap: 24px;
+  margin: 32px 0;
+}
+.work-card-main > div {
+  min-width: 0;
+}
+.work-symbol {
+  flex: 0 0 48px;
+  font-family: var(--font-display);
+  font-size: 54px;
+  line-height: 1;
+  color: var(--yellow);
+}
+.work-card h3 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.08;
+  overflow-wrap: anywhere;
+}
+.work-card h3[lang='zh-CN'] {
+  font-family: var(--font-sans);
+  font-size: 25px;
+}
+.work-description {
+  font-size: 14px;
+  line-height: 1.85;
+  color: var(--text-muted);
+  margin-top: 18px;
+}
+.work-card-footer {
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.work-card-footer ul {
+  display: flex;
+  gap: 8px 12px;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.work-card-footer li {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--text-muted);
+}
+.work-source {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--cyan);
+}
+.work-source .arrow {
+  width: 12px;
+  height: 12px;
+}
+.work-card-featured .work-card-main {
+  display: block;
+}
+.work-card-featured .work-symbol {
+  display: block;
+  font-size: 88px;
+  margin-bottom: 24px;
+}
+.work-card-featured {
+  min-height: 390px;
+}
+@media (max-width: 1000px) {
+  .work-grid-featured {
+    grid-template-columns: 1fr;
+  }
+  .work-card-featured {
+    min-height: unset;
+  }
+  .work-card-featured .work-card-main {
+    display: flex;
+  }
+  .work-card-featured .work-symbol {
+    flex-basis: 70px;
+    font-size: 70px;
+    margin: 0;
+  }
+}
+@media (max-width: 640px) {
+  .work-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .work-card {
+    padding: 24px;
+  }
+  .work-card-main,
+  .work-card-featured .work-card-main {
+    gap: 16px;
+    margin: 24px 0;
+  }
+  .work-card-featured .work-symbol,
+  .work-symbol {
+    flex-basis: 36px;
+    font-size: 44px;
+  }
+  .work-card h3 {
+    font-size: 28px;
+  }
+  .portfolio-nav {
+    gap: 8px;
+    margin-bottom: 48px;
+  }
+  .portfolio-nav a {
+    gap: 12px;
+    padding: 12px;
+    font-size: 12px;
+  }
+  .portfolio-section {
+    margin-bottom: 64px;
+  }
+}
+.lab-project {
+  display: flex;
+  min-width: 0;
+}
+.lab-project .work-card {
+  width: 100%;
+}

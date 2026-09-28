@@ -33,6 +33,21 @@ Above-the-fold copy audit: public identity remains KE JINCAI, Japanese lines are
 
 The in-app browser was inspected first. Its screenshot and viewport override disagreed, so Chrome was used through the same browser-control tool for reliable retained captures. Desktop screenshot is 1728 × 902, phone screenshot 390 × 844. DOM measurements additionally cover 320px, 768px, 1024px and 1536px widths.
 
-The menu, filters and network now initialize immediately and on Astro navigation with duplicate-binding guards. This resolves initial-load timing in Astro's inline module scripts. Reduced motion pauses SVG animation and removes CSS movement.
+The menu, category filters and network now initialize immediately and on Astro navigation with duplicate-binding guards. This resolves initial-load timing in Astro's inline module scripts. Reduced motion pauses SVG animation and removes CSS movement.
 
 See [release verification](../VERIFICATION.md) for checks. Retained [screenshots](../images/) show actual renders.
+
+## Owner-curated portfolio update
+
+The owner's latest list replaces the original example lab content. Three independent websites remain. Home and Projects now show twelve repositories in groups of 3 / 6 / 3, with three selected cards receiving more visual space. Lab filters the latter two groups.
+
+| Review point | Actual render                                                               |
+| ------------ | --------------------------------------------------------------------------- |
+| Hierarchy    | Three larger selected cards precede six experiments and three utilities     |
+| Palette      | Yellow cut-corner outlines, black interiors, cyan source arrows             |
+| Typography   | Condensed white titles and readable Chinese descriptions                    |
+| Navigation   | Category anchors with explicit counts on Projects                           |
+| Mobile       | One-column cards, wrapped titles and tags; no overflow at 320 / 390px       |
+| Destinations | Twelve exact owner-provided GitHub URLs, plus the three retained site nodes |
+
+Intentional adaptation from the original concept: software projects use typographic symbols and summary cards rather than invented screenshots or release labels. The reference images govern visual language; their example lab content is superseded by the owner's selection. Introductory copy explains the three actual groups. See [desktop cards](../images/sections.png), [Projects](../images/projects.png) and [mobile](../images/projects-mobile.png) for real renders.

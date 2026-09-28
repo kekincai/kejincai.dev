@@ -22,9 +22,9 @@ For interface changes, check desktop and a narrow phone viewport. Test keyboard 
 ## Design rules
 
 - Follow [SPEC.md](SPEC.md) and [the design notes](docs/design/README.md).
-- Keep the Tokyo atmosphere quiet: dark space, Japanese typography, thin rules, restrained cyan.
+- Use signal yellow, black cut-corner panels, condensed typography, cyan connections and red markers.
 - Keep navigation and content useful without JavaScript.
-- Add content through the lab collection; use accurate statuses and dates.
+- Edit curated projects in `src/data/portfolio.ts`; categories are chosen by the owner. Verify descriptions against the public repository README.
 - Never invent activity, metrics, photographs, releases, or biography.
 - Public identity uses **KE JINCAI** or **KEJINCAI.DEV** only.
 - Keep photographs and personal data out of contributions unless you have permission to publish them.

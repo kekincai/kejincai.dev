@@ -1,29 +1,76 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import PortfolioCard from '../../components/PortfolioCard.astro';
 import NodeCard from '../../components/NodeCard.astro';
 import { projects } from '../../data/site';
+import SectionHeading from '../../components/SectionHeading.astro';
+import { portfolioGroups, portfolioCount } from '../../data/portfolio';
 ---
 
 <BaseLayout
   title="Projects — KEJINCAI.DEV"
-  description="Independent projects in language, AI and software engineering. Three connected worlds from a personal node in Tokyo."
+  description="精选软件、有趣的实验与小工具。探索 Infinity New Tab、Disk Ferry、Safe Clip 等 12 个开源项目。"
 >
   <div class="container page-content">
     <div class="page-heading">
-      <p class="eyebrow yellow">01 / ACTIVE NODES</p>
-      <h1>Connected worlds.</h1>
-      <p>Independent projects. One personal node.</p>
+      <p class="eyebrow yellow">
+        OPEN SOURCE / {String(portfolioCount).padStart(2, '0')} PROJECTS
+      </p>
+      <h1>Made to be used.</h1>
+      <p lang="zh-CN">
+        日常使用的软件、好奇心驱动的实验，以及解决具体问题的小工具。
+      </p>
     </div>
-    <div class="node-grid">
-      {projects.map((project) => (
-        <NodeCard project={project} />
+    <nav class="portfolio-nav" aria-label="Project categories">
+      {portfolioGroups.map((group) => (
+        <a href={`#${group.id}`}>
+          <span>{group.label}</span>
+          <span class="mono">
+            {String(group.projects.length).padStart(2, '0')}
+          </span>
+        </a>
       ))}
-    </div>
-    <p class="page-note mono">
-      Each node has its own focus. Follow a connection to explore.
-    </p>
+    </nav>
+    {portfolioGroups.map((group, groupIndex) => (
+      <section class="portfolio-section" id={group.id}>
+        <SectionHeading
+          label={`${String(groupIndex + 1).padStart(2, '0')} / ${group.label}`}
+          title={group.title}
+          description={group.description}
+        />
+        <div
+          class:list={['work-grid', { 'work-grid-featured': groupIndex === 0 }]}
+        >
+          {group.projects.map((project, index) => (
+            <PortfolioCard
+              project={project}
+              number={String(
+                portfolioGroups
+                  .slice(0, groupIndex)
+                  .reduce((sum, g) => sum + g.projects.length, 0) +
+                  index +
+                  1,
+              ).padStart(2, '0')}
+              featured={groupIndex === 0}
+            />
+          ))}
+        </div>
+      </section>
+    ))}
+    <section class="portfolio-section" id="connected">
+      <SectionHeading
+        label="04 / CONNECTED NODES"
+        title="Connected worlds."
+        description="独立网站，持续记录。"
+      />
+      <div class="node-grid">
+        {projects.map((project) => (
+          <NodeCard project={project} />
+        ))}
+      </div>
+    </section>
     <div class="cross-link">
-      <span>Smaller tools and ideas live in the lab.</span>
+      <span>More ideas in progress.</span>
       <a class="text-link micro" href="/lab/">
         EXPLORE LAB →
       </a>

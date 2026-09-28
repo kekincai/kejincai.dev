@@ -1,92 +1,88 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import LabRow from '../../components/LabRow.astro';
-const labs = (await getCollection('lab')).sort((a, b) =>
-  a.data.number.localeCompare(b.data.number),
-);
-const statuses = ['all', 'active', 'prototype', 'idea', 'archived'];
+import PortfolioCard from '../../components/PortfolioCard.astro';
+import { portfolioGroups } from '../../data/portfolio';
+const groups = portfolioGroups.slice(1);
 ---
 
 <BaseLayout
-  title="Experimental Lab — KEJINCAI.DEV"
-  description="Small tools, unfinished ideas and working experiments. Explore the KEJINCAI.DEV experimental lab."
+  title="Lab — KEJINCAI.DEV"
+  description="6 个有趣的实验与 3 个小工具：浏览器、MCP、Racket、Rust、Swift 与 R 的探索。"
 >
   <div class="container page-content">
     <div class="page-heading">
-      <p class="eyebrow yellow">02 / EXPERIMENTAL LAB</p>
-      <h1>Always in progress.</h1>
-      <p>Small tools. Unfinished ideas. Working experiments.</p>
+      <p class="eyebrow yellow">LAB / 09 PROJECTS</p>
+      <h1>Curiosity in code.</h1>
+      <p lang="zh-CN">有趣的实验与小工具。每一个项目，都是另一种做法。</p>
     </div>
     <div
       class="lab-filters"
       role="group"
-      aria-label="Filter experiments by status"
+      aria-label="Filter projects by category"
       hidden
     >
-      {statuses.map((status) => (
-        <button
-          class="micro"
-          data-filter={status}
-          aria-pressed={status === 'all'}
-        >
-          {status.toUpperCase()}{' '}
-          <span>
-            {status === 'all'
-              ? labs.length
-              : labs.filter((l) => l.data.status === status).length}
-          </span>
+      <button data-filter="all" aria-pressed="true">
+        全部 9
+      </button>
+      {groups.map((group) => (
+        <button data-filter={group.id} aria-pressed="false">
+          {group.label} {group.projects.length}
         </button>
       ))}
     </div>
-    <div class="lab-table">
-      <div class="lab-table-head micro" aria-hidden="true">
-        <span>ID</span>
-        <span>EXPERIMENT</span>
-        <span>FOCUS</span>
-        <span>STATUS</span>
-        <span></span>
-      </div>
-      {labs.map((entry) => (
-        <LabRow entry={entry} />
-      ))}
+    <div class="work-grid">
+      {groups.flatMap((group, groupIndex) =>
+        group.projects.map((project, index) => (
+          <div class="lab-project" data-category={group.id}>
+            <PortfolioCard
+              project={project}
+              number={String((groupIndex === 0 ? 3 : 9) + index + 1).padStart(
+                2,
+                '0',
+              )}
+            />
+          </div>
+        )),
+      )}
     </div>
-    <p class="filter-empty mono" hidden>
-      No experiments in this state. Check another status.
-    </p>
     <p class="lab-count micro" aria-live="polite">
-      {labs.length} EXPERIMENTS / ALL
+      9 PROJECTS / ALL
     </p>
+    <div class="cross-link">
+      <span>Explore the selected projects.</span>
+      <a class="text-link micro" href="/projects/#selected">
+        SELECTED WORK →
+      </a>
+    </div>
   </div>
 </BaseLayout>
 <script>
   const initialized = new WeakSet<Element>();
   function setupFilters() {
     const filters = document.querySelector<HTMLElement>('.lab-filters');
-    if (!filters) return;
-    if (initialized.has(filters)) return;
+    if (!filters || initialized.has(filters)) return;
     initialized.add(filters);
     filters.hidden = false;
-    const rows = Array.from(document.querySelectorAll<HTMLElement>('.lab-row'));
+    const rows = Array.from(
+      document.querySelectorAll<HTMLElement>('.lab-project'),
+    );
     const buttons = Array.from(
       filters.querySelectorAll<HTMLButtonElement>('button'),
     );
     const count = document.querySelector<HTMLElement>('.lab-count');
-    const empty = document.querySelector<HTMLElement>('.filter-empty');
     buttons.forEach((button) =>
       button.addEventListener('click', () => {
-        const status = button.dataset.filter;
+        const category = button.dataset.filter;
         buttons.forEach((b) =>
           b.setAttribute('aria-pressed', String(b === button)),
         );
-        let visible = 0;
-        rows.forEach((row) => {
-          row.hidden = status !== 'all' && row.dataset.status !== status;
-          if (!row.hidden) visible++;
-        });
-        if (empty) empty.hidden = visible > 0;
+        rows.forEach(
+          (row) =>
+            (row.hidden =
+              category !== 'all' && row.dataset.category !== category),
+        );
         if (count)
-          count.textContent = `${visible} EXPERIMENT${visible === 1 ? '' : 'S'} / ${status?.toUpperCase()}`;
+          count.textContent = `${rows.filter((row) => !row.hidden).length} PROJECTS / ${category?.toUpperCase()}`;
       }),
     );
   }

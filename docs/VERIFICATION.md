@@ -6,16 +6,16 @@ Checked on **2026-09-28** against **https://kejincai.dev**.
 
 - Cloudflare Worker: `kejincai-dev`.
 - Custom domain binding is enabled; the browser opens the site over HTTPS without a certificate warning.
-- Home, Projects, Lab, all three Lab details and About return HTTP 200.
+- Home, Projects, Lab and About return HTTP 200.
 - RSS, sitemap, social image and generated font return HTTP 200 with appropriate content types.
 - An unknown route returns the custom page with HTTP 404.
 - Response headers include `nosniff`, frame protection, referrer policy and disabled camera/microphone/geolocation permissions.
 
-HTTP results were checked with curl. The in-app browser confirmed the actual Home → Lab → ACTIVE filter → CoBRA Detail workflow.
+HTTP results were checked with curl. The in-app browser confirmed the actual Home → Lab → experiment / utility category filters workflow.
 
 ## Mobile Lighthouse
 
-Redesigned local build audit using Lighthouse's default simulated mobile settings:
+Hero redesign audit before the portfolio update, using Lighthouse's default simulated mobile settings:
 
 | Category / metric        | Result |
 | ------------------------ | ------ |
@@ -28,16 +28,16 @@ Redesigned local build audit using Lighthouse's default simulated mobile setting
 
 This is a lab measurement, not field data or a guarantee for every device and connection.
 
-The initial audit found large Japanese font files. Automatic build-time subsetting reduced each font from about 1 MB to about 9 KB. The full charset is regenerated from source whenever the site builds.
+The initial audit found large Japanese font files. Automatic build-time subsetting reduced each font from about 1 MB to about 28 KB after adding the curated Chinese project descriptions. The full charset is regenerated from source whenever the site builds.
 
 ## Responsive and accessibility checks
 
 - Desktop DOM checked at 1536 × 1024; retained Chrome screenshot at 1728 × 902.
 - Phone: 390 × 844 and 320px width.
 - Tablet: 768px and 1024px widths.
-- Home, Projects, CoBRA Detail and About showed no horizontal document overflow at the three smaller widths.
+- Home, Projects, Lab and About showed no horizontal document overflow at the three smaller widths.
 - Mobile menu expands, closes on navigation, and supports Escape.
-- Lab filters switch entries and show a clear empty state.
+- Lab category filters show 9 total, 6 experiments or 3 utilities.
 - Reduced motion disables CSS drift, hides the packet, switches scrolling to `auto`, and pauses SVG animations.
 - Public identity uses Latin text only.
 
@@ -48,3 +48,14 @@ See the [design review](design/README.md) for reference-to-render comparisons an
 `npm run format:check`, `npm run check`, `npm run build` and GitHub CI pass. The type checker reports zero errors, warnings and hints. The public repository includes no local credentials, absolute workspace paths or generated font build artifacts.
 
 Photography and external activity aggregation remain the next phase, as specified. No fabricated media, feed items or biography were added.
+
+## Curated portfolio release
+
+- Exact software membership: 12 owner-provided repositories, grouped 3 / 6 / 3. All public READMEs were checked live before writing summaries.
+- Three independent site nodes remain visible on Home and Projects.
+- Previous example lab detail routes are removed from the build and sitemap.
+- RSS has twelve project items with GitHub destinations and no invented publication dates.
+- Home, Projects and Lab DOM widths match 320px, 390px, 768px and 1024px viewports.
+- Project category anchors work; Lab switches between six experiments and three tools.
+
+Project-directory Lighthouse accessibility audit: **100**, with no failing accessibility audits.

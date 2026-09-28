@@ -1,19 +1,12 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 import SectionHeading from '../components/SectionHeading.astro';
-import NodeCard from '../components/NodeCard.astro';
-import LabRow from '../components/LabRow.astro';
 import Arrow from '../components/Arrow.astro';
-import { projects, formatDate } from '../data/site';
-const labs = (await getCollection('lab')).sort((a, b) =>
-  a.data.number.localeCompare(b.data.number),
-);
-const latest = labs.reduce(
-  (date, entry) => (entry.data.updated > date ? entry.data.updated : date),
-  new Date('2026-09-28'),
-);
+import PortfolioCard from '../components/PortfolioCard.astro';
+import NodeCard from '../components/NodeCard.astro';
+import { projects } from '../data/site';
+import { portfolioGroups, portfolioCount } from '../data/portfolio';
 ---
 
 <BaseLayout>
@@ -37,53 +30,77 @@ const latest = labs.reduce(
         </dd>
       </div>
       <div>
-        <dt>PROJECT NODES</dt>
-        <dd>{String(projects.length).padStart(2, '0')}</dd>
+        <dt>SOFTWARE PROJECTS</dt>
+        <dd>{String(portfolioCount).padStart(2, '0')}</dd>
       </div>
       <div>
-        <dt>LAB ENTRIES</dt>
-        <dd>{String(labs.length).padStart(2, '0')}</dd>
+        <dt>EXPERIMENTS / TOOLS</dt>
+        <dd>
+          {String(portfolioCount - portfolioGroups[0].projects.length).padStart(
+            2,
+            '0',
+          )}
+        </dd>
       </div>
       <div>
         <dt>LAST UPDATE</dt>
-        <dd>{formatDate(latest)}</dd>
+        <dd>2026.09.28</dd>
       </div>
     </dl>
   </section>
-  <section class="section container" id="nodes">
-    <SectionHeading label="01 / ACTIVE NODES" title="Connected worlds.">
-      <p class="section-aside mono">
-        Independent projects.
-        <br />
-        One personal node.
-      </p>
+  <section class="section container" id="selected-work">
+    <SectionHeading
+      label="01 / 精选项目"
+      title="Selected work."
+      description="把想法做成日常用得上的软件。"
+    >
+      <a class="text-link micro" href="/projects/">
+        ALL {portfolioCount} PROJECTS <Arrow />
+      </a>
     </SectionHeading>
-    <div class="node-grid">
-      {projects.map((project) => (
-        <NodeCard project={project} />
+    <div class="work-grid work-grid-featured">
+      {portfolioGroups[0].projects.map((project, index) => (
+        <PortfolioCard
+          project={project}
+          number={String(index + 1).padStart(2, '0')}
+          featured
+        />
       ))}
     </div>
   </section>
-  <section class="section lab-section container">
-    <SectionHeading
-      label="02 / EXPERIMENTAL LAB"
-      title="Always in progress."
-      description="Small tools. Unfinished ideas. Working experiments."
-    >
-      <a class="text-link micro" href="/lab/">
-        EXPLORE LAB <Arrow />
-      </a>
-    </SectionHeading>
-    <div class="lab-table">
-      <div class="lab-table-head micro" aria-hidden="true">
-        <span>ID</span>
-        <span>EXPERIMENT</span>
-        <span>FOCUS</span>
-        <span>STATUS</span>
-        <span></span>
+  {portfolioGroups.slice(1).map((group, groupIndex) => (
+    <section class="section container" id={group.id}>
+      <SectionHeading
+        label={`${String(groupIndex + 2).padStart(2, '0')} / ${group.label}`}
+        title={group.title}
+        description={group.description}
+      >
+        <a class="text-link micro" href={`/projects/#${group.id}`}>
+          EXPLORE PROJECTS <Arrow />
+        </a>
+      </SectionHeading>
+      <div class="work-grid">
+        {group.projects.map((project, index) => (
+          <PortfolioCard
+            project={project}
+            number={String((groupIndex === 0 ? 3 : 9) + index + 1).padStart(
+              2,
+              '0',
+            )}
+          />
+        ))}
       </div>
-      {labs.map((entry) => (
-        <LabRow entry={entry} />
+    </section>
+  ))}
+  <section class="section container" id="nodes">
+    <SectionHeading
+      label="04 / CONNECTED NODES"
+      title="Connected worlds."
+      description="独立网站，持续记录。"
+    />
+    <div class="node-grid">
+      {projects.map((project) => (
+        <NodeCard project={project} />
       ))}
     </div>
   </section>

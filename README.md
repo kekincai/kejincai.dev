@@ -32,6 +32,8 @@ A home for software projects, AI experiments, language study and digital memorie
 
 Actual browser captures of the implementation, not design mockups.
 
+[Project directory](docs/images/projects.png) · [Mobile project cards](docs/images/projects-mobile.png)
+
 ![Desktop home page](docs/images/desktop.png)
 
 <details>
@@ -41,10 +43,18 @@ Actual browser captures of the implementation, not design mockups.
 </details>
 
 <details>
-<summary>Connected nodes & experimental lab</summary>
+<summary>Selected software projects</summary>
 <br />
-<img src="docs/images/sections.png" width="100%" alt="Three independent project nodes and the experimental lab list" />
+<img src="docs/images/sections.png" width="100%" alt="Infinity New Tab, Disk Ferry and Safe Clip selected project cards" />
 </details>
+
+## Selected work
+
+| Group      | Projects                                                                             |
+| ---------- | ------------------------------------------------------------------------------------ |
+| 精选项目   | Infinity New Tab, Disk Ferry, Safe Clip                                              |
+| 有趣的实验 | Bookmark Cover Flow, PatternMart, TaskPaper MCP, dedup, Racket TODO, NetSpeedMonitor |
+| 小工具     | 印象导出器, Base R Snake, Podcasts Unfollow                                          |
 
 ## Connected worlds
 
@@ -58,16 +68,16 @@ The root site introduces these projects without duplicating their content.
 
 ## What's included
 
-- **Home** — personal node, system summary, project connections and lab index.
-- **Projects** — three independent destinations.
-- **Lab** — typed Markdown entries, status filters, empty states and detail pages.
+- **Home** — selected work, six experiments, three utilities and independent site connections.
+- **Projects** — twelve owner-selected GitHub projects in three groups, plus three independent websites.
+- **Lab** — six experiments and three utilities, with category filters.
 - **About** — interests and a concise personal introduction.
 - **404** — a disconnected node, with a route back home.
 - **RSS + sitemap** — generated at build time.
 - **Responsive layouts** — phone navigation, single-column cards and compact lab rows.
 - **Accessible motion** — reduced motion pauses the node network and removes page animations.
 
-CoBRA links to an existing public project. Photo GPS Explorer and Subtitle AI are explicitly labeled **IDEA**. No invented releases, activity feed or photography is included.
+Featured: [Infinity New Tab](https://github.com/kekincai/infinity-newtab-extension), [Disk Ferry](https://github.com/kekincai/DiskFerry), and [Safe Clip](https://github.com/kekincai/safe-clip-popclip). Categories follow the owner’s selection; descriptions follow the public READMEs. No invented releases, activity feed or photography is included.
 
 ## Run locally
 
@@ -96,7 +106,7 @@ Mobile Lighthouse for the redesigned local build: **97 performance / 100 accessi
 
 ## Built with
 
-**Astro 7 · TypeScript · Tailwind CSS 4 · Markdown content collections**
+**Astro 7 · TypeScript · Tailwind CSS 4**
 
 Static HTML first. A small amount of vanilla TypeScript handles navigation, filters and pointer response. Astro's client router provides quiet 200ms transitions. No React runtime, analytics or external font service is required.
 
@@ -105,9 +115,7 @@ Fonts are hosted with the site: Inter, IBM Plex Mono and Noto Sans JP. Japanese 
 ```text
 src/
 ├── components/       Header, hero, node network, cards and lab rows
-├── content/lab/      Markdown experiments
-├── content.config.ts Typed content schema
-├── data/site.ts      Identity and independent nodes
+├── data/             Identity, independent sites and curated project groups
 ├── layouts/          Shared metadata and page shell
 ├── pages/            Home, projects, lab, about, 404 and RSS
 └── styles/           Design tokens and responsive rules
@@ -127,7 +135,7 @@ See [Deployment](docs/DEPLOYMENT.md) for both paths. GitHub CI checks formatting
 
 - [x] Home, Projects, Lab, About and 404
 - [x] Responsive navigation and content layouts
-- [x] Markdown experiments, filters, RSS and SEO
+- [x] Curated projects, category filters, RSS and SEO
 - [x] Reduced motion and self-hosted fonts
 - [ ] Photography with original images and responsive AVIF/WebP
 - [ ] Build-time aggregation of verified RSS / JSON feeds

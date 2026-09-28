@@ -1,42 +1,23 @@
 # Content guide
 
-## Project nodes
+## Curated GitHub projects
 
-Edit `src/data/site.ts`. The three project links are independent destinations. `ONLINE` is an editorial label, not a monitored uptime measurement.
+Edit `src/data/portfolio.ts`. The owner selected twelve public repositories in this order:
 
-## Lab entries
+- **精选项目 (3):** Infinity New Tab, Disk Ferry, Safe Clip.
+- **有趣的实验 (6):** Bookmark Cover Flow, PatternMart, TaskPaper MCP, dedup, Racket TODO, NetSpeedMonitor.
+- **小工具 (3):** 印象导出器, Base R Snake, Podcasts Unfollow.
 
-Create `src/content/lab/my-experiment.md`:
+Each record contains the exact repository slug, display name, original typographic symbol, platform / technology tags and a short description. Check the current public README before changing a description. Group membership is editorial; do not infer release readiness or maintenance status from it.
 
-```yaml
----
-title: My Experiment
-number: EXP-004
-description: A concise, factual description.
-status: idea
-tags: [Data, Tools]
-created: 2026-09-28
-updated: 2026-09-28
-# url: https://example.com
-# github: https://github.com/your-account/your-project
----
-```
+Home and Projects show all twelve projects. Lab shows the latter two groups and filters by category. Counts derive from the data. Cards link directly to the owner's public repositories. RSS uses these records without inventing original release dates.
 
-Write the page content below the frontmatter. The filename becomes `/lab/my-experiment/`. The schema in `src/content.config.ts` validates statuses, identifiers, dates and optional URLs during the build.
+## Independent websites
 
-| Status      | Meaning                              |
-| ----------- | ------------------------------------ |
-| `idea`      | Proposed; no working release implied |
-| `prototype` | An early implementation              |
-| `active`    | An available, maintained experiment  |
-| `archived`  | Kept for reference                   |
+Edit `src/data/site.ts`. 青空しおり, PAUL.LOG and FDE RADAR are retained as independent site connections. `ONLINE` is an editorial label, not monitored uptime.
 
-The home-page counts and update date are derived from this collection and the node data. The RSS feed is generated from the lab collection, not from external subdomains.
+The previous assistant-selected lab entries and their detail routes have been removed. Add new repositories only when the owner selects them.
 
-Use entry dates for this directory. Do not infer a project's original release date from the date you add it here.
+## Identity and media
 
-## Later phases
-
-Photography must use the owner's real photographs, responsive AVIF/WebP images, and deliberate metadata privacy. No stock or generated city imagery is included in the initial site.
-
-External signals need verified RSS or JSON feeds and build-time fetching. Do not publish invented recent activity or silently treat fetch failures as an empty feed.
+Use KE JINCAI / KEJINCAI.DEV for public personal identity. Do not publish the Chinese personal name. Use original photographs if photography is added; do not invent media or activity feeds.
