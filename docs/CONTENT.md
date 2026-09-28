@@ -22,7 +22,7 @@ The previous assistant-selected lab entries and their detail routes have been re
 
 Use KE JINCAI / KEJINCAI.DEV for public personal identity. Do not publish the Chinese personal name. Use original photographs if photography is added; do not invent media or activity feeds.
 
-The owner-supplied cyber portrait sits at the root of the home radar (`public/images/portrait.webp`, 480 × 480, embedded in `src/components/NodeNetwork.astro`). It is cropped below the game wordmark in the original image; keep third-party logos out of any replacement crop.
+The owner-supplied cyber portrait fills the home radar at full size (`public/images/portrait.webp`, 1000 × 914, embedded in `src/components/NodeNetwork.astro`) with the node network drawn over it. The owner chose to keep the complete image, including its Cyberpunk 2077 wordmark; the root-node reticle is positioned on the cybernetic eye (`337, 240` in the 600-unit radar).
 
 Featured project icons are authored in `src/components/ProjectIcon.astro`; independent site icons are in `src/components/NodeIcon.astro`. All six use original angular SVG paths in yellow, cyan and red instead of font glyphs or default icon-library assets.
 

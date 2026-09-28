@@ -481,6 +481,9 @@ p {
   transform-origin: 300px 300px;
   animation: pulse 8s ease-in-out infinite;
 }
+.portrait-reticle .node-pulse {
+  transform-origin: 337px 240px;
+}
 @keyframes drift {
   from {
     transform: rotate(-2deg);

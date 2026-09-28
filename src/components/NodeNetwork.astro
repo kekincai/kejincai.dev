@@ -39,7 +39,20 @@ const edges = [
       >
         <circle cx="1" cy="1" r=".6" fill="#00F0FF" opacity=".25" />
       </pattern>
+      <linearGradient id="portrait-shade" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#09090B" stop-opacity=".35" />
+        <stop offset=".55" stop-color="#09090B" stop-opacity=".1" />
+        <stop offset="1" stop-color="#09090B" stop-opacity=".55" />
+      </linearGradient>
     </defs>
+    <image
+      class="network-portrait"
+      href="/images/portrait.webp"
+      width="600"
+      height="600"
+      preserveAspectRatio="xMidYMid slice"
+    />
+    <rect width="600" height="600" fill="url(#portrait-shade)" />
     <rect x="25" y="25" width="550" height="550" fill="url(#network-dots)" />
     <g class="orbit-frame" stroke="#FCEE0A" stroke-width=".8">
       <path
@@ -81,50 +94,35 @@ const edges = [
         />
       </circle>
     </g>
-    <circle
-      class="node-pulse"
-      cx="300"
-      cy="300"
-      r="124"
-      stroke="#FCEE0A"
-      stroke-width=".8"
-    />
-    <clipPath id="portrait-clip">
-      <path d="M234 210H390V366L366 390H210V234Z" />
-    </clipPath>
-    <rect x="203" y="203" width="194" height="194" fill="#09090B" />
-    <image
-      class="network-portrait"
-      href="/images/portrait.webp"
-      x="210"
-      y="210"
-      width="180"
-      height="180"
-      preserveAspectRatio="xMidYMid slice"
-      clip-path="url(#portrait-clip)"
-    />
-    <path
-      d="M234 210H390V366L366 390H210V234Z"
-      stroke="#FCEE0A"
-      stroke-width="3"
-    />
-    <path
-      d="M202 250v-24l24-24h40M398 350v48h-48"
-      stroke="#00F0FF"
-      stroke-width="2"
-    />
-    <path d="M210 398h34" stroke="#FF003C" stroke-width="3" />
-    <rect x="248" y="391" width="176" height="15" fill="#09090B" />
-    <text
-      x="252"
-      y="402"
-      fill="#FCEE0A"
-      font-size="10"
-      font-family="IBM Plex Mono, monospace"
-      letter-spacing="1.5"
-    >
-      ROOT NODE // KE JINCAI
-    </text>
+    <circle cx="300" cy="300" r="5" fill="#FCEE0A" />
+    <g class="portrait-reticle">
+      <circle
+        class="node-pulse"
+        cx="337"
+        cy="240"
+        r="26"
+        stroke="#FCEE0A"
+        stroke-width="1"
+      />
+      <circle cx="337" cy="240" r="13" stroke="#00F0FF" stroke-width="2" />
+      <path
+        d="M337 206v12m0 44v12M303 240h12m44 0h12"
+        stroke="#FCEE0A"
+        stroke-width="2"
+      />
+      <path d="M363 240h37l14-14h74" stroke="#FCEE0A" stroke-width="1" />
+      <rect x="418" y="212" width="150" height="15" fill="#09090B" />
+      <text
+        x="422"
+        y="223"
+        fill="#FCEE0A"
+        font-size="10"
+        font-family="IBM Plex Mono, monospace"
+        letter-spacing="1.5"
+      >
+        ROOT NODE // KE JINCAI
+      </text>
+    </g>
     <path
       d="M400 52h105l30 30M75 515H45v-75"
       stroke="#FCEE0A"
