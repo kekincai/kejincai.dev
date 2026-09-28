@@ -4,6 +4,7 @@ export const site = {
   description:
     'Software, AI, data, photography and experiments by Ke Jincai in Tokyo.',
   github: 'https://github.com/kekincai',
+  email: 'me@kejincai.dev',
   repository: 'https://github.com/kekincai/kejincai.dev',
 };
 
