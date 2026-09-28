@@ -291,21 +291,6 @@ p {
   background: var(--cyan);
   color: var(--bg-main);
 }
-.menu-toggle {
-  display: none;
-  border: 0;
-  background: none;
-  width: 44px;
-  height: 44px;
-  padding: 10px 7px;
-}
-.menu-toggle span {
-  display: block;
-  height: 3px;
-  background: var(--yellow);
-  margin: 6px 0;
-  transition: transform 0.2s;
-}
 .hero {
   padding-top: 72px;
   background: var(--yellow);
@@ -1219,61 +1204,8 @@ p {
   .header-logo {
     width: 172px;
   }
-  .menu-toggle {
-    display: block;
-    background: rgba(0, 0, 0, 0.62);
-    clip-path: polygon(10px 0, 100% 0, 100% 100%, 0 100%, 0 10px);
-  }
   #main-nav {
-    position: absolute;
-    top: 62px;
-    left: 0;
-    right: 0;
-    height: auto;
-    margin: 0;
-    background: #09090bfa;
-    backdrop-filter: blur(12px);
-    clip-path: polygon(
-      0 0,
-      100% 0,
-      100% calc(100% - 16px),
-      calc(100% - 16px) 100%,
-      0 100%
-    );
-    padding: 17px 24px 25px;
     display: none;
-    align-items: stretch;
-    gap: 0;
-  }
-  #main-nav.is-open {
-    display: flex;
-    flex-direction: column;
-  }
-  #main-nav > a {
-    font-size: 22px;
-    padding: 7px 0;
-    border-bottom: 1px solid var(--border);
-  }
-  #main-nav > .nav-cta {
-    justify-content: center;
-    margin-top: 18px;
-    padding: 10px 0;
-    border: 0;
-  }
-  #main-nav > a[aria-current]::after {
-    display: none;
-  }
-  #main-nav > .online {
-    display: inline-flex;
-    margin: 22px 0 0;
-    padding: 0;
-    border: 0;
-  }
-  .menu-toggle[aria-expanded='true'] span:first-child {
-    transform: translateY(4.5px) rotate(45deg);
-  }
-  .menu-toggle[aria-expanded='true'] span:last-child {
-    transform: translateY(-4.5px) rotate(-45deg);
   }
   .hero {
     padding-top: 64px;
@@ -2685,60 +2617,13 @@ a.cp-button:focus-visible::before {
 main:has(> .uplink:last-child) + .site-footer {
   border-top: 0;
 }
-.footer-find {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 22px;
-  flex-wrap: wrap;
-}
-.footer-find .micro {
-  color: var(--text-main);
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-}
-.footer-find ul {
-  display: flex;
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.footer-find a {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border: 1px solid var(--cyan);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  font-weight: 500;
-  color: var(--cyan);
-  clip-path: polygon(
-    0 0,
-    100% 0,
-    100% calc(100% - 9px),
-    calc(100% - 9px) 100%,
-    0 100%
-  );
-  transition:
-    background 0.2s,
-    color 0.2s;
-}
-.footer-find a:hover,
-.footer-find a:focus-visible {
-  background: var(--cyan);
-  color: var(--bg-main);
-}
 .footer-nav {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 10px 36px;
-  margin-top: 30px;
-  padding-block: 22px;
-  border-block: 1px solid var(--border);
+  padding-bottom: 26px;
+  border-bottom: 1px solid var(--border);
 }
 .footer-nav a {
   font-family: 'Rajdhani', sans-serif;
