@@ -1,4 +1,6 @@
 ---
+import Wordmark from './Wordmark.astro';
+import { site } from '../data/site';
 const links = [
   { href: '/projects/', label: 'PROJECTS' },
   { href: '/lab/', label: 'LAB' },
@@ -7,10 +9,10 @@ const links = [
 const path = Astro.url.pathname;
 ---
 
-<header class="site-header">
+<header class:list={['site-header', { 'over-hero': path === '/' }]}>
   <div class="header-inner container">
-    <a class="wordmark" href="/" aria-label="KEJINCAI.DEV home">
-      KEJINCAI<span>.DEV</span>
+    <a class="header-logo" href="/" aria-label="KEJINCAI.DEV home">
+      <Wordmark />
     </a>
     <button
       class="menu-toggle"
@@ -33,6 +35,9 @@ const path = Astro.url.pathname;
       <span class="online">
         <i></i> ONLINE
       </span>
+      <a class="nav-cta" href={`mailto:${site.email}`}>
+        CONTACT
+      </a>
     </nav>
   </div>
 </header>
@@ -83,4 +88,19 @@ const path = Astro.url.pathname;
   }
   document.addEventListener('astro:page-load', setupMenu);
   setupMenu();
+
+  // Over yellow bands the logo turns black like the official site.
+  function syncHeader() {
+    const header = document.querySelector('.site-header');
+    const onLight = [
+      ...document.querySelectorAll('[data-header-ink="dark"]'),
+    ].some((band) => {
+      const rect = band.getBoundingClientRect();
+      return rect.top < 40 && rect.bottom > 40;
+    });
+    header?.classList.toggle('over-hero', onLight);
+  }
+  addEventListener('scroll', syncHeader, { passive: true });
+  document.addEventListener('astro:page-load', syncHeader);
+  syncHeader();
 </script>

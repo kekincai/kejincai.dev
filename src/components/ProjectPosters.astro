@@ -13,7 +13,11 @@ const { label, title, description, linkBase = '' } = Astro.props;
 const tones = ['yellow', 'cyan', 'red'] as const;
 ---
 
-<section class="poster-module" aria-labelledby="poster-module-title">
+<section
+  class="poster-module"
+  data-header-ink="dark"
+  aria-labelledby="poster-module-title"
+>
   <SkylineEdge position="top" />
   <div class="container poster-module-inner">
     <div class="poster-module-heading">

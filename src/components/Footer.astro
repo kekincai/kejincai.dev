@@ -1,4 +1,5 @@
 ---
+import Wordmark from './Wordmark.astro';
 import { site } from '../data/site';
 const channels = [
   { label: 'GitHub', glyph: 'GH', href: site.github, external: true },
@@ -41,8 +42,8 @@ const links = [
       ))}
     </nav>
     <div class="footer-legal">
-      <a class="wordmark" href="/">
-        KEJINCAI<span>.DEV</span>
+      <a class="footer-logo" href="/" aria-label="KEJINCAI.DEV home">
+        <Wordmark />
       </a>
       <p class="mono">
         © {new Date().getFullYear()} KE JINCAI. TOKYO NODE / BUILD: ASTRO +
