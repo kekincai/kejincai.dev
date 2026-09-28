@@ -31,7 +31,7 @@ Above-the-fold copy audit: public identity remains KE JINCAI, Japanese lines are
 
 ## Review
 
-The in-app browser was inspected first. Its screenshot and viewport override disagreed, so Chrome was used through the same browser-control tool for reliable retained captures. Desktop screenshot is 1396 × 931, phone screenshot 390 × 844. DOM measurements additionally cover 320px, 768px, 1024px and 1536px widths.
+The in-app browser was inspected first. Its screenshot and viewport override disagreed, so Chrome was used through the same browser-control tool for reliable retained captures. Desktop screenshot is 1728 × 902, phone screenshot 390 × 844. DOM measurements additionally cover 320px, 768px, 1024px and 1536px widths.
 
 The menu, filters and network now initialize immediately and on Astro navigation with duplicate-binding guards. This resolves initial-load timing in Astro's inline module scripts. Reduced motion pauses SVG animation and removes CSS movement.
 

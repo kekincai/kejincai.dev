@@ -32,7 +32,7 @@ The initial audit found large Japanese font files. Automatic build-time subsetti
 
 ## Responsive and accessibility checks
 
-- Desktop DOM checked at 1536 × 1024; retained Chrome screenshot at 1396 × 931.
+- Desktop DOM checked at 1536 × 1024; retained Chrome screenshot at 1728 × 902.
 - Phone: 390 × 844 and 320px width.
 - Tablet: 768px and 1024px widths.
 - Home, Projects, CoBRA Detail and About showed no horizontal document overflow at the three smaller widths.
