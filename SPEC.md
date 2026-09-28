@@ -1,3 +1,7 @@
+## Current visual direction
+
+The latest user instruction supersedes the original restrained palette: use a Cyberpunk 2077 inspired yellow / black interface, cyan signals, red markers, condensed display typography and angular panels. Responsive phone layouts and Latin-only personal identity remain required. Original game assets are not used.
+
 ## Current implementation scope
 
 Phase 1: Home, Projects, Lab, Lab Detail, About, and 404. Photography and feed aggregation are Phase 2. Public identity uses KE JINCAI / KEJINCAI.DEV only; do not publish the Chinese personal name. Mobile support is required. Display counts from content, never from example metrics.

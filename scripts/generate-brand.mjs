@@ -1,18 +1,17 @@
 import sharp from 'sharp';
-
 const graphic = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-<defs><pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M60 0H0v60" fill="none" stroke="#1B2733" stroke-width=".7"/></pattern></defs>
-<rect width="1200" height="630" fill="#07090D"/><rect width="1200" height="630" fill="url(#grid)"/>
-<path d="M64 72h1072M64 550h1072" stroke="#1B2733"/>
-<g fill="#9AA6B3" font-family="monospace" font-size="13" letter-spacing="3"><text x="64" y="49">KEJINCAI.DEV</text><text x="64" y="154">// TOKYO / PERSONAL NODE</text><text x="64" y="591">ASTRO / TYPESCRIPT / TAILWIND CSS</text><text x="1013" y="591">EOF _</text></g>
-<text x="60" y="285" font-family="sans-serif" font-size="91" font-weight="700" letter-spacing="-5" fill="#E8EDF2">KE JINCAI<tspan fill="#00E5FF">.</tspan></text>
-<text x="64" y="353" font-family="monospace" font-size="26" fill="#E8EDF2">PERSONAL AI LAB</text><text x="64" y="399" font-family="monospace" font-size="17" fill="#9AA6B3">Software. Experiments. Digital memories.</text>
-<circle cx="67" cy="477" r="4" fill="#00E5FF"/><text x="83" y="482" font-family="monospace" font-size="12" letter-spacing="2" fill="#00E5FF">TOKYO NODE / ONLINE</text>
-<g stroke="#344452" fill="none"><circle cx="928" cy="300" r="157"/><circle cx="928" cy="300" r="113" stroke-dasharray="2 6"/><path d="M928 120v360M749 300h359M823 232l105 68 65-135 54 115-119 20 76 102-87 46-95-75 1-141m105 68-106 73m0 0 225-93m-224-48 181 170m-87 46 76-283" stroke-width=".8"/></g>
-<g fill="#00E5FF"><circle cx="928" cy="300" r="6"/><circle cx="823" cy="232" r="3"/><circle cx="993" cy="165" r="3"/><circle cx="1004" cy="402" r="3"/></g><g fill="#E8EDF2"><circle cx="1047" cy="280" r="3"/><circle cx="917" cy="448" r="3"/><circle cx="822" cy="373" r="3"/></g>
+<rect width="1200" height="630" fill="#FCEE0A"/>
+<path d="M0 0h1200v72H0z" fill="#09090B"/><path d="M0 72h1200" stroke="#FF003C" stroke-width="4"/>
+<g font-family="monospace" font-weight="bold"><text x="54" y="45" font-size="25" fill="#FCEE0A">// KEJINCAI.DEV</text><text x="54" y="128" font-size="16">TOKYO / PERSONAL NODE</text></g>
+<g font-family="sans-serif" font-weight="900" letter-spacing="-6"><text x="57" y="271" font-size="143" fill="#00F0FF">KE</text><text x="53" y="268" font-size="143">KE</text><text x="57" y="416" font-size="125" fill="#00F0FF">JINCAI</text><text x="53" y="413" font-size="125">JINCAI</text></g>
+<path d="M715 110h400l38 38v374l-38 38H715l-30-30V140z" fill="#09090B"/>
+<g stroke="#00F0FF" fill="none"><circle cx="920" cy="324" r="153" stroke-opacity=".3"/><path d="M920 172l130 76-1 154-129 77-134-77 1-154 133-76 129 230-262-154 133 231 130-231-264 154 134-230v307m-133-231 133 76 130-76m-263 154 133-78 129 78" stroke-opacity=".6"/><circle cx="920" cy="324" r="16"/></g>
+<circle cx="920" cy="324" r="30" stroke="#FCEE0A" fill="none"/><g fill="#00F0FF"><circle cx="920" cy="172" r="4"/><circle cx="1050" cy="248" r="4"/><circle cx="1049" cy="402" r="4"/><circle cx="920" cy="479" r="4"/><circle cx="786" cy="402" r="4"/><circle cx="787" cy="248" r="4"/></g>
+<g font-family="monospace" font-size="13" fill="#00F0FF"><text x="724" y="151">PERSONAL AI NODE</text><text x="973" y="532">CONNECTED</text></g>
+<path d="M54 464h453l23 23v50H54z" fill="#09090B"/><text x="80" y="511" font-family="monospace" font-size="26" fill="#FCEE0A">PERSONAL AI LAB →</text>
+<text x="54" y="587" font-family="monospace" font-size="16">SOFTWARE / AI / WEB / DATA / PHOTOGRAPHY</text>
 </svg>`;
 await sharp(Buffer.from(graphic)).png().toFile('public/og.png');
 await sharp(Buffer.from(graphic))
   .webp({ quality: 90 })
   .toFile('docs/images/banner.webp');
-console.log('Generated public/og.png and docs/images/banner.webp');

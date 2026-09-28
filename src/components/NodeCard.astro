@@ -17,16 +17,23 @@ const { project } = Astro.props;
     <span class="micro">NODE {project.id}</span>
     <Arrow diagonal />
   </div>
-  <div class="node-card-title">
-    <h3 lang={project.id === '01' ? 'ja' : 'en'}>{project.name}</h3>
-    {project.name !== project.romanized && (
-      <span class="micro romanized">{project.romanized}</span>
-    )}
+  <div class="node-card-body">
+    <span class="node-symbol" aria-hidden="true" lang="ja">
+      {project.symbol}
+    </span>
+    <div class="node-card-copy">
+      <p class="micro node-category">{project.category}</p>
+      <div class="node-card-title">
+        <h3 lang={project.id === '01' ? 'ja' : 'en'}>{project.name}</h3>
+        {project.name !== project.romanized && (
+          <span class="micro romanized">{project.romanized}</span>
+        )}
+      </div>
+      <p class="node-description" lang={project.id === '03' ? 'en' : 'zh-CN'}>
+        {project.description}
+      </p>
+    </div>
   </div>
-  <p class="micro node-category">{project.category}</p>
-  <p class="node-description" lang={project.id === '03' ? 'en' : 'zh-CN'}>
-    {project.description}
-  </p>
   <div class="node-card-bottom">
     <span class="online">
       <i></i> ONLINE

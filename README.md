@@ -24,9 +24,9 @@ Build. Learn. Keep a record.
 
 A home for software projects, AI experiments, language study and digital memories. Each independent project is a node; the root site connects them. Smaller tools and unfinished ideas live in the lab.
 
-**TOKYO AI NIGHT** brings together near-black space, Japanese typography, quiet cyan signals and a slowly moving node network. Cyberpunk is atmosphere, not decoration.
+**CYBERPUNK 2077 inspired**: signal-yellow hero, black angular panels, condensed industrial typography, cyan network signals and red interface markers. All visuals are original CSS and SVG; no game artwork or logos are used.
 
-这是一个个人开发、AI 实验与学习记录的统一入口。用克制的东京夜色、日英混排和工程系统语言，连接独立项目与尚在探索中的想法。
+这是一个个人开发、AI 实验与学习记录的统一入口。采用鲜明的黄色与黑色、切角面板和日英混排，连接独立项目与尚在探索中的想法。
 
 ## Preview
 
@@ -92,7 +92,7 @@ Open **http://localhost:4321**.
 | `npm run format`       | Format source and documentation     |
 | `npm run format:check` | Check formatting in CI              |
 
-Mobile Lighthouse on production: **99 performance / 100 accessibility / 100 best practices / 100 SEO**. [Verification details](docs/VERIFICATION.md).
+Mobile Lighthouse for the redesigned local build: **97 performance / 100 accessibility / 100 best practices / 100 SEO**. [Verification details](docs/VERIFICATION.md).
 
 ## Built with
 

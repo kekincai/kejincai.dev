@@ -1,69 +1,61 @@
 ---
-const nodes = [
-  [302, 300],
-  [155, 233],
-  [202, 166],
-  [315, 123],
-  [424, 187],
-  [472, 285],
-  [403, 411],
-  [287, 463],
-  [165, 386],
-  [118, 314],
-  [333, 375],
-  [351, 222],
-];
+const outer = Array.from({ length: 14 }, (_, i) => {
+  const angle = (i / 14) * Math.PI * 2 - Math.PI / 2;
+  return [
+    300 + Math.cos(angle) * (i % 2 ? 210 : 225),
+    300 + Math.sin(angle) * 225,
+  ];
+});
+const inner = Array.from({ length: 8 }, (_, i) => {
+  const angle = (i / 8) * Math.PI * 2;
+  return [300 + Math.cos(angle) * 112, 300 + Math.sin(angle) * 140];
+});
+const nodes = [[300, 300], ...outer, ...inner];
 const edges = [
-  [0, 1],
-  [0, 2],
-  [0, 3],
-  [0, 4],
-  [0, 5],
-  [0, 6],
-  [0, 7],
-  [0, 8],
-  [0, 9],
-  [0, 10],
-  [0, 11],
-  [1, 2],
-  [2, 3],
-  [3, 4],
-  [4, 5],
-  [5, 6],
-  [6, 7],
-  [7, 8],
-  [8, 9],
-  [9, 1],
-  [1, 11],
-  [11, 4],
-  [2, 8],
-  [3, 6],
-  [5, 10],
-  [10, 7],
+  ...outer.flatMap((_, i) => [
+    [i + 1, ((i + 1) % 14) + 1],
+    [i + 1, ((i + 4) % 14) + 1],
+    [i + 1, 15 + (i % 8)],
+  ]),
+  ...inner.flatMap((_, i) => [
+    [0, i + 15],
+    [i + 15, ((i + 1) % 8) + 15],
+  ]),
 ];
 ---
 
 <div class="node-network" aria-hidden="true">
   <div class="network-top micro">
-    PERSONAL AI NODE <span>NETWORK / 01</span>
+    <span>// PERSONAL AI NODE</span>
+    <span class="network-mark">/////</span>
   </div>
   <svg class="network-svg" viewBox="0 0 600 600" fill="none">
     <defs>
-      <radialGradient id="node-aura">
-        <stop stop-color="#00E5FF" stop-opacity=".065" />
-        <stop offset="1" stop-color="#00E5FF" stop-opacity="0" />
-      </radialGradient>
+      <pattern
+        id="network-dots"
+        width="22"
+        height="22"
+        patternUnits="userSpaceOnUse"
+      >
+        <circle cx="1" cy="1" r=".6" fill="#00F0FF" opacity=".25" />
+      </pattern>
     </defs>
-    <circle cx="300" cy="300" r="235" fill="url(#node-aura)" />
-    <g class="orbit-frame" stroke="#263541" stroke-width=".7">
-      <circle cx="300" cy="300" r="237" />
-      <circle cx="300" cy="300" r="186" stroke-dasharray="2 6" />
-      <path d="M300 44v512M44 300h512" stroke-dasharray="3 7" />
-      <path d="M56 56h14m-7-7v14m474-7h14m-7-7v14M56 544h14m-7-7v14m474-7h14m-7-7v14" />
-      <path d="M300 55v16m0 458v16M55 300h16m458 0h16" stroke="#7D8996" />
+    <rect x="25" y="25" width="550" height="550" fill="url(#network-dots)" />
+    <g class="orbit-frame" stroke="#FCEE0A" stroke-width=".8">
+      <path
+        d="M30 145V70l35-35h95m40 0h195l45 45h105v100M570 220v220l-50 50h-65m-50 80H145L90 515H30V410"
+        opacity=".55"
+      />
+      <circle cx="300" cy="300" r="248" stroke-dasharray="1 5" opacity=".45" />
+      <path d="M300 35v530M35 300h530" stroke-dasharray="3 8" opacity=".2" />
+      <path
+        d="M50 50h18m-9-9v18m473-9h18m-9-9v18M50 550h18m-9-9v18m473-9h18m-9-9v18"
+        stroke-width="1.5"
+      />
+      <path d="M300 40v17m0 486v17M40 300h17m486 0h17" stroke-width="2" />
     </g>
     <g class="network-drift">
-      <g stroke="#526374" stroke-opacity=".5" stroke-width=".8">
+      <g stroke="#00F0FF" stroke-opacity=".42" stroke-width=".9">
         {edges.map(([a, b]) => (
           <line
             x1={nodes[a][0]}
@@ -73,40 +65,60 @@ const edges = [
           />
         ))}
       </g>
-      {nodes.map(([x, y], i) => (
+      {nodes.slice(1).map(([x, y], i) => (
         <circle
           cx={x}
           cy={y}
-          r={i === 0 ? 6 : i % 3 === 0 ? 3.6 : 2.7}
-          fill={i % 2 === 0 ? '#00E5FF' : '#E8EDF2'}
+          r={i % 3 === 0 ? 4.5 : 3}
+          fill={i % 4 === 0 ? '#E8EDF2' : '#00F0FF'}
         />
       ))}
-      <circle
-        class="node-pulse"
-        cx="302"
-        cy="300"
-        r="14"
-        stroke="#00E5FF"
-        stroke-width=".6"
-      />
-      <circle class="data-packet" r="2" fill="#63F2FF">
+      <circle class="data-packet" r="3" fill="#FCEE0A">
         <animateMotion
           dur="14s"
           repeatCount="indefinite"
-          path="M155 233 L302 300 L424 187 L472 285 L302 300 L165 386 L155 233"
+          path="M300 75 L391 160 L300 300 L188 300 L300 525 L391 440 L300 300 L300 75"
         />
       </circle>
     </g>
+    <circle
+      cx="300"
+      cy="300"
+      r="32"
+      fill="#09090B"
+      stroke="#FCEE0A"
+      stroke-width="3"
+    />
+    <circle
+      class="node-pulse"
+      cx="300"
+      cy="300"
+      r="44"
+      stroke="#FCEE0A"
+      stroke-width=".8"
+    />
+    <circle cx="300" cy="300" r="15" stroke="#00F0FF" stroke-width="3" />
+    <circle cx="300" cy="300" r="4" fill="#00F0FF" />
     <text
-      x="321"
-      y="320"
-      fill="#7D8996"
-      font-size="9"
+      x="347"
+      y="317"
+      fill="#FCEE0A"
+      font-size="10"
       font-family="IBM Plex Mono, monospace"
       letter-spacing="1.5"
     >
       ROOT NODE
     </text>
+    <path
+      d="M400 52h105l30 30M75 515H45v-75"
+      stroke="#FCEE0A"
+      stroke-width="4"
+    />
+    <path
+      d="M540 150h25m-25 8h12M40 380h25m-25 8h12"
+      stroke="#00F0FF"
+      stroke-width="3"
+    />
   </svg>
   <div class="network-bottom micro">
     <span>TOKYO / JAPAN</span>
@@ -116,9 +128,12 @@ const edges = [
   </div>
 </div>
 <script>
+  const initialized = new WeakSet<Element>();
   function setupNetwork() {
     const graph = document.querySelector<HTMLElement>('.node-network');
     if (!graph) return;
+    if (initialized.has(graph)) return;
+    initialized.add(graph);
     const svg = graph.querySelector<SVGSVGElement>('svg');
     const motion = matchMedia('(prefers-reduced-motion: reduce)');
     const syncMotion = () => {
@@ -150,4 +165,5 @@ const edges = [
     });
   }
   document.addEventListener('astro:page-load', setupNetwork);
+  setupNetwork();
 </script>

@@ -14,7 +14,7 @@ const statuses = ['all', 'active', 'prototype', 'idea', 'archived'];
 >
   <div class="container page-content">
     <div class="page-heading">
-      <p class="eyebrow cyan">02 / EXPERIMENTAL LAB</p>
+      <p class="eyebrow yellow">02 / EXPERIMENTAL LAB</p>
       <h1>Always in progress.</h1>
       <p>Small tools. Unfinished ideas. Working experiments.</p>
     </div>
@@ -60,9 +60,12 @@ const statuses = ['all', 'active', 'prototype', 'idea', 'archived'];
   </div>
 </BaseLayout>
 <script>
+  const initialized = new WeakSet<Element>();
   function setupFilters() {
     const filters = document.querySelector<HTMLElement>('.lab-filters');
     if (!filters) return;
+    if (initialized.has(filters)) return;
+    initialized.add(filters);
     filters.hidden = false;
     const rows = Array.from(document.querySelectorAll<HTMLElement>('.lab-row'));
     const buttons = Array.from(
@@ -88,4 +91,5 @@ const statuses = ['all', 'active', 'prototype', 'idea', 'archived'];
     );
   }
   document.addEventListener('astro:page-load', setupFilters);
+  setupFilters();
 </script>

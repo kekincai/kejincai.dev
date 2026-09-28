@@ -37,10 +37,13 @@ const path = Astro.url.pathname;
   </div>
 </header>
 <script>
+  const initialized = new WeakSet<Element>();
   function setupMenu() {
     const button = document.querySelector<HTMLButtonElement>('.menu-toggle');
     const nav = document.querySelector<HTMLElement>('#main-nav');
     if (!button || !nav) return;
+    if (initialized.has(button)) return;
+    initialized.add(button);
     function closeMenu() {
       button!.setAttribute('aria-expanded', 'false');
       button!.setAttribute('aria-label', 'Open navigation');
@@ -79,4 +82,5 @@ const path = Astro.url.pathname;
     );
   }
   document.addEventListener('astro:page-load', setupMenu);
+  setupMenu();
 </script>

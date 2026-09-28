@@ -15,16 +15,16 @@ HTTP results were checked with curl. The in-app browser confirmed the actual Hom
 
 ## Mobile Lighthouse
 
-One production audit using Lighthouse's default simulated mobile settings:
+Redesigned local build audit using Lighthouse's default simulated mobile settings:
 
-| Category / metric        | Result      |
-| ------------------------ | ----------- |
-| Performance              | 99          |
-| Accessibility            | 100         |
-| Best practices           | 100         |
-| SEO                      | 100         |
-| Largest Contentful Paint | 1.6 seconds |
-| Cumulative Layout Shift  | 0           |
+| Category / metric        | Result |
+| ------------------------ | ------ |
+| Performance              | 97     |
+| Accessibility            | 100    |
+| Best practices           | 100    |
+| SEO                      | 100    |
+| Largest Contentful Paint | 2.2 s  |
+| Cumulative Layout Shift  | 0      |
 
 This is a lab measurement, not field data or a guarantee for every device and connection.
 
@@ -32,7 +32,7 @@ The initial audit found large Japanese font files. Automatic build-time subsetti
 
 ## Responsive and accessibility checks
 
-- Desktop first viewport: 1536 × 1024.
+- Desktop DOM checked at 1536 × 1024; retained Chrome screenshot at 1396 × 931.
 - Phone: 390 × 844 and 320px width.
 - Tablet: 768px and 1024px widths.
 - Home, Projects, CoBRA Detail and About showed no horizontal document overflow at the three smaller widths.
@@ -41,7 +41,7 @@ The initial audit found large Japanese font files. Automatic build-time subsetti
 - Reduced motion disables CSS drift, hides the packet, switches scrolling to `auto`, and pauses SVG animations.
 - Public identity uses Latin text only.
 
-See the [design review](design/README.md) for reference-to-render comparisons and documented adaptations. Repository screenshots were captured in the in-app browser.
+See the [design review](design/README.md) for reference-to-render comparisons and documented adaptations. The in-app browser was inspected first; its viewport capture was clipped, so retained screenshots were captured through Chrome using the same browser-control tool.
 
 ## Build checks
 

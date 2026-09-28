@@ -1,56 +1,38 @@
-# TOKYO AI NIGHT
+# CYBERPUNK / TOKYO PERSONAL NODE
 
-The written [SPEC](../../SPEC.md), latest identity restrictions and mobile requirements govern the implementation. The image concepts are design references; all working UI is authored in Astro, CSS and TypeScript.
+The latest user direction is Cyberpunk 2077 inspired. It supersedes the restrained palette in the original [SPEC](../../SPEC.md). Latin-only personal identity and mobile adaptation remain required.
 
-## Reference set
+## References
 
-Generated with the built-in image generation tool as UI mockups:
+Generated original UI concepts, implemented as Astro, CSS and SVG:
 
-- [Home concept](home-concept.png) — desktop first viewport, 1536 × 1024.
-- [Node and lab sections](sections-concept.png) — component rhythm, 1536 × 1024.
-- [About and mobile concept](about-mobile-concept.png) — coordinated two-screen reference board.
+- [Home](home-concept.png)
+- [Projects and Lab](sections-concept.png)
+- [About and mobile](about-mobile-concept.png)
 
-The final briefs specify near-black `#07090D`, thin rules, restrained cyan `#00E5FF`, Inter / IBM Plex Mono / Japanese sans, the exact project nodes, three experimental entries and mobile stacking. Personal identity is Latin text only. No photographs or generated city imagery are used.
+## Reference comparison
 
-## Design system
+Concepts and actual browser captures were opened with `view_image` in the same review pass.
 
-| Element      | Implementation                                                           |
-| ------------ | ------------------------------------------------------------------------ |
-| Canvas       | `#07090D`, a faint grid confined to the hero                             |
-| Surfaces     | `#0C1017` and `#111722`                                                  |
-| Rules        | `#1B2733`, 1px, sharp corners                                            |
-| Primary text | `#E8EDF2`                                                                |
-| Muted text   | `#9AA6B3`, raised from the spec for readability                          |
-| Accent       | `#00E5FF`, links and small status dots                                   |
-| Fonts        | Self-hosted Inter, IBM Plex Mono, Noto Sans JP                           |
-| Content      | 1280px maximum, responsive side gutters                                  |
-| Motion       | 24s node drift, 8s pulse, 200ms page fade                                |
-| Mobile       | 64px header, compact hero network, single-column cards, stacked lab rows |
+| Element    | Reference                                     | Implementation                                                                  |
+| ---------- | --------------------------------------------- | ------------------------------------------------------------------------------- |
+| Palette    | Signal yellow / black, cyan and red markers   | `#FCEE0A` hero, `#09090B` panels, `#00F0FF` signals, `#FF003C` labels           |
+| Hero       | Massive two-line black identity               | KE / JINCAI on desktop; compact single line on phones                           |
+| Typography | Condensed industrial display                  | Self-hosted Barlow Condensed, Rajdhani, IBM Plex Mono and subset Japanese fonts |
+| Network    | Black angular panel and cyan graph            | SVG connections, radar rings, moving packet, cut corners and hazard stripes     |
+| Projects   | Yellow angular outline, large Japanese glyphs | Three cards with 文 / 記 / 探, red node IDs and cyan destinations               |
+| Lab        | Outlined horizontal experiment rows           | Yellow IDs, white titles, status filters, stacked phone rows                    |
+| About      | Large yellow identity, two framed panels      | Introduction and interest panels; red rules and cyan arrows                     |
+| Mobile     | Yellow hero and black compact graph           | 64px navigation, full-width action, one-column cards and 44px filter targets    |
 
-## Visual and interaction review
+Intentional adaptations: no game artwork or logos; generated slogans and invented tags are omitted. Actual supplied descriptions, project destinations and statuses are preserved. Fonts use available open-source families; the display is condensed rather than an exact game wordmark. The mobile graph retains the desktop network at a smaller size. Generated phone-frame chrome is omitted.
 
-The actual render was inspected in the Codex in-app browser. The concept and render images were also opened with `view_image` in the same review pass. No Playwright browser fallback was required.
+Above-the-fold copy audit: public identity remains KE JINCAI, Japanese lines are 作る。学ぶ。記録する。, role remains Software Engineer / AI / Web / Data / Photography, and the primary action remains VIEW PROJECTS. No invented biography or release history was added.
 
-Desktop was inspected at the native home-concept size, **1536 × 1024**. Mobile was inspected at **390 × 844** and **320px** width; tablet at **768px** and **1024px**. Home, Projects, CoBRA Detail and About had document widths equal to their viewports at the three smaller widths.
+## Review
 
-| Comparison     | Concept evidence                                        | Render evidence / decision                                                                                      |
-| -------------- | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-| Identity       | Home and About final concepts use KE JINCAI             | Chinese personal name removed from source, specification and retained references                                |
-| Hierarchy      | Large Latin title, three Japanese lines, primary action | Desktop and mobile captures preserve the order; a cyan period is a deliberate identity accent                   |
-| Layout         | Left hero copy / right circular graph                   | Two columns on desktop, graph below the action on mobile; maximum width follows the written spec                |
-| Palette        | Near-black backdrop, quiet cyan, dark lines             | No purple, RGB, city imagery or neon glow; reference cards' lighter borders were reduced to the written palette |
-| Typography     | Sans display / monospace metadata / Japanese body       | Self-hosted families with defined sizes for headings, buttons, metadata and mobile text                         |
-| Node cards     | Three independent rectangular nodes                     | Titles, purpose, status and external arrows retained; complete descriptions follow the supplied spec            |
-| Lab            | Horizontal ruled experiment rows                        | Same ordered entries; mobile stacks identifiers and titles; working filters have explicit empty states          |
-| Motion         | Quiet network movement                                  | Slow drift, pulse and data packet; reduced motion also pauses SVG animation                                     |
-| Footer / About | Concise node identity and interest list                 | No invented timeline, percentages, personal email or biography                                                  |
+The in-app browser was inspected first. Its screenshot and viewport override disagreed, so Chrome was used through the same browser-control tool for reliable retained captures. Desktop screenshot is 1396 × 931, phone screenshot 390 × 844. DOM measurements additionally cover 320px, 768px, 1024px and 1536px widths.
 
-The above-the-fold copy was checked against the supplied content and final reference. Intentional differences: the cyan name period, small network labels, six content-derived status fields, scroll cue placed on the left for desktop. The supplemental section concept's invented HOME / NODES navigation and slogans are not implemented; the supplied PROJECTS / LAB / ABOUT labels are used consistently.
+The menu, filters and network now initialize immediately and on Astro navigation with duplicate-binding guards. This resolves initial-load timing in Astro's inline module scripts. Reduced motion pauses SVG animation and removes CSS movement.
 
-Functional review covered mobile menu expansion and close on navigation, Lab ALL / IDEA / ACTIVE / empty PROTOTYPE states, CoBRA detail, the next experiment route, and external link destinations. Publishing dates describe directory entries rather than original project releases.
-
-The implementation preserves the requested design direction with these documented adaptations. The retained screenshots are repository preview assets, not temporary test captures. No remaining clipping or horizontal overflow was observed in the checked views.
-
-## Performance repair
-
-The first mobile Lighthouse run revealed full Japanese font files of about 1 MB each. Build-time subsetting now produces files of about 9 KB each from the current source corpus, preserving self-hosted typography. The accessible name override on node links was also removed so their visible content provides the accessible name.
+See [release verification](../VERIFICATION.md) for checks. Retained [screenshots](../images/) show actual renders.
