@@ -88,8 +88,11 @@ Open **http://localhost:4321**.
 | `npm run check`        | Validate Astro and TypeScript       |
 | `npm run build`        | Generate the static site in `dist/` |
 | `npm run preview`      | Serve the production build locally  |
+| `npm run deploy`       | Build and deploy to Cloudflare      |
 | `npm run format`       | Format source and documentation     |
 | `npm run format:check` | Check formatting in CI              |
+
+Mobile Lighthouse on production: **99 performance / 100 accessibility / 100 best practices / 100 SEO**. [Verification details](docs/VERIFICATION.md).
 
 ## Built with
 
@@ -108,7 +111,7 @@ src/
 ├── layouts/          Shared metadata and page shell
 ├── pages/            Home, projects, lab, about, 404 and RSS
 └── styles/           Design tokens and responsive rules
-public/               Favicon, social image and Cloudflare Pages headers
+public/               Favicon, social image and static-asset headers
 docs/                 Design references, previews and publishing guides
 ```
 
