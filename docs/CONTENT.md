@@ -23,3 +23,7 @@ The previous assistant-selected lab entries and their detail routes have been re
 Use KE JINCAI / KEJINCAI.DEV for public personal identity. Do not publish the Chinese personal name. Use original photographs if photography is added; do not invent media or activity feeds.
 
 Featured project icons are authored in `src/components/ProjectIcon.astro`; independent site icons are in `src/components/NodeIcon.astro`. All six use original angular SVG paths in yellow, cyan and red instead of font glyphs or default icon-library assets.
+
+## Language and voice
+
+Public UI, project descriptions, metadata and RSS use English and Japanese. Copy uses short operational labels (BOOT, PAYLOAD, UPLINK, SIGNAL) paired with concrete Japanese descriptions. Chinese is reserved for internal specifications, never the public interface.

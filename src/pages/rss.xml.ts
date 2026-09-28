@@ -4,7 +4,8 @@ import { portfolioGroups } from '../data/portfolio';
 export async function GET(context: APIContext) {
   return rss({
     title: 'KEJINCAI.DEV — Projects',
-    description: '精选项目、有趣的实验与小工具。',
+    description:
+      'Selected systems, experiments and utilities. 東京ノードの実装ログ。',
     site: context.site!,
     items: portfolioGroups.flatMap((group) =>
       group.projects.map((project) => ({
@@ -13,6 +14,6 @@ export async function GET(context: APIContext) {
         link: `https://github.com/kekincai/${project.repo}`,
       })),
     ),
-    customData: '<language>zh-CN</language>',
+    customData: '<language>ja</language>',
   });
 }

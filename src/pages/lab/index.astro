@@ -7,18 +7,18 @@ const groups = portfolioGroups.slice(1);
 
 <BaseLayout
   title="Lab — KEJINCAI.DEV"
-  description="一些有趣的实验和小工具：书签、设计模式、TaskPaper、文件查重、Racket、网速、笔记导出、贪吃蛇与播客自动化。"
+  description="Side channel: bookmarks, design patterns, TaskPaper, file scanning and small utilities. 実験とツールのログ。"
 >
   <div class="container page-content lab-ledger">
     <div class="page-heading">
       <p class="eyebrow yellow">SIDE PROJECTS / SMALL TOOLS</p>
       <h1>Experiments & tools.</h1>
-      <p lang="zh-CN">一些好玩的尝试，和解决具体问题的小工具。</p>
+      <p lang="ja">SMALL BUILDS. 気になることを試し、日常の手間を減らす。</p>
     </div>
     {groups.map((group) => (
       <section class="side-group" aria-labelledby={`heading-${group.id}`}>
         <div class="side-group-heading">
-          <h2 id={`heading-${group.id}`} lang="zh-CN">
+          <h2 id={`heading-${group.id}`} lang="ja">
             {group.label}
           </h2>
           <span class="micro">
@@ -39,7 +39,7 @@ const groups = portfolioGroups.slice(1);
                 </span>
                 <div>
                   <h3>{project.name}</h3>
-                  <p lang="zh-CN">{project.description}</p>
+                  <p lang="ja">{project.description}</p>
                 </div>
                 <span class="side-tags micro">
                   {project.tags.slice(0, 2).join(' / ')}

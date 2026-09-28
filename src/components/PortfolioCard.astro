@@ -23,10 +23,8 @@ const { project, number, featured = false } = Astro.props;
   <div class="work-card-main">
     <ProjectIcon repo={project.repo} />
     <div>
-      <h3 lang={project.repo === 'yinxiang-exporter' ? 'zh-CN' : 'en'}>
-        {project.name}
-      </h3>
-      <p class="work-description" lang="zh-CN">
+      <h3 lang="en">{project.name}</h3>
+      <p class="work-description" lang="ja">
         {project.description}
       </p>
     </div>

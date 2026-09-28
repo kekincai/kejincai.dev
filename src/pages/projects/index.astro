@@ -10,15 +10,19 @@ import { portfolioGroups } from '../../data/portfolio';
 
 <BaseLayout
   title="Projects — KEJINCAI.DEV"
-  description="精选作品：Infinity New Tab、Disk Ferry 与 Safe Clip。三个日常使用的软件项目，以及三个独立网站入口。"
+  description="Three systems for everyday use: Infinity New Tab, Disk Ferry and Safe Clip. 東京発のソフトウェアと独立ノード。"
 >
   <div class="container page-content">
     <div class="page-heading">
       <p class="eyebrow yellow">SELECTED WORK / 03</p>
-      <h1>Made to be used.</h1>
-      <p lang="zh-CN">三个认真打磨、日常用得上的软件。</p>
+      <h1>Systems online.</h1>
+      <p lang="ja">THREE SYSTEMS. 日常で使うために、組み上げた。</p>
     </div>
-    <section class="portfolio-section" id="selected" aria-label="精选项目">
+    <section
+      class="portfolio-section"
+      id="selected"
+      aria-label="SELECTED / 実装記録"
+    >
       <div class="work-grid work-grid-featured">
         {portfolioGroups[0].projects.map((project, index) => (
           <PortfolioCard
@@ -33,7 +37,7 @@ import { portfolioGroups } from '../../data/portfolio';
       <SectionHeading
         label="CONNECTED NODES"
         title="Connected worlds."
-        description="独立网站，持续记录。"
+        description="Independent nodes. 記録は続く。"
       />
       <div class="node-grid">
         {projects.map((project) => (
@@ -44,7 +48,7 @@ import { portfolioGroups } from '../../data/portfolio';
     <aside class="lab-invitation">
       <div>
         <p class="micro">SIDE PROJECTS / SMALL TOOLS</p>
-        <p lang="zh-CN">一些好玩的小实验和实用脚本，收在 Lab 里。</p>
+        <p lang="ja">SIDE CHANNEL OPEN. 小さな実験とスクリプトは Lab へ。</p>
       </div>
       <a class="text-link micro" href="/lab/">
         OPEN LAB <Arrow />

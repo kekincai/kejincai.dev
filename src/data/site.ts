@@ -15,30 +15,29 @@ export const projects = [
     name: '青空しおり',
     romanized: 'AOZORA SHIORI',
     category: 'LANGUAGE / LITERATURE',
-    description: '每日一页，从日本文学中学习日语。',
+    description: 'LITERATURE STREAM. 一日一頁、日本文学からことばを拾う。',
     url: 'https://aozora.kejincai.dev',
     domain: 'aozora.kejincai.dev',
-    symbol: '文',
   },
   {
     id: '02',
     name: 'PAUL.LOG',
     romanized: 'PAUL.LOG',
     category: 'AI / CODE / NOTES',
-    description: '一个人的 AI 学习现场。论文、代码、理解与记录。',
+    description:
+      'PERSONAL RESEARCH LOG. 論文を読み、コードを動かし、AI の理解を記録する。',
     url: 'https://blog.kejincai.dev',
     domain: 'blog.kejincai.dev',
-    symbol: '記',
   },
   {
     id: '03',
     name: 'FDE RADAR',
     romanized: 'FDE RADAR',
     category: 'AI / ENGINEERING / INTELLIGENCE',
-    description: 'Collect. Filter. Understand.',
+    description:
+      'SIGNAL INTELLIGENCE. AI / Engineering の情報を収集、選別、読み解く。',
     url: 'https://fde.kejincai.dev',
     domain: 'fde.kejincai.dev',
-    symbol: '探',
   },
 ] as const;
 
