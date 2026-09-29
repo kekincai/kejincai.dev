@@ -3,6 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
 ---
 
-<BaseLayout preloadImage="/images/portrait.webp">
+<BaseLayout
+  preloadImages={['/images/portrait-bg.webp', '/images/portrait-person.webp']}
+>
   <Hero />
 </BaseLayout>

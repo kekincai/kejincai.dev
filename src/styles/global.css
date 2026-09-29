@@ -381,8 +381,8 @@ p {
     0 78px,
     0 32px
   );
-  --pointer-x: 0px;
-  --pointer-y: 0px;
+  --tilt-x: 0;
+  --tilt-y: 0;
 }
 .node-network::before {
   content: '';
@@ -402,8 +402,43 @@ p {
 .network-svg {
   display: block;
   width: 100%;
-  transform: translate(var(--pointer-x), var(--pointer-y));
-  transition: transform 1.5s ease-out;
+}
+/* Spatial layers: the plate moves most and away from the viewer, the
+   portrait moves least and towards them. Amounts are in viewBox units. */
+.parallax {
+  transform-box: view-box;
+  transform-origin: 300px 300px;
+  will-change: transform;
+}
+.parallax-bg {
+  transform: translate(calc(var(--tilt-x) * -14px), calc(var(--tilt-y) * -11px))
+    scale(1.05);
+}
+.parallax-frame {
+  transform: translate(calc(var(--tilt-x) * -7px), calc(var(--tilt-y) * -5px));
+}
+.parallax-net {
+  transform: translate(calc(var(--tilt-x) * -4px), calc(var(--tilt-y) * -3px));
+}
+.parallax-person {
+  transform: translate(calc(var(--tilt-x) * 5px), calc(var(--tilt-y) * 4px))
+    scale(1.02);
+}
+.spatial-toggle {
+  position: absolute;
+  left: 50%;
+  bottom: 58px;
+  z-index: 2;
+  padding: 8px 14px;
+  transform: translateX(-50%);
+  border: 1px solid var(--cyan);
+  background: rgba(3, 12, 14, 0.85);
+  color: var(--cyan);
+  letter-spacing: 2px;
+}
+.spatial-toggle:focus-visible {
+  outline: 2px solid var(--yellow);
+  outline-offset: 2px;
 }
 .network-top,
 .network-bottom {

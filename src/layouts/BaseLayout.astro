@@ -22,12 +22,12 @@ interface Props {
   title?: string;
   description?: string;
   // The page's largest image, fetched early at high priority.
-  preloadImage?: string;
+  preloadImages?: string[];
 }
 const {
   title = 'KEJINCAI.DEV — Personal AI Lab',
   description = site.description,
-  preloadImage,
+  preloadImages = [],
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -45,9 +45,9 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     {[barlow800, barlow700].map((href) => (
       <link rel="preload" as="font" type="font/woff2" href={href} crossorigin />
     ))}
-    {preloadImage && (
-      <link rel="preload" as="image" href={preloadImage} fetchpriority="high" />
-    )}
+    {preloadImages.map((href) => (
+      <link rel="preload" as="image" href={href} fetchpriority="high" />
+    ))}
     <link
       rel="alternate"
       type="application/rss+xml"

@@ -24,12 +24,12 @@ const edges = [
 ];
 ---
 
-<div class="node-network" aria-hidden="true">
-  <div class="network-top micro">
+<div class="node-network">
+  <div class="network-top micro" aria-hidden="true">
     <span>// PERSONAL AI NODE</span>
     <span class="network-mark">/////</span>
   </div>
-  <svg class="network-svg" viewBox="0 0 600 600" fill="none">
+  <svg class="network-svg" viewBox="0 0 600 600" fill="none" aria-hidden="true">
     <defs>
       <pattern
         id="network-dots"
@@ -45,83 +45,106 @@ const edges = [
         <stop offset="1" stop-color="#09090B" stop-opacity=".55" />
       </linearGradient>
     </defs>
-    <image
-      class="network-portrait"
-      href="/images/portrait.webp"
-      width="600"
-      height="600"
-      preserveAspectRatio="xMidYMid slice"
-    />
-    <rect width="600" height="600" fill="url(#portrait-shade)" />
-    <rect x="25" y="25" width="550" height="550" fill="url(#network-dots)" />
-    <g class="orbit-frame" stroke="#FCEE0A" stroke-width=".8">
-      <path
-        d="M30 145V70l35-35h95m40 0h195l45 45h105v100M570 220v220l-50 50h-65m-50 80H145L90 515H30V410"
-        opacity=".55"
+    <!-- Spatial layers, back to front: city plate, orbit frame, network,
+         the segmented portrait with its reticle, then the fixed HUD. -->
+    <g class="parallax parallax-bg">
+      <image
+        class="network-portrait"
+        href="/images/portrait-bg.webp"
+        width="600"
+        height="600"
+        preserveAspectRatio="xMidYMid slice"
       />
-      <circle cx="300" cy="300" r="248" stroke-dasharray="1 5" opacity=".45" />
-      <path d="M300 35v530M35 300h530" stroke-dasharray="3 8" opacity=".2" />
-      <path
-        d="M50 50h18m-9-9v18m473-9h18m-9-9v18M50 550h18m-9-9v18m473-9h18m-9-9v18"
-        stroke-width="1.5"
-      />
-      <path d="M300 40v17m0 486v17M40 300h17m486 0h17" stroke-width="2" />
+      <rect width="600" height="600" fill="url(#portrait-shade)" />
+      <rect x="25" y="25" width="550" height="550" fill="url(#network-dots)" />
     </g>
-    <g class="network-drift">
-      <g stroke="#00F0FF" stroke-opacity=".42" stroke-width=".9">
-        {edges.map(([a, b]) => (
-          <line
-            x1={nodes[a][0]}
-            y1={nodes[a][1]}
-            x2={nodes[b][0]}
-            y2={nodes[b][1]}
+    <g class="parallax parallax-frame">
+      <g class="orbit-frame" stroke="#FCEE0A" stroke-width=".8">
+        <path
+          d="M30 145V70l35-35h95m40 0h195l45 45h105v100M570 220v220l-50 50h-65m-50 80H145L90 515H30V410"
+          opacity=".55"
+        />
+        <circle
+          cx="300"
+          cy="300"
+          r="248"
+          stroke-dasharray="1 5"
+          opacity=".45"
+        />
+        <path d="M300 35v530M35 300h530" stroke-dasharray="3 8" opacity=".2" />
+        <path
+          d="M50 50h18m-9-9v18m473-9h18m-9-9v18M50 550h18m-9-9v18m473-9h18m-9-9v18"
+          stroke-width="1.5"
+        />
+        <path d="M300 40v17m0 486v17M40 300h17m486 0h17" stroke-width="2" />
+      </g>
+    </g>
+    <g class="parallax parallax-net">
+      <g class="network-drift">
+        <g stroke="#00F0FF" stroke-opacity=".42" stroke-width=".9">
+          {edges.map(([a, b]) => (
+            <line
+              x1={nodes[a][0]}
+              y1={nodes[a][1]}
+              x2={nodes[b][0]}
+              y2={nodes[b][1]}
+            />
+          ))}
+        </g>
+        {nodes.slice(1).map(([x, y], i) => (
+          <circle
+            cx={x}
+            cy={y}
+            r={i % 3 === 0 ? 4.5 : 3}
+            fill={i % 4 === 0 ? '#E8EDF2' : '#00F0FF'}
           />
         ))}
+        <circle class="data-packet" r="3" fill="#FCEE0A">
+          <animateMotion
+            dur="14s"
+            repeatCount="indefinite"
+            path="M300 75 L391 160 L300 300 L188 300 L300 525 L391 440 L300 300 L300 75"
+          />
+        </circle>
       </g>
-      {nodes.slice(1).map(([x, y], i) => (
-        <circle
-          cx={x}
-          cy={y}
-          r={i % 3 === 0 ? 4.5 : 3}
-          fill={i % 4 === 0 ? '#E8EDF2' : '#00F0FF'}
-        />
-      ))}
-      <circle class="data-packet" r="3" fill="#FCEE0A">
-        <animateMotion
-          dur="14s"
-          repeatCount="indefinite"
-          path="M300 75 L391 160 L300 300 L188 300 L300 525 L391 440 L300 300 L300 75"
-        />
-      </circle>
+      <circle cx="300" cy="300" r="5" fill="#FCEE0A" />
     </g>
-    <circle cx="300" cy="300" r="5" fill="#FCEE0A" />
-    <g class="portrait-reticle">
-      <circle
-        class="node-pulse"
-        cx="337"
-        cy="240"
-        r="26"
-        stroke="#FCEE0A"
-        stroke-width="1"
+    <g class="parallax parallax-person">
+      <image
+        class="network-person"
+        href="/images/portrait-person.webp"
+        width="600"
+        height="600"
+        preserveAspectRatio="xMidYMid slice"
       />
-      <circle cx="337" cy="240" r="13" stroke="#00F0FF" stroke-width="2" />
-      <path
-        d="M337 206v12m0 44v12M303 240h12m44 0h12"
-        stroke="#FCEE0A"
-        stroke-width="2"
-      />
-      <path d="M363 240h37l14-14h74" stroke="#FCEE0A" stroke-width="1" />
-      <rect x="418" y="212" width="150" height="15" fill="#09090B" />
-      <text
-        x="422"
-        y="223"
-        fill="#FCEE0A"
-        font-size="10"
-        font-family="IBM Plex Mono, monospace"
-        letter-spacing="1.5"
-      >
-        ROOT NODE // KE JINCAI
-      </text>
+      <g class="portrait-reticle">
+        <circle
+          class="node-pulse"
+          cx="337"
+          cy="240"
+          r="26"
+          stroke="#FCEE0A"
+          stroke-width="1"
+        />
+        <circle cx="337" cy="240" r="13" stroke="#00F0FF" stroke-width="2" />
+        <path
+          d="M337 206v12m0 44v12M303 240h12m44 0h12"
+          stroke="#FCEE0A"
+          stroke-width="2"
+        />
+        <path d="M363 240h37l14-14h74" stroke="#FCEE0A" stroke-width="1" />
+        <rect x="418" y="212" width="150" height="15" fill="#09090B" />
+        <text
+          x="422"
+          y="223"
+          fill="#FCEE0A"
+          font-size="10"
+          font-family="IBM Plex Mono, monospace"
+          letter-spacing="1.5"
+        >
+          ROOT NODE // KE JINCAI
+        </text>
+      </g>
     </g>
     <path
       d="M400 52h105l30 30M75 515H45v-75"
@@ -134,7 +157,10 @@ const edges = [
       stroke-width="3"
     />
   </svg>
-  <div class="network-bottom micro">
+  <button class="spatial-toggle micro" type="button" hidden>
+    TAP // SPATIAL
+  </button>
+  <div class="network-bottom micro" aria-hidden="true">
     <span>TOKYO / JAPAN</span>
     <span class="online">
       <i></i> CONNECTED
@@ -142,13 +168,17 @@ const edges = [
   </div>
 </div>
 <script>
+  // Spatial photo: layers shift by --tilt-x / --tilt-y in [-1, 1], driven by
+  // the mouse on desktop and the gyroscope on phones. iOS only exposes
+  // orientation after a tap grants permission.
+  type OrientationPermission = { requestPermission?: () => Promise<string> };
   const initialized = new WeakSet<Element>();
   function setupNetwork() {
     const graph = document.querySelector<HTMLElement>('.node-network');
-    if (!graph) return;
-    if (initialized.has(graph)) return;
+    if (!graph || initialized.has(graph)) return;
     initialized.add(graph);
     const svg = graph.querySelector<SVGSVGElement>('svg');
+    const toggle = graph.querySelector<HTMLButtonElement>('.spatial-toggle');
     const motion = matchMedia('(prefers-reduced-motion: reduce)');
     const syncMotion = () => {
       if (motion.matches) svg?.pauseAnimations();
@@ -156,27 +186,78 @@ const edges = [
     };
     syncMotion();
     motion.addEventListener('change', syncMotion);
+
+    const target = { x: 0, y: 0 };
+    const current = { x: 0, y: 0 };
+    let frame = 0;
+    const step = () => {
+      current.x += (target.x - current.x) * 0.12;
+      current.y += (target.y - current.y) * 0.12;
+      graph.style.setProperty('--tilt-x', current.x.toFixed(3));
+      graph.style.setProperty('--tilt-y', current.y.toFixed(3));
+      const settled =
+        Math.abs(target.x - current.x) < 0.002 &&
+        Math.abs(target.y - current.y) < 0.002;
+      frame = settled ? 0 : requestAnimationFrame(step);
+    };
+    const aim = (x: number, y: number) => {
+      if (motion.matches) return;
+      target.x = Math.max(-1, Math.min(1, x));
+      target.y = Math.max(-1, Math.min(1, y));
+      if (!frame) frame = requestAnimationFrame(step);
+    };
+
+    graph.addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      const rect = graph.getBoundingClientRect();
+      aim(
+        ((e.clientX - rect.left) / rect.width - 0.5) * 2,
+        ((e.clientY - rect.top) / rect.height - 0.5) * 2,
+      );
+    });
+    graph.addEventListener('pointerleave', () => aim(0, 0));
+
+    // Gyroscope: tilt relative to a resting angle that slowly re-centres,
+    // so holding the phone at any angle feels neutral.
+    let rest: { beta: number; gamma: number } | null = null;
+    const onOrient = (e: DeviceOrientationEvent) => {
+      if (e.beta === null || e.gamma === null) return;
+      rest ??= { beta: e.beta, gamma: e.gamma };
+      rest.beta += (e.beta - rest.beta) * 0.02;
+      rest.gamma += (e.gamma - rest.gamma) * 0.02;
+      aim((e.gamma - rest.gamma) / 18, (e.beta - rest.beta) / 18);
+    };
+    const listen = () => addEventListener('deviceorientation', onOrient);
+    const coarse = matchMedia('(pointer: coarse)').matches;
+    const Orientation = (globalThis.DeviceOrientationEvent ??
+      undefined) as unknown as OrientationPermission | undefined;
+    if (coarse && !motion.matches && Orientation) {
+      if (typeof Orientation.requestPermission === 'function') {
+        if (toggle) {
+          toggle.hidden = false;
+          toggle.addEventListener('click', async () => {
+            try {
+              if ((await Orientation.requestPermission!()) === 'granted') {
+                listen();
+              }
+            } catch {}
+            toggle.hidden = true;
+          });
+        }
+      } else {
+        listen();
+      }
+    }
+
     document.addEventListener(
       'astro:before-swap',
-      () => motion.removeEventListener('change', syncMotion),
+      () => {
+        motion.removeEventListener('change', syncMotion);
+        removeEventListener('deviceorientation', onOrient);
+        cancelAnimationFrame(frame);
+      },
       { once: true },
     );
-    graph.addEventListener('pointermove', (e) => {
-      if (e.pointerType !== 'mouse' || motion.matches) return;
-      const rect = graph.getBoundingClientRect();
-      graph.style.setProperty(
-        '--pointer-x',
-        `${((e.clientX - rect.left) / rect.width - 0.5) * 8}px`,
-      );
-      graph.style.setProperty(
-        '--pointer-y',
-        `${((e.clientY - rect.top) / rect.height - 0.5) * 8}px`,
-      );
-    });
-    graph.addEventListener('pointerleave', () => {
-      graph.style.setProperty('--pointer-x', '0px');
-      graph.style.setProperty('--pointer-y', '0px');
-    });
   }
   document.addEventListener('astro:page-load', setupNetwork);
   setupNetwork();
