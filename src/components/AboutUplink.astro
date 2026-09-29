@@ -5,11 +5,8 @@ import Directives from './Directives.astro';
 import { site } from '../data/site';
 interface Props {
   label: string;
-  // The closing button; About points it elsewhere so it never links to itself.
-  action?: { label: string; href: string };
 }
-const { label, action = { label: 'MEET THE NODE', href: '/about/' } } =
-  Astro.props;
+const { label } = Astro.props;
 ---
 
 <section class="uplink" data-header-ink="dark" aria-labelledby="uplink-title">
@@ -36,8 +33,8 @@ const { label, action = { label: 'MEET THE NODE', href: '/about/' } } =
         SEND SIGNAL <Arrow />
       </a>
     </div>
-    <a class="text-link text-link-dark micro" href={action.href}>
-      {action.label} <Arrow />
+    <a class="text-link text-link-dark micro" href="/about/">
+      MEET THE NODE <Arrow />
     </a>
   </div>
   <SkylineEdge position="bottom" />

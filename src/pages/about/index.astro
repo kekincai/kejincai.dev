@@ -2,9 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Arrow from '../../components/Arrow.astro';
 import SkylineEdge from '../../components/SkylineEdge.astro';
-import AboutUplink from '../../components/AboutUplink.astro';
-import { site, projects } from '../../data/site';
-import { portfolioGroups, portfolioCount } from '../../data/portfolio';
+import { site } from '../../data/site';
 
 // Each interest points at the owner's own published work.
 const interests = [
@@ -13,16 +11,6 @@ const interests = [
   { label: 'Data', note: 'DEDUP / YINXIANG EXPORTER' },
   { label: 'Language', note: '青空しおり / 日本語' },
   { label: 'Photography', note: 'TOKYO NODE' },
-];
-const selected = portfolioGroups[0].projects.length;
-const stats = [
-  { value: selected, label: 'SELECTED SYSTEMS', href: '/projects/' },
-  { value: portfolioCount - selected, label: 'LAB ENTRIES', href: '/lab/' },
-  {
-    value: projects.length,
-    label: 'CONNECTED NODES',
-    href: '/projects/#node-board-title',
-  },
 ];
 ---
 
@@ -111,7 +99,7 @@ const stats = [
             </p>
             <div class="about-log-copy" lang="ja">
               <p>TOKYO NODE. 実装と実験の記録を、このノードに集める。</p>
-              <p>JACK IN. BUILD. LOG. 次のアイデアへ、回線は開いたまま。</p>
+              <p>次のアイデアへ、回線は開いたまま。</p>
             </div>
           </div>
         </article>
@@ -129,22 +117,4 @@ const stats = [
       </div>
     </div>
   </section>
-
-  <section class="about-stats" aria-label="Node summary">
-    <div class="container about-stats-inner">
-      {stats.map((stat) => (
-        <a href={stat.href}>
-          <strong>{String(stat.value).padStart(2, '0')}</strong>
-          <span class="micro">
-            {stat.label} <Arrow />
-          </span>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <AboutUplink
-    label="/// 02 .ABOUT.MODULE_UPLINK"
-    action={{ label: 'VIEW PROJECTS', href: '/projects/' }}
-  />
 </BaseLayout>
