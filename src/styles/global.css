@@ -412,17 +412,17 @@ p {
   will-change: transform;
 }
 .parallax-bg {
-  transform: translate(calc(var(--tilt-x) * -14px), calc(var(--tilt-y) * -11px))
+  transform: translate(calc(var(--tilt-x) * -10px), calc(var(--tilt-y) * -8px))
     scale(1.05);
 }
 .parallax-frame {
-  transform: translate(calc(var(--tilt-x) * -7px), calc(var(--tilt-y) * -5px));
+  transform: translate(calc(var(--tilt-x) * -8px), calc(var(--tilt-y) * -6px));
 }
 .parallax-net {
-  transform: translate(calc(var(--tilt-x) * -4px), calc(var(--tilt-y) * -3px));
+  transform: translate(calc(var(--tilt-x) * -6px), calc(var(--tilt-y) * -5px));
 }
 .parallax-person {
-  transform: translate(calc(var(--tilt-x) * 5px), calc(var(--tilt-y) * 4px))
+  transform: translate(calc(var(--tilt-x) * 3px), calc(var(--tilt-y) * 2px))
     scale(1.05);
 }
 .spatial-toggle {
