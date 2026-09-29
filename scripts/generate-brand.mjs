@@ -18,7 +18,6 @@ const graphic = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="63
 <g stroke="#FCEE0A" fill="none"><circle cx="944" cy="294" r="22"/><path d="M944 264v10m0 40v10M914 294h10m40 0h10"/></g><g fill="#00F0FF"><circle cx="920" cy="172" r="4"/><circle cx="1050" cy="248" r="4"/><circle cx="1049" cy="402" r="4"/><circle cx="920" cy="479" r="4"/><circle cx="786" cy="402" r="4"/><circle cx="787" cy="248" r="4"/></g>
 <g font-family="monospace" font-size="13" fill="#00F0FF"><text x="724" y="146">PERSONAL AI NODE</text><text x="973" y="550">CONNECTED</text></g>
 <path d="M54 464h453l23 23v50H54z" fill="#09090B"/><text x="80" y="511" font-family="monospace" font-size="26" fill="#FCEE0A">PERSONAL AI LAB →</text>
-<text x="54" y="587" font-family="monospace" font-size="16">SOFTWARE / AI / WEB / DATA / PHOTOGRAPHY</text>
 </svg>`;
 await sharp(Buffer.from(graphic)).png().toFile('public/og.png');
 await sharp(Buffer.from(graphic))

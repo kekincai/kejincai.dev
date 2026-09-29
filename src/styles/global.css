@@ -355,20 +355,6 @@ p {
   line-height: 1.3;
   white-space: nowrap;
 }
-.hero-description {
-  padding-left: 27px;
-  border-left: 1px solid var(--bg-main);
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 22px;
-  font-weight: 600;
-  line-height: 1.5;
-}
-.hero-description .mono {
-  font-size: 11px;
-  font-weight: 400;
-  line-height: 1.8;
-  max-width: 210px;
-}
 .name-dot {
   color: var(--red);
 }
@@ -632,13 +618,6 @@ p {
   .hero-japanese {
     font-size: 23px;
   }
-  .hero-description {
-    padding-left: 17px;
-    font-size: 19px;
-  }
-  .hero-description .mono {
-    font-size: 10px;
-  }
 }
 @media (max-width: 760px) {
   .container {
@@ -665,10 +644,6 @@ p {
     flex-direction: column;
     align-items: start;
     gap: 17px;
-  }
-  .hero-description {
-    border: 0;
-    padding-left: 0;
   }
   .node-network {
     padding: 22px 9px;
@@ -735,20 +710,15 @@ p {
     font-size: 30px;
     line-height: 1.32;
   }
-  .hero-description {
-    font-size: 22px;
-  }
-  .hero-description .mono {
-    font-size: 10px;
-    max-width: none;
-  }
+  /* Phones lead with the portrait, then the name and directives. */
   .node-network {
+    order: -1;
     width: 100%;
     padding: 20px 12px 23px;
-    margin-top: 27px;
+    margin: 0 0 30px;
   }
   .network-svg {
-    max-width: 290px;
+    max-width: 360px;
     margin: auto;
   }
   .network-top,
@@ -1771,6 +1741,7 @@ a.cp-button:focus-visible::before {
 /* Official-site newsletter module, repurposed as an e-mail uplink. */
 .uplink-form {
   display: flex;
+  flex-wrap: wrap;
   align-items: end;
   gap: 18px;
   width: min(560px, 100%);
@@ -1815,6 +1786,22 @@ a.cp-button:focus-visible::before {
   transition:
     background 0.2s,
     color 0.2s;
+}
+.uplink-status {
+  flex-basis: 100%;
+  margin-top: 4px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.uplink-status .micro {
+  margin-right: 8px;
+  color: var(--bg-main);
+  font-weight: 500;
+}
+.uplink-status a {
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .uplink-send .arrow {
   width: 16px;
