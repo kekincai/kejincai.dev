@@ -1,24 +1,26 @@
 ---
 import Arrow from './Arrow.astro';
 import SkylineEdge from './SkylineEdge.astro';
+import Directives from './Directives.astro';
 import { site } from '../data/site';
 interface Props {
   label: string;
+  // The closing button; About points it elsewhere so it never links to itself.
+  action?: { label: string; href: string };
 }
-const { label } = Astro.props;
+const { label, action = { label: 'MEET THE NODE', href: '/about/' } } =
+  Astro.props;
 ---
 
 <section class="uplink" data-header-ink="dark" aria-labelledby="uplink-title">
   <SkylineEdge position="top" />
   <div class="container uplink-inner">
     <p class="micro">{label}</p>
-    <h2 id="uplink-title" lang="ja">
-      <span>構築。</span>
-      <span>解析。</span>
-      <span>記録。</span>
+    <h2 id="uplink-title">
+      <Directives inline />
     </h2>
     <p class="uplink-lead">
-      SOFTWARE ENGINEER / TOKYO NODE. BUILD. LEARN. LOG. / 次の信号へ。
+      SOFTWARE ENGINEER / TOKYO NODE. JACK IN. BUILD. LOG. / 次の信号へ。
     </p>
     <div class="poster-brackets" aria-hidden="true">
       <span></span>
@@ -34,8 +36,8 @@ const { label } = Astro.props;
         SEND SIGNAL <Arrow />
       </a>
     </div>
-    <a class="text-link text-link-dark micro" href="/about/">
-      MEET THE NODE <Arrow />
+    <a class="text-link text-link-dark micro" href={action.href}>
+      {action.label} <Arrow />
     </a>
   </div>
   <SkylineEdge position="bottom" />

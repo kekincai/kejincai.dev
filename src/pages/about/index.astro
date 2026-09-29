@@ -1,68 +1,150 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Arrow from '../../components/Arrow.astro';
-import { site } from '../../data/site';
+import SkylineEdge from '../../components/SkylineEdge.astro';
+import AboutUplink from '../../components/AboutUplink.astro';
+import { site, projects } from '../../data/site';
+import { portfolioGroups, portfolioCount } from '../../data/portfolio';
+
+// Each interest points at the owner's own published work.
+const interests = [
+  { label: 'AI', note: 'PAUL.LOG / FDE RADAR / TASKPAPER MCP' },
+  { label: 'Software Engineering', note: 'DISK FERRY / SAFE CLIP' },
+  { label: 'Data', note: 'DEDUP / YINXIANG EXPORTER' },
+  { label: 'Language', note: '青空しおり / 日本語' },
+  { label: 'Photography', note: 'TOKYO NODE' },
+];
+const selected = portfolioGroups[0].projects.length;
+const stats = [
+  { value: selected, label: 'SELECTED SYSTEMS', href: '/projects/' },
+  { value: portfolioCount - selected, label: 'LAB ENTRIES', href: '/lab/' },
+  {
+    value: projects.length,
+    label: 'CONNECTED NODES',
+    href: '/projects/#node-board-title',
+  },
+];
 ---
 
 <BaseLayout
   title="About Node — KEJINCAI.DEV"
   description="Ke Jincai, a software engineer based in Tokyo. Interested in AI, software engineering, data, language and photography."
 >
-  <div class="container page-content about-page">
-    <div class="page-heading">
-      <p class="eyebrow yellow">ABOUT NODE</p>
-      <h1>
-        KE JINCAI<span class="name-dot">.</span>
-      </h1>
-      <p>SOFTWARE ENGINEER / TOKYO NODE.</p>
-    </div>
-    <div class="about-grid">
-      <div class="about-story">
-        <h2 lang="ja">構築。解析。記録。</h2>
-        <div lang="ja">
-          <p>TOKYO NODE / 個人開発の接続点。</p>
-          <p>
-            ソフトウェア、AI、データ。気になる信号を拾い、コードに変える。実装と実験の記録を、このノードに集める。
-          </p>
-          <p>BUILD. LEARN. LOG. 次のアイデアへ、回線は開いたまま。</p>
+  <section class="about-hero" data-header-ink="dark">
+    <div class="container about-hero-inner">
+      <div class="about-hero-copy">
+        <p class="micro">/// .ABOUT.MODULE_ID</p>
+        <h1>
+          KE JINCAI<span class="name-dot">.</span>
+        </h1>
+        <p class="about-hero-role">SOFTWARE ENGINEER / TOKYO NODE.</p>
+        <p class="about-hero-lead" lang="ja">
+          ソフトウェア、AI、データ。気になる信号を拾い、コードに変える。
+        </p>
+      </div>
+      <aside class="id-card" aria-label="Node ID">
+        <div class="id-card-top micro">
+          <span>NODE ID // 00</span>
+          <span class="online">
+            <i></i> ONLINE
+          </span>
         </div>
+        <div class="id-card-photo">
+          <img
+            src="/images/portrait.webp"
+            width="1000"
+            height="914"
+            alt="Ke Jincai in a cyberpunk-styled portrait with a glowing cybernetic eye"
+          />
+          <span class="id-card-reticle" aria-hidden="true"></span>
+        </div>
+        <dl class="id-card-data">
+          <div>
+            <dt class="micro">NAME</dt>
+            <dd>KE JINCAI</dd>
+          </div>
+          <div>
+            <dt class="micro">ROLE</dt>
+            <dd>SOFTWARE ENGINEER</dd>
+          </div>
+          <div>
+            <dt class="micro">LOCATION</dt>
+            <dd>TOKYO, JP</dd>
+          </div>
+          <div>
+            <dt class="micro">UPLINK</dt>
+            <dd>
+              <a href={`mailto:${site.email}`}>{site.email}</a>
+            </dd>
+          </div>
+        </dl>
         <a
-          class="text-link micro"
+          class="cp-button"
           href={site.github}
           target="_blank"
           rel="noopener noreferrer"
         >
-          OPEN SOURCE LINK <Arrow diagonal />
+          GITHUB <Arrow diagonal />
         </a>
-        <p>
-          <a class="text-link micro" href={`mailto:${site.email}`}>
-            {site.email} <Arrow diagonal />
-          </a>
+      </aside>
+    </div>
+    <SkylineEdge position="bottom" />
+  </section>
+
+  <section class="about-profile" aria-labelledby="about-profile-title">
+    <div class="container">
+      <div class="node-board-heading">
+        <div>
+          <p class="micro">/// 01 .PROFILE.MODULE_LOG</p>
+          <h2 id="about-profile-title">Jack in. Build. Log.</h2>
+        </div>
+        <p class="micro node-board-count">
+          {String(interests.length).padStart(2, '0')} SIGNALS TRACKED
         </p>
       </div>
-      <div class="interests">
-        <h2 class="micro">INTERESTED IN</h2>
-        <ol>
-          {[
-            'AI',
-            'Software Engineering',
-            'Data',
-            'Language',
-            'Photography',
-          ].map((interest, i) => (
+      <div class="about-profile-grid">
+        <article class="about-log">
+          <span class="node-tile-label micro">LOG_00</span>
+          <div class="about-log-frame">
+            <p class="about-log-headline" lang="ja">
+              個人開発の接続点。
+            </p>
+            <div class="about-log-copy" lang="ja">
+              <p>TOKYO NODE. 実装と実験の記録を、このノードに集める。</p>
+              <p>JACK IN. BUILD. LOG. 次のアイデアへ、回線は開いたまま。</p>
+            </div>
+          </div>
+        </article>
+        <ol class="interest-grid" aria-label="Interested in">
+          {interests.map((interest, i) => (
             <li>
-              <span class="micro">{String(i + 1).padStart(2, '0')}</span>
-              {interest}
+              <span class="interest-index">
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <strong>{interest.label}</strong>
+              <span class="micro">{interest.note}</span>
             </li>
           ))}
         </ol>
       </div>
     </div>
-    <div class="about-end mono">
-      <span>TOKYO / PERSONAL NODE</span>
-      <span class="online">
-        <i></i> KEEP BUILDING
-      </span>
+  </section>
+
+  <section class="about-stats" aria-label="Node summary">
+    <div class="container about-stats-inner">
+      {stats.map((stat) => (
+        <a href={stat.href}>
+          <strong>{String(stat.value).padStart(2, '0')}</strong>
+          <span class="micro">
+            {stat.label} <Arrow />
+          </span>
+        </a>
+      ))}
     </div>
-  </div>
+  </section>
+
+  <AboutUplink
+    label="/// 02 .ABOUT.MODULE_UPLINK"
+    action={{ label: 'VIEW PROJECTS', href: '/projects/' }}
+  />
 </BaseLayout>

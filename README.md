@@ -6,8 +6,8 @@
 
 **A personal AI node, running in Tokyo.**
 
-作る。学ぶ。記録する。  
-Build. Learn. Keep a record.
+接続せよ。構築せよ。記録せよ。  
+Jack in. Build. Log.
 
 [![CI](https://github.com/kekincai/kejincai.dev/actions/workflows/ci.yml/badge.svg)](https://github.com/kekincai/kejincai.dev/actions/workflows/ci.yml)
 [![Astro](https://img.shields.io/badge/Astro-7-111722?style=flat-square&logo=astro&logoColor=E8EDF2)](https://astro.build)
@@ -32,7 +32,7 @@ A home for software projects, AI experiments, language study and digital memorie
 
 Actual browser captures of the implementation, not design mockups.
 
-[Project dossier](docs/images/projects.png) · [Mobile project posters](docs/images/projects-mobile.png) · [Lab](docs/images/lab.png)
+[Project dossier](docs/images/projects.png) · [Mobile project posters](docs/images/projects-mobile.png) · [Lab](docs/images/lab.png) · [About](docs/images/about.png)
 
 ![Desktop home page](docs/images/desktop.png)
 

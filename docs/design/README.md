@@ -16,6 +16,8 @@ The owner then asked for the layout to follow cyberpunk.net more closely. This p
 | Footer      | Centered link rows and legal line                   | `Footer.astro`; icon tiles and the phone menu were later removed at the owner's request                                                       |
 | Hero visual | Key art                                             | The owner's cyber portrait fills the radar in `NodeNetwork.astro`                                                                             |
 
+The About page follows the same system: a yellow ID band with the portrait cropped to the face on an ID card, a profile log in the news-module style, a stat strip and the closing uplink band. The earlier tagline 構築。解析。記録。 was replaced by the imperative 接続せよ。構築せよ。記録せよ。 with HUD tags, closer to the game's mission-directive voice.
+
 The portrait is the one exception to "no game artwork or logos": it contains the Cyberpunk 2077 wordmark and is kept whole because the owner asked for the complete image. Phones show only the logo in the header; navigation there goes through in-page actions and the footer. Mobile Safari needs `text-size-adjust: 100%` and no `aspect-ratio` combined with `min-height`, otherwise pinch zoom widens the layout.
 
 ## References

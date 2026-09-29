@@ -8,6 +8,13 @@ export const site = {
   repository: 'https://github.com/kekincai/kejincai.dev',
 };
 
+// The node's three standing orders, shown with their HUD tags.
+export const directives = [
+  { ja: '接続せよ。', tag: 'JACK_IN' },
+  { ja: '構築せよ。', tag: 'BUILD' },
+  { ja: '記録せよ。', tag: 'LOG' },
+] as const;
+
 // Editorial node status, not a live uptime probe.
 export const projects = [
   {

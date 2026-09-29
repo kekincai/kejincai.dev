@@ -1,0 +1,24 @@
+---
+import { directives } from '../data/site';
+interface Props {
+  class?: string;
+  inline?: boolean;
+}
+const { class: className, inline = false } = Astro.props;
+---
+
+<span
+  class:list={['directives', { 'directives-inline': inline }, className]}
+  lang="ja"
+>
+  {directives.map((directive, index) => (
+    <span class="directive">
+      <span class="directive-tag" lang="en" aria-hidden="true">
+        {`0${index + 1} // ${directive.tag}`}
+      </span>
+      <span class="directive-text" data-text={directive.ja}>
+        {directive.ja}
+      </span>
+    </span>
+  ))}
+</span>

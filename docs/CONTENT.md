@@ -32,4 +32,4 @@ Featured project icons are authored in `src/components/ProjectIcon.astro`; indep
 
 ## Language and voice
 
-Public UI, project descriptions, metadata and RSS use English and Japanese. Copy uses short operational labels (BOOT, PAYLOAD, UPLINK, SIGNAL) paired with concrete Japanese descriptions. Chinese is reserved for internal specifications, never the public interface.
+The standing tagline is 接続せよ。構築せよ。記録せよ。 (JACK IN / BUILD / LOG), defined once as `directives` in `src/data/site.ts` and rendered by `src/components/Directives.astro` with HUD tags and a chromatic split. Public UI, project descriptions, metadata and RSS use English and Japanese. Copy uses short operational labels (BOOT, PAYLOAD, UPLINK, SIGNAL) paired with concrete Japanese descriptions. Chinese is reserved for internal specifications, never the public interface.

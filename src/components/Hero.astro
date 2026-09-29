@@ -1,6 +1,7 @@
 ---
 import NodeNetwork from './NodeNetwork.astro';
 import Arrow from './Arrow.astro';
+import Directives from './Directives.astro';
 ---
 
 <section class="hero" data-header-ink="dark">
@@ -14,12 +15,8 @@ import Arrow from './Arrow.astro';
         </span>
       </h1>
       <div class="hero-meta">
-        <p class="hero-japanese" lang="ja">
-          構築。
-          <br />
-          解析。
-          <br />
-          記録。
+        <p class="hero-japanese">
+          <Directives />
         </p>
         <div class="hero-description">
           <p>Software Engineer</p>
