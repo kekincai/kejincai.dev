@@ -1,61 +1,117 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Arrow from '../../components/Arrow.astro';
-import { portfolioGroups } from '../../data/portfolio';
+import SkylineEdge from '../../components/SkylineEdge.astro';
+import { portfolioGroups, portfolioCount } from '../../data/portfolio';
+
 const groups = portfolioGroups.slice(1);
+const codes: Record<string, string> = { experiments: 'EXP', utilities: 'UTL' };
+const pad = (n: number) => String(n).padStart(2, '0');
+const selected = portfolioGroups[0].projects.length;
 ---
 
 <BaseLayout
   title="Lab — KEJINCAI.DEV"
   description="Side channel: bookmarks, design patterns, TaskPaper, file scanning and small utilities. 実験とツールのログ。"
 >
-  <div class="container page-content lab-ledger">
-    <div class="page-heading">
-      <p class="eyebrow yellow">SIDE PROJECTS / SMALL TOOLS</p>
-      <h1>Experiments & tools.</h1>
-      <p lang="ja">SMALL BUILDS. 気になることを試し、日常の手間を減らす。</p>
-    </div>
-    {groups.map((group) => (
-      <section class="side-group" aria-labelledby={`heading-${group.id}`}>
-        <div class="side-group-heading">
-          <h2 id={`heading-${group.id}`} lang="ja">
-            {group.label}
-          </h2>
-          <span class="micro">
-            {String(group.projects.length).padStart(2, '0')} ENTRIES
-          </span>
+  <section class="lab-hero" data-header-ink="dark">
+    <div class="container lab-hero-inner">
+      <div>
+        <p class="micro">/// .LAB.MODULE_SIDE_CHANNEL</p>
+        <h1>Experiments &amp; tools.</h1>
+        <p class="about-hero-lead" lang="ja">
+          SMALL BUILDS. 気になることを試し、日常の手間を減らす。
+        </p>
+      </div>
+      <nav class="lab-index" aria-label="Lab groups">
+        <div class="lab-index-total">
+          <strong>{pad(portfolioCount - selected)}</strong>
+          <span class="micro">ENTRIES ON THE SIDE CHANNEL</span>
         </div>
-        <ul class="side-list">
-          {group.projects.map((project, index) => (
+        {groups.map((group, index) => (
+          <a href={`#${group.id}`}>
+            <span class="lab-index-code micro">
+              {pad(index + 1)} // {codes[group.id]}
+            </span>
+            <span class="lab-index-label" lang="ja">
+              {group.label}
+            </span>
+            <strong>{pad(group.projects.length)}</strong>
+          </a>
+        ))}
+      </nav>
+    </div>
+    <SkylineEdge position="bottom" />
+  </section>
+
+  {groups.map((group, index) => (
+    <section
+      class="lab-group"
+      id={group.id}
+      aria-labelledby={`lab-group-${group.id}`}
+    >
+      <div class="container">
+        <div class="node-board-heading">
+          <div>
+            <p class="micro">
+              {`/// ${pad(index + 1)} .${group.id.toUpperCase()}.MODULE_${group.label.split(' / ')[1]}`}
+            </p>
+            <h2 id={`lab-group-${group.id}`}>{group.title}</h2>
+            <p class="lab-group-description" lang="ja">
+              {group.description}
+            </p>
+          </div>
+          <p class="micro node-board-count">
+            {pad(group.projects.length)} ENTRIES
+          </p>
+        </div>
+        <ul class="lab-grid">
+          {group.projects.map((project, i) => (
             <li>
               <a
+                class="lab-card"
                 href={`https://github.com/kekincai/${project.repo}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="side-row"
               >
-                <span class="side-index micro" aria-hidden="true">
-                  {String(index + 1).padStart(2, '0')}
+                <span class="lab-card-number" aria-hidden="true">
+                  {pad(i + 1)}
                 </span>
-                <div>
-                  <h3>{project.name}</h3>
-                  <p lang="ja">{project.description}</p>
-                </div>
-                <span class="side-tags micro">
-                  {project.tags.slice(0, 2).join(' / ')}
+                <span class="lab-card-top micro">
+                  <span>
+                    {codes[group.id]}_{pad(i + 1)}
+                  </span>
+                  <Arrow diagonal />
                 </span>
-                <Arrow diagonal />
+                <span class="lab-card-name" lang="en">
+                  {project.name}
+                </span>
+                <span class="lab-card-description" lang="ja">
+                  {project.description}
+                </span>
+                <span class="lab-card-tags">
+                  {project.tags.map((tag) => (
+                    <span>{tag}</span>
+                  ))}
+                </span>
               </a>
             </li>
           ))}
         </ul>
-      </section>
-    ))}
-    <div class="cross-link">
-      <span>Selected work.</span>
-      <a class="text-link micro" href="/projects/">
+      </div>
+    </section>
+  ))}
+
+  <section class="lab-crosslink" aria-label="Selected work">
+    <div class="container lab-crosslink-inner">
+      <strong>{pad(selected)}</strong>
+      <div>
+        <p class="micro">/// .SELECTED.MODULE_実装記録</p>
+        <p class="lab-crosslink-title">Selected systems online.</p>
+      </div>
+      <a class="cp-button" href="/projects/">
         VIEW PROJECTS <Arrow />
       </a>
     </div>
-  </div>
+  </section>
 </BaseLayout>
