@@ -404,7 +404,8 @@ p {
   width: 100%;
 }
 /* Spatial layers: the plate moves most and away from the viewer, the
-   portrait moves least and towards them. Amounts are in viewBox units. */
+   portrait moves least and towards them. Amounts are in viewBox units;
+   plate and portrait share one scale so they register exactly at rest. */
 .parallax {
   transform-box: view-box;
   transform-origin: 300px 300px;
@@ -422,7 +423,7 @@ p {
 }
 .parallax-person {
   transform: translate(calc(var(--tilt-x) * 5px), calc(var(--tilt-y) * 4px))
-    scale(1.02);
+    scale(1.05);
 }
 .spatial-toggle {
   position: absolute;
