@@ -5,6 +5,8 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://kejincai.dev',
   output: 'static',
+  // One small stylesheet; inlining it removes the render-blocking request.
+  build: { inlineStylesheets: 'always' },
   integrations: [sitemap()],
   // Astro hashes every page script and style into a CSP <meta>. The only
   // third-party origin is the Cloudflare Web Analytics beacon, which

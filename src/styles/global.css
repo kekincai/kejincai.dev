@@ -2438,7 +2438,8 @@ main:has(> .uplink:last-child) + .site-footer {
   letter-spacing: 1.5px;
   line-height: 1.5;
   white-space: nowrap;
-  color: var(--red);
+  /* Darker than --red so the small tag passes contrast on yellow bands. */
+  color: #a3001f;
 }
 .directives-inline .directive-tag {
   font-size: 12px;
