@@ -1,67 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Hero from '../components/Hero.astro';
-import Arrow from '../components/Arrow.astro';
-import ProjectPosters from '../components/ProjectPosters.astro';
-import NodeBoard from '../components/NodeBoard.astro';
-import LabChannel from '../components/LabChannel.astro';
-import AboutUplink from '../components/AboutUplink.astro';
-import { portfolioGroups, portfolioCount } from '../data/portfolio';
-import { formatDate } from '../data/site';
 ---
 
 <BaseLayout preloadImage="/images/portrait.webp">
   <Hero />
-  <section class="system-band" id="system" aria-label="System status">
-    <dl class="container system-grid">
-      <div>
-        <dt>SYSTEM / LOCATION</dt>
-        <dd>
-          TOKYO <span class="micro">JP</span>
-        </dd>
-      </div>
-      <div>
-        <dt>ROOT NODE</dt>
-        <dd>KEJINCAI.DEV</dd>
-      </div>
-      <div>
-        <dt>STATUS</dt>
-        <dd class="online">
-          <i></i> ONLINE
-        </dd>
-      </div>
-      <div>
-        <dt>SELECTED WORK</dt>
-        <dd>{String(portfolioGroups[0].projects.length).padStart(2, '0')}</dd>
-      </div>
-      <div>
-        <dt>EXPERIMENTS / TOOLS</dt>
-        <dd>
-          {String(portfolioCount - portfolioGroups[0].projects.length).padStart(
-            2,
-            '0',
-          )}
-        </dd>
-      </div>
-      <div>
-        <dt>LAST UPDATE</dt>
-        <dd>{formatDate(new Date())}</dd>
-      </div>
-    </dl>
-  </section>
-  <ProjectPosters
-    label="/// 01 .SELECTED.MODULE_実装記録"
-    title="Welcome to the build."
-    description="IDEAS COMPILED. ブラウザ、ファイル転送、クリップボード。日常の三つの接点に、自作のシステムを差し込む。"
-    linkBase="/projects/"
-  >
-    <div class="poster-module-actions">
-      <a class="text-link text-link-dark micro" href="/projects/">
-        VIEW PROJECTS <Arrow />
-      </a>
-    </div>
-  </ProjectPosters>
-  <NodeBoard label="/// 02 .NODES.MODULE_HIGHLIGHT" title="Connected worlds." />
-  <LabChannel label="/// 03 .LAB.MODULE_SIDE_CHANNEL" />
-  <AboutUplink label="/// 04 .ABOUT.MODULE_UPLINK" />
 </BaseLayout>

@@ -2,6 +2,8 @@
 import NodeNetwork from './NodeNetwork.astro';
 import Arrow from './Arrow.astro';
 import Directives from './Directives.astro';
+import SkylineEdge from './SkylineEdge.astro';
+import { site } from '../data/site';
 ---
 
 <section class="hero" data-header-ink="dark">
@@ -23,13 +25,17 @@ import Directives from './Directives.astro';
           <p class="mono">AI / Web / Data / Photography</p>
         </div>
       </div>
-      <a class="button button-primary" href="/projects/">
-        VIEW PROJECTS <Arrow />
-      </a>
+      <div class="uplink-form">
+        <a class="uplink-field" href={`mailto:${site.email}`}>
+          <span class="micro">UPLINK ADDRESS</span>
+          <span>{site.email}</span>
+        </a>
+        <a class="uplink-send" href={`mailto:${site.email}`}>
+          SEND SIGNAL <Arrow />
+        </a>
+      </div>
     </div>
     <NodeNetwork />
-    <a class="scroll-cue micro" href="#system">
-      SCROLL <Arrow down />
-    </a>
   </div>
+  <SkylineEdge position="bottom" />
 </section>

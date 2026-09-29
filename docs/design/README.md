@@ -12,11 +12,11 @@ The owner then asked for the layout to follow cyberpunk.net more closely. This p
 | Logo        | Brush-slash wordmark                                | Original tapered-stroke lettering in `Wordmark.astro`; no copied letterforms or fan fonts                                                     |
 | Product row | Yellow band, skyline edges, tall lit posters        | `ProjectPosters.astro` + `SkylineEdge.astro`; posters link to dossiers on Projects                                                            |
 | News module | Dotted grid, cyan highlight tile, `NEWS_` tiles     | `NodeBoard.astro` for the three independent sites                                                                                             |
-| Newsletter  | Yellow band, underlined field, outlined button      | `AboutUplink.astro`, a mailto uplink                                                                                                          |
+| Newsletter  | Yellow band, underlined field, outlined button      | The mailto uplink row inside the Home hero                                                                                                    |
 | Footer      | Centered link rows and legal line                   | `Footer.astro`; icon tiles and the phone menu were later removed at the owner's request                                                       |
 | Hero visual | Key art                                             | The owner's cyber portrait fills the radar in `NodeNetwork.astro`                                                                             |
 
-The About page follows the same system: a yellow ID band with the portrait cropped to the face on an ID card, a profile log in the news-module style, a stat strip and the closing uplink band. The earlier tagline 構築。解析。記録。 was replaced by the imperative 接続せよ。構築せよ。記録せよ。 with HUD tags, closer to the game's mission-directive voice.
+The About page follows the same system: a yellow ID band with the portrait cropped to the face on an ID card, a profile log in the news-module style and the interests; its stat strip and closing uplink band were later removed because they repeated Home. Home itself was then reduced to a single screen (hero, portrait radar, directives and the mailto row). The earlier tagline 構築。解析。記録。 was replaced by the imperative 接続せよ。構築せよ。記録せよ。 with HUD tags, closer to the game's mission-directive voice.
 
 The portrait is the one exception to "no game artwork or logos": it contains the Cyberpunk 2077 wordmark and is kept whole because the owner asked for the complete image. Phones show only the logo in the header; navigation there goes through in-page actions and the footer. Mobile Safari needs `text-size-adjust: 100%` and no `aspect-ratio` combined with `min-height`, otherwise pinch zoom widens the layout.
 
@@ -57,7 +57,7 @@ See [release verification](../VERIFICATION.md) for checks. Retained [screenshots
 
 ## Owner-curated portfolio hierarchy
 
-Only Infinity New Tab, Disk Ferry and Safe Clip receive major cards on Home and Projects. The three independent websites remain. Nine other repositories are listed compactly in Lab, as six experiments and three small tools.
+Only Infinity New Tab, Disk Ferry and Safe Clip receive major cards, now on Projects only. The three independent websites remain. Nine other repositories are listed compactly in Lab, as six experiments and three small tools.
 
 | Review point | Actual render                                                                              |
 | ------------ | ------------------------------------------------------------------------------------------ |

@@ -46,5 +46,5 @@ Not available yet. The PageSpeed Insights API has no keyless quota, and a new pe
 
 - Twelve owner-selected repositories: three selected systems with posters and dossiers, six experiments and three utilities as Lab cards.
 - Dossier facts come from each repository's README and release tags; star counts are deliberately omitted.
-- Three independent site nodes appear on Home and Projects. `ONLINE` is editorial, not monitored.
+- Three independent site nodes appear on Projects. `ONLINE` is editorial, not monitored.
 - RSS has twelve project items with GitHub destinations and no invented publication dates.

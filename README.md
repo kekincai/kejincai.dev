@@ -68,10 +68,10 @@ The root site introduces these projects without duplicating their content.
 
 ## What's included
 
-- **Home** — three selected software projects and three independent site connections.
-- **Projects** — Infinity New Tab, Disk Ferry and Safe Clip, plus the three independent websites.
-- **Lab** — a compact list of six experiments and three small tools.
-- **About** — interests and a concise personal introduction.
+- **Home** — a single screen: name, directives, the portrait radar and a mailto uplink.
+- **Projects** — three selected software projects as posters and dossiers, plus the three independent site connections.
+- **Lab** — six experiments and three small tools as coded cards under a yellow index band.
+- **About** — a node ID card with the portrait, a short introduction and five interests tied to real projects.
 - **404** — a disconnected node, with a route back home.
 - **RSS + sitemap** — generated at build time.
 - **Responsive layouts** — phone navigation, single-column cards and compact lab rows.
