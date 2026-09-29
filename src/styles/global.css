@@ -1974,12 +1974,6 @@ a.cp-button:focus-visible::before {
   letter-spacing: -2px;
   text-shadow: 3px 0 var(--cyan);
 }
-.about-hero-role {
-  font-family: 'Rajdhani', sans-serif;
-  font-size: 24px;
-  font-weight: 600;
-  letter-spacing: 1px;
-}
 .about-hero-lead {
   max-width: 44ch;
   margin-top: 18px;
@@ -2052,6 +2046,10 @@ a.cp-button:focus-visible::before {
 }
 .id-card-data > div:nth-child(odd) {
   padding-right: 12px;
+}
+/* NAME and LOCATION share a row; the uplink address gets its own. */
+.id-card-data > div:last-child {
+  grid-column: 1 / -1;
 }
 .id-card-data dd {
   margin: 4px 0 0;
@@ -2190,9 +2188,6 @@ a.cp-button:focus-visible::before {
   }
   .about-hero-inner {
     padding-block: 32px 48px;
-  }
-  .about-hero-role {
-    font-size: 19px;
   }
   .id-card-data {
     grid-template-columns: 1fr;
