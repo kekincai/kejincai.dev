@@ -1,0 +1,52 @@
+---
+import { site } from '../data/site';
+---
+
+<div class="mail-toast" role="status" hidden>
+  <p>
+    <span class="micro">ADDRESS COPIED // {site.email}</span>
+    <span lang="ja">
+      メールアプリが開かない場合は、コピーしたアドレスに送るか
+      <a
+        href={`https://mail.google.com/mail/?view=cm&to=${site.email}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Gmail で作成
+      </a>
+      。
+    </span>
+  </p>
+  <button type="button" class="mail-toast-close" aria-label="Close">
+    ×
+  </button>
+</div>
+<script>
+  // mailto: does nothing when the browser has no mail app. For every
+  // mailto link: copy the address on click, and if focus never leaves the
+  // page for a mail app, show the toast with a Gmail fallback.
+  let hideTimer: number | undefined;
+  const toast = () => document.querySelector<HTMLElement>('.mail-toast');
+  document.addEventListener('click', (event) => {
+    const target = event.target as Element | null;
+    if (target?.closest('.mail-toast-close')) {
+      toast()?.setAttribute('hidden', '');
+      return;
+    }
+    const link = target?.closest<HTMLAnchorElement>('a[href^="mailto:"]');
+    if (!link) return;
+    const address = link.href.replace('mailto:', '').split('?')[0];
+    navigator.clipboard?.writeText(address).catch(() => {});
+    let handedOff = false;
+    const onBlur = () => (handedOff = true);
+    window.addEventListener('blur', onBlur, { once: true });
+    window.setTimeout(() => {
+      window.removeEventListener('blur', onBlur);
+      const el = toast();
+      if (handedOff || document.visibilityState !== 'visible' || !el) return;
+      el.hidden = false;
+      window.clearTimeout(hideTimer);
+      hideTimer = window.setTimeout(() => (el.hidden = true), 10000);
+    }, 1200);
+  });
+</script>

@@ -10,17 +10,10 @@ import { site } from '../data/site';
   <div class="hero-inner container">
     <div class="hero-copy">
       <p class="eyebrow">// TOKYO / PERSONAL NODE</p>
-      <h1>
-        <span>KE</span>{' '}
-        <span>
-          JINCAI<span class="name-dot">_</span>
-        </span>
-      </h1>
-      <div class="hero-meta">
-        <p class="hero-japanese">
-          <Directives />
-        </p>
-      </div>
+      <h1 class="visually-hidden">KE JINCAI</h1>
+      <p class="hero-directives">
+        <Directives />
+      </p>
       <div class="uplink-form">
         <a class="uplink-field" href={`mailto:${site.email}`}>
           <span class="micro">UPLINK ADDRESS</span>
@@ -29,52 +22,9 @@ import { site } from '../data/site';
         <a class="uplink-send" href={`mailto:${site.email}`}>
           SEND SIGNAL <Arrow />
         </a>
-        <p class="uplink-status" role="status" hidden>
-          <span class="micro">ADDRESS COPIED //</span>
-          <span lang="ja">
-            メールアプリが開かない場合は、コピーしたアドレスに送るか
-          </span>
-          <a
-            href={`https://mail.google.com/mail/?view=cm&to=${site.email}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Gmail で作成
-          </a>
-          。
-        </p>
       </div>
     </div>
     <NodeNetwork />
   </div>
   <SkylineEdge position="bottom" />
 </section>
-<script>
-  // mailto: does nothing when the system has no mail app. Copy the address
-  // on click, and if the window never loses focus to a mail app, say so.
-  function setupUplink() {
-    const form = document.querySelector<HTMLElement>('.uplink-form');
-    const status = form?.querySelector<HTMLElement>('.uplink-status');
-    if (!form || !status || form.dataset.ready) return;
-    form.dataset.ready = 'true';
-    const address = form
-      .querySelector<HTMLAnchorElement>('.uplink-send')!
-      .href.replace('mailto:', '');
-    form.querySelectorAll('a[href^="mailto:"]').forEach((link) =>
-      link.addEventListener('click', () => {
-        navigator.clipboard?.writeText(address).catch(() => {});
-        let handedOff = false;
-        const onBlur = () => (handedOff = true);
-        window.addEventListener('blur', onBlur, { once: true });
-        setTimeout(() => {
-          window.removeEventListener('blur', onBlur);
-          if (!handedOff && document.visibilityState === 'visible') {
-            status.hidden = false;
-          }
-        }, 1200);
-      }),
-    );
-  }
-  document.addEventListener('astro:page-load', setupUplink);
-  setupUplink();
-</script>
