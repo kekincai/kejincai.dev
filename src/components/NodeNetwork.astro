@@ -80,7 +80,7 @@ const edges = [
       </g>
     </g>
     <g class="parallax parallax-net">
-      <g class="network-drift">
+      <g>
         <g stroke="#00F0FF" stroke-opacity=".42" stroke-width=".9">
           {edges.map(([a, b]) => (
             <line
@@ -99,13 +99,6 @@ const edges = [
             fill={i % 4 === 0 ? '#E8EDF2' : '#00F0FF'}
           />
         ))}
-        <circle class="data-packet" r="3" fill="#FCEE0A">
-          <animateMotion
-            dur="14s"
-            repeatCount="indefinite"
-            path="M300 75 L391 160 L300 300 L188 300 L300 525 L391 440 L300 300 L300 75"
-          />
-        </circle>
       </g>
       <circle cx="300" cy="300" r="5" fill="#FCEE0A" />
     </g>
@@ -118,14 +111,7 @@ const edges = [
         preserveAspectRatio="xMidYMid slice"
       />
       <g class="portrait-reticle">
-        <circle
-          class="node-pulse"
-          cx="337"
-          cy="240"
-          r="26"
-          stroke="#FCEE0A"
-          stroke-width="1"
-        />
+        <circle cx="337" cy="240" r="26" stroke="#FCEE0A" stroke-width="1" />
         <circle cx="337" cy="240" r="13" stroke="#00F0FF" stroke-width="2" />
         <path
           d="M337 206v12m0 44v12M303 240h12m44 0h12"
@@ -177,15 +163,8 @@ const edges = [
     const graph = document.querySelector<HTMLElement>('.node-network');
     if (!graph || initialized.has(graph)) return;
     initialized.add(graph);
-    const svg = graph.querySelector<SVGSVGElement>('svg');
     const toggle = graph.querySelector<HTMLButtonElement>('.spatial-toggle');
     const motion = matchMedia('(prefers-reduced-motion: reduce)');
-    const syncMotion = () => {
-      if (motion.matches) svg?.pauseAnimations();
-      else svg?.unpauseAnimations();
-    };
-    syncMotion();
-    motion.addEventListener('change', syncMotion);
 
     const target = { x: 0, y: 0 };
     const current = { x: 0, y: 0 };
@@ -252,7 +231,6 @@ const edges = [
     document.addEventListener(
       'astro:before-swap',
       () => {
-        motion.removeEventListener('change', syncMotion);
         removeEventListener('deviceorientation', onOrient);
         cancelAnimationFrame(frame);
       },

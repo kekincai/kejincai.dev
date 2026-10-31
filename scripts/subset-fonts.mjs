@@ -27,12 +27,22 @@ const corpus = await sourceText('src');
 const characters = [
   ...new Set([...corpus].filter((char) => char.codePointAt(0) >= 0x3000)),
 ].join('');
+// 700 is only for the Home directives, so it carries just their glyphs.
+const directives = [
+  ...(await readFile('src/data/site.ts', 'utf8')).matchAll(/ja: '([^']+)'/g),
+]
+  .map((match) => match[1])
+  .join('');
 await mkdir('public/fonts', { recursive: true });
-for (const weight of [400, 500]) {
+for (const [weight, text] of [
+  [400, characters],
+  [500, characters],
+  [700, directives],
+]) {
   const source = await readFile(
     `node_modules/@fontsource/noto-sans-jp/files/noto-sans-jp-japanese-${weight}-normal.woff2`,
   );
-  const subset = await subsetFont(source, characters, {
+  const subset = await subsetFont(source, text, {
     targetFormat: 'woff2',
   });
   await writeFile(`public/fonts/noto-sans-jp-${weight}.woff2`, subset);

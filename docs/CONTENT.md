@@ -16,7 +16,7 @@ Home is a single screen: the hero with the portrait radar (shown first on phones
 
 Edit `src/data/site.ts`. 青空しおり, PAUL.LOG and FDE RADAR are retained as independent site connections. `ONLINE` is an editorial label, not monitored uptime.
 
-Projects renders these three sites as a cyberpunk.net-style news module (`src/components/NodeBoard.astro`): node 01 is the cyan highlight tile, the others are `NODE_` tiles. Below it, `LabChannel.astro` shows the Lab count and a ticker of the nine Lab entries.
+Projects renders these three sites as a cyberpunk.net-style news module (`src/components/NodeBoard.astro`): node 01 is the highlight tile, the others are `NODE_` tiles. Below it, `LabChannel.astro` shows the Lab count and a link to Lab.
 
 The previous assistant-selected lab entries and their detail routes have been removed. Add new repositories only when the owner selects them.
 

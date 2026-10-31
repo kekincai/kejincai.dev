@@ -35,7 +35,7 @@ Not available yet. The PageSpeed Insights API has no keyless quota, and a new pe
 - Home, Projects, Lab and About at 320, 375, 390 and 430 px: no horizontal overflow.
 - Real Safari (iOS Simulator, iPhone 17): the Connected Nodes highlight tile stays within the viewport and the layout returns aligned after pinch zoom. Mobile Safari needs `text-size-adjust: 100%` and no `aspect-ratio` combined with `min-height`.
 - Phones show only the logo in the header; navigation goes through in-page actions and the footer link row.
-- Reduced motion stops the radar drift, the Lab ticker, the directive glitch and the dossier scan line.
+- Nothing loops on its own except the footer cursor; reduced motion keeps the spatial portrait still.
 - Public identity uses Latin text only.
 
 ## Build checks

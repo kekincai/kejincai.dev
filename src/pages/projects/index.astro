@@ -5,6 +5,8 @@ import ProjectPosters from '../../components/ProjectPosters.astro';
 import NodeBoard from '../../components/NodeBoard.astro';
 import LabChannel from '../../components/LabChannel.astro';
 import { portfolioGroups } from '../../data/portfolio';
+// Same order as the posters, so each dossier keeps its poster's colour.
+const tones = ['yellow', 'cyan', 'red'] as const;
 ---
 
 <BaseLayout
@@ -14,14 +16,14 @@ import { portfolioGroups } from '../../data/portfolio';
   <div class="container page-content page-content-lead">
     <div class="page-heading">
       <p class="eyebrow yellow">SELECTED WORK / 03</p>
-      <h1>Systems online.</h1>
-      <p lang="ja">THREE SYSTEMS. 日常で使うために、組み上げた。</p>
+      <h1>Systems online</h1>
+      <p lang="ja">日常で使うために組み上げた、三つのシステム。</p>
     </div>
   </div>
   <ProjectPosters
-    label="/// .SELECTED.MODULE_実装記録"
-    title="Select a system."
-    description="LEARN MORE で各システムの設計、数値、ソースへ。"
+    label="01 // SELECTED"
+    title="Select a system"
+    description="ポスターから、各システムの設計、数値、ソースへ。"
   />
   <div class="container page-content page-content-follow">
     <section
@@ -34,12 +36,13 @@ import { portfolioGroups } from '../../data/portfolio';
           <ProjectDossier
             project={project}
             number={String(index + 1).padStart(2, '0')}
+            tone={tones[index % tones.length]}
             flip={index % 2 === 1}
           />
         ))}
       </div>
     </section>
   </div>
-  <NodeBoard label="/// .NODES.MODULE_HIGHLIGHT" title="Connected worlds." />
-  <LabChannel label="/// .LAB.MODULE_SIDE_CHANNEL" />
+  <NodeBoard label="02 // NODES" title="Connected worlds" />
+  <LabChannel label="03 // SIDE CHANNEL" />
 </BaseLayout>

@@ -14,6 +14,16 @@ Home and Projects feature only the first three repositories as major projects. L
 
 The latest user instruction supersedes the original restrained palette: use a Cyberpunk 2077 inspired yellow / black interface, cyan signals, red markers, condensed display typography and angular panels. Responsive phone layouts and Latin-only personal identity remain required. Original game assets are not used.
 
+Polish rules (2026-11-01, after an unslop pass that kept the cyberpunk direction):
+
+- Yellow is for bands and the primary action. Cyan is for links, the active state and HUD tags. Red is one marker per screen, such as the dot after KE JINCAI or the 404 cursor. The three project posters, and their dossiers, each keep one colour of their own.
+- The signature is one mono HUD tag per section in the form `NN // NAME`. Counts beside it stay muted.
+- No glows, dotted or scanline fills, or chromatic splits outside the Home directives. The directives keep a static split.
+- No idle loops. The spatial portrait responds to pointer and gyroscope; the footer `EOF_` cursor is the only blink.
+- Barlow Condensed at 600 and 700, Inter at 400 and 500, IBM Plex Mono at 400 and 500, Noto Sans JP at 400 and 500, plus 700 subset to the directive glyphs. Text is at least 11px.
+- Spacing sits on a 4px grid. Transitions use `--ease` at 160 to 200ms and name their properties.
+- Descriptions are plain Japanese sentences. English slogans live in HUD tags, not in front of sentences. One-phrase headings take no trailing period.
+
 ## Current implementation scope
 
 Phase 1: Home, Projects, Lab, About, and 404. The current project catalogue above supersedes legacy lab detail requirements below. Photography and feed aggregation are Phase 2. Public identity uses KE JINCAI / KEJINCAI.DEV only; do not publish the Chinese personal name. Mobile support is required. Display counts from content, never from example metrics.

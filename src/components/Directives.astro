@@ -12,9 +12,7 @@ const { class: className } = Astro.props;
       <span class="directive-tag" lang="en" aria-hidden="true">
         {`0${index + 1} // ${directive.tag}`}
       </span>
-      <span class="directive-text" data-text={directive.ja}>
-        {directive.ja}
-      </span>
+      <span class="directive-text">{directive.ja}</span>
     </span>
   ))}
 </span>

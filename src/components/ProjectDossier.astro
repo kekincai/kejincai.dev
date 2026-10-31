@@ -5,22 +5,20 @@ import type { FeaturedProject } from '../data/portfolio';
 interface Props {
   project: FeaturedProject;
   number: string;
+  tone: 'yellow' | 'cyan' | 'red';
   flip?: boolean;
 }
-const { project, number, flip = false } = Astro.props;
+const { project, number, tone, flip = false } = Astro.props;
 const repoUrl = `https://github.com/kekincai/${project.repo}`;
 ---
 
 <article
   id={project.repo}
-  class:list={['dossier', { 'dossier-flip': flip }]}
+  class:list={['dossier', `dossier-${tone}`, { 'dossier-flip': flip }]}
   aria-labelledby={`dossier-${project.repo}`}
 >
   <div class="dossier-visual" aria-hidden="true">
-    <div class="dossier-visual-top micro">
-      <span>SYS-{number}</span>
-      <span>SCHEMATIC</span>
-    </div>
+    <p class="dossier-visual-top micro">SCHEMATIC</p>
     <ProjectIcon repo={project.repo} />
     <div class="dossier-metric">
       <strong>{project.metric.value}</strong>
@@ -29,8 +27,7 @@ const repoUrl = `https://github.com/kekincai/${project.repo}`;
   </div>
   <div class="dossier-body">
     <p class="dossier-kicker micro">
-      <span>/// .SYS.MODULE_{number}</span>
-      {project.system}
+      SYS-{number} // {project.system}
     </p>
     <h3 id={`dossier-${project.repo}`} lang="en">
       <a href={repoUrl} target="_blank" rel="noopener noreferrer">

@@ -22,7 +22,7 @@ export const projects = [
     name: '青空しおり',
     romanized: 'AOZORA SHIORI',
     category: 'LANGUAGE / LITERATURE',
-    description: 'LITERATURE STREAM. 一日一頁、日本文学からことばを拾う。',
+    description: '一日一頁、日本文学からことばを拾う。',
     url: 'https://aozora.kejincai.dev',
     domain: 'aozora.kejincai.dev',
   },
@@ -31,8 +31,7 @@ export const projects = [
     name: 'PAUL.LOG',
     romanized: 'PAUL.LOG',
     category: 'AI / CODE / NOTES',
-    description:
-      'PERSONAL RESEARCH LOG. 論文を読み、コードを動かし、AI の理解を記録する。',
+    description: '論文を読み、コードを動かし、AI の理解を記録する。',
     url: 'https://blog.kejincai.dev',
     domain: 'blog.kejincai.dev',
   },
@@ -41,8 +40,7 @@ export const projects = [
     name: 'FDE RADAR',
     romanized: 'FDE RADAR',
     category: 'AI / ENGINEERING / INTELLIGENCE',
-    description:
-      'SIGNAL INTELLIGENCE. AI / Engineering の情報を収集、選別、読み解く。',
+    description: 'AI / Engineering の情報を収集、選別、読み解く。',
     url: 'https://fde.kejincai.dev',
     domain: 'fde.kejincai.dev',
   },

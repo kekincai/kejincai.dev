@@ -75,7 +75,7 @@ The root site introduces these projects without duplicating their content.
 - **404** — a disconnected node, with a route back home.
 - **RSS + sitemap** — generated at build time.
 - **Responsive layouts** — phone navigation, single-column cards and compact lab rows.
-- **Accessible motion** — reduced motion pauses the node network and removes page animations.
+- **Accessible motion** — no idle loops; reduced motion keeps the spatial portrait still and removes page transitions.
 
 Featured: [Infinity New Tab](https://github.com/kekincai/infinity-newtab-extension), [Disk Ferry](https://github.com/kekincai/DiskFerry), and [Safe Clip](https://github.com/kekincai/safe-clip-popclip). Categories follow the owner’s selection; descriptions follow the public READMEs. No invented releases, activity feed or photography is included.
 
@@ -110,7 +110,7 @@ Mobile Lighthouse for the redesigned local build: **97 performance / 100 accessi
 
 Static HTML first. A small amount of vanilla TypeScript handles navigation and pointer response. Astro's client router provides quiet 200ms transitions. No React runtime, analytics or external font service is required.
 
-Fonts are hosted with the site: Inter, IBM Plex Mono and Noto Sans JP. Japanese fonts are subset from the current source content before development and production builds.
+Fonts are hosted with the site: Barlow Condensed, Inter, IBM Plex Mono and Noto Sans JP. Japanese fonts are subset from the current source content before development and production builds; the 700 weight carries only the Home directives.
 
 ```text
 src/
